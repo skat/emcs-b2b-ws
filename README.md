@@ -53,8 +53,8 @@ The following **wsse:Security** headers **must** be sent in request:
     * Symmetric Encryption Algorithm: http://www.w3.org/2001/04/xmlenc#tripledes-cbc
     * Parts to Encrypt:
         * `soap:Body`
-* `wsse:BinarySecurityToken` (xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd")
-* `dsig:Signature` (xmlns:dsig="http://www.w3.org/2000/09/xmldsig#")         
+        * `wsse:BinarySecurityToken` (xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd")
+        * `dsig:Signature` (xmlns:dsig="http://www.w3.org/2000/09/xmldsig#")         
     * Security Token Reference = Direct Reference
     * Signature algorithm = http://www.w3.org/2000/09/xmldsig#rsa-sha1
     * Parts to Sign:
@@ -100,7 +100,7 @@ Server certificates available for environments:
 * [Production System](/crt/emcs-b2b-server-test.crt) (**Note**: Expires on October 30, 2017)
 
 In brief, this certificate is used for inbound (client side) encryption of payload and outbound signing (server side)
-of payload.
+of payload as explained above.
 
 ## Error Codes
 
@@ -160,3 +160,8 @@ See [test data repository](https://github.com/skat/emcs-b2b-ws-test-data)
 ## Sample Web Service Clients
 
 * [Java](https://github.com/skat/emcs-b2b-sample-ws-client-java)
+
+## Useful tools
+
+* [Certificate Decoder](https://www.sslshopper.com/certificate-decoder.html) - Use this tool to decode certificates
+if `openssl` or `keytool` is not hand.
