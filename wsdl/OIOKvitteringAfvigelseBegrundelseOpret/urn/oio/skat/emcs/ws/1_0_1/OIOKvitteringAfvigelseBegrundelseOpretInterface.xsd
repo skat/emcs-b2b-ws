@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:ws:1.0.1" version="1.0"
+    xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="OIOKvitteringAfvigelseBegrundelseOpret_I.xsd"/>
+    <xs:include schemaLocation="OIOKvitteringAfvigelseBegrundelseOpret_O.xsd"/>
+    <xs:element name="OIOKvitteringAfvigelseBegrundelseOpretInterface" type="struct:OIOKvitteringAfvigelseBegrundelseOpretInterfaceType"/>
+    <xs:complexType name="OIOKvitteringAfvigelseBegrundelseOpretInterfaceType">
+        <xs:choice>
+            <xs:element ref="struct:OIOKvitteringAfvigelseBegrundelseOpret_I"/>
+            <xs:element ref="struct:OIOKvitteringAfvigelseBegrundelseOpret_O"/>
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>

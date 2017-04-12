@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:1.0.1" version="1.0"
+    xml:lang="DA"
+    xmlns:afgiftoperatoerpunktafgiftidentifikator="urn:oio:skat:emcs:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="AfgiftOperatoerPunktAfgiftIdentifikator" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Benyttes til at entydigt identificere en
+                EU virksomhed eller en midlertidigt registreret virksomhed.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

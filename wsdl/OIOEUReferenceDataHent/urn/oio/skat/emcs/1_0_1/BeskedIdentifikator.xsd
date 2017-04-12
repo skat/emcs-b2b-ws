@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:1.0.1" version="1.0"
+    xml:lang="DA" xmlns:beskedidentifikator="urn:oio:skat:emcs:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="BeskedIdentifikator" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Identificerer en besked-struktur. Anvendes
+                i EUs told og afgiftssystemer til at identificere
+                beskeder som udveksles mellem landene (EN: MessageIdentifier)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

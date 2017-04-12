@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE802:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE802:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE802:C_EXC_REM -->
+  <!--===== REMINDER MESSAGE FOR EXCISE MOVEMENT -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE802" type="ie:IE802Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE802Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="ReminderMessageForExciseMovement" type="ie:ReminderMessageForExciseMovementType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReminderMessageForExciseMovementType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="ExciseMovementEad" type="ie:ExciseMovementEadType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="DateAndTimeOfIssuanceOfReminder" type="emcs:DateTimeType" />
+      <xs:element name="ReminderInformation" type="ie:LSDReminderInformationType" minOccurs="0" />
+      <xs:element name="LimitDateAndTime" type="emcs:DateTimeType" />
+      <xs:element name="ReminderMessageType" type="tcl:ReminderMessageType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseMovementEadType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE MOVEMENT E-AD" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+      <xs:element name="SequenceNumber" type="emcs:SequenceNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDReminderInformationType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ReminderInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+

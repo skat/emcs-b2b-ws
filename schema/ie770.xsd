@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE770:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE770:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE770:C_AVA_DAT -->
+  <!--===== BUSINESS PROCESS UNAVAILABILITY SCHEDULE -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE770" type="ie:IE770Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE770Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="BusinessProcessUnavailabilitySchedule" type="ie:BusinessProcessUnavailabilityScheduleType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessProcessUnavailabilityScheduleType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="UnavailabilitySchedule" type="ie:UnavailabilityScheduleType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="UnavailabilityScheduleMessageType" type="tcl:UnavailabilityScheduleMessageType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnavailabilityScheduleType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="UNAVAILABILITY SCHEDULE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="UsAction" type="ie:UsActionType" maxOccurs="9" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsActionType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(US) ACTION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Operation" type="emcs:OperationType" />
+      <xs:element name="SystemUnavailability" type="ie:SystemUnavailabilityType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SystemUnavailabilityType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="SYSTEM UNAVAILABILITY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BusinessProcessCode" type="tcl:BusinessProcessCode" />
+      <xs:element name="DowntimeStartDateAndTime" type="emcs:DateTimeType" />
+      <xs:element name="Type" type="tcl:SystemUnavailabilityType" />
+      <xs:element name="DowntimeEndDateAndTime" type="emcs:DateTimeType" minOccurs="0" />
+      <xs:element name="Explanation" type="ie:LSDExplanationType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDExplanationType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ExplanationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+

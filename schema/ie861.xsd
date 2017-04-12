@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE861:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE861:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE861:C_RES_DAT -->
+  <!--===== BASIS FOR RECOVERY OF DUTIES -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE861" type="ie:IE861Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE861Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="BasisForRecoveryOfDuties" type="ie:BasisForRecoveryOfDutiesType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BasisForRecoveryOfDutiesType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="ExciseMovementEad" type="ie:ExciseMovementEadType" />
+      <xs:element name="Analysis" type="ie:AnalysisType" />
+      <xs:element name="BodyAnalysis" type="ie:BodyAnalysisType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ReferenceControlReport" type="ie:ReferenceControlReportType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="ReferenceEventReport" type="ie:ReferenceEventReportType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="VerificationOffice" type="ie:VerificationOfficeType" />
+      <xs:element name="DocumentEvidence" type="ie:DocumentEvidenceType" minOccurs="0" maxOccurs="9" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="DateAndTimeOfIssuance" type="emcs:DateTimeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseMovementEadType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE MOVEMENT E-AD" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+      <xs:element name="SequenceNumber" type="emcs:SequenceNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AnalysisType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ANALYSIS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DateOfAnalysis" type="emcs:DateType" />
+      <xs:element name="ExciseOfficerIdentification" type="emcs:ExciseOfficerIdentificationType" minOccurs="0" />
+      <xs:element name="OpeningOfInquiryPlannedFlag" type="tcl:Flag" />
+      <xs:element name="MemberStateCodeIncredit" type="emcs:MemberStateCodeType" />
+      <xs:element name="GuarantorExemptionFlag" type="tcl:Flag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BodyAnalysisType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(BODY) ANALYSIS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
+      <xs:element name="BodyRecordUniqueReference" type="emcs:BodyRecordUniqueReferenceType" />
+      <xs:element name="DateOfShortage" type="emcs:DateType" />
+      <xs:element name="ObservedShortage" type="emcs:ObservedShortageType" minOccurs="0" />
+      <xs:element name="BasisQuantityForRecoveryOfDuties" type="emcs:BasisQuantityForRecoveryOfDutiesType" />
+      <xs:element name="QuantityInitiallyDispatched" type="emcs:QuantityInitiallyDispatchedType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferenceControlReportType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(REFERENCE) CONTROL REPORT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ControlReportReference" type="emcs:ControlReportReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferenceEventReportType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(REFERENCE) EVENT REPORT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EventReportNumber" type="emcs:EventReportNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationOfficeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(VERIFICATION) OFFICE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentEvidenceType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="DOCUMENT EVIDENCE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="IssuingAuthority" type="ie:LSDIssuingAuthorityType" minOccurs="0" />
+      <xs:element name="EvidenceTypeCode" type="emcs:EvidenceTypeCodeType" />
+      <xs:element name="EvidenceTypeComplement" type="ie:LSDEvidenceTypeComplementType" minOccurs="0" />
+      <xs:element name="ReferenceOfEvidence" type="ie:LSDReferenceOfEvidenceType" minOccurs="0" />
+      <xs:element name="ImageOfEvidence" type="xs:base64Binary" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDEvidenceTypeComplementType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:EvidenceTypeComplementType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDIssuingAuthorityType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:IssuingAuthorityType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDReferenceOfEvidenceType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ReferenceOfEvidenceType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+

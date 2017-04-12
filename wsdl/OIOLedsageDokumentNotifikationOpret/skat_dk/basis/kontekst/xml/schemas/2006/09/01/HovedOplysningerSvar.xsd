@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/"
+    version="1.0"
+    xmlns:ctxt="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation>Strukturen er en generisk svarmekanisme til at
+            udveksle forretningsmæssige fejl og adviser med et
+            modsvarende system.  Strukturen forudsætter ikke nogen
+            servicespecifk viden, udover at navnet på den konkrete
+            service skal stå i feltet ServiceIndikator.  De fejl og
+            adviser der rapporteres med strukturen skal betragtes som
+            unikt identificeret af
+            ServiceIdentifikator+FejlIdentifikator henholdsvis
+            ServiceIdentifikator+AdvisIdentifikator. Herved kan
+            forskellige services benytte overlappende serier af
+            identifikatorer og stadigvæk være unikt identificeret.</xs:documentation>
+    </xs:annotation>
+    <xs:include schemaLocation="SvarStruktur.xsd"/>
+    <xs:include schemaLocation="TransaktionIdentifikator.xsd"/>
+    <xs:include schemaLocation="TransaktionTid.xsd"/>
+    <xs:include schemaLocation="ServiceIdentifikator.xsd"/>
+    <!-- HovedOplysningerSvar -->
+    <xs:element name="HovedOplysningerSvar" type="ctxt:HovedOplysningerSvarType">
+        <xs:annotation>
+            <xs:documentation>Strukturen er en generisk svarmekanisme
+                til at udveksle forretningsmæssige fejl og adviser med
+                et modsvarende system.  Strukturen forudsætter ikke
+                nogen servicespecifk viden, udover at navnet på den
+                konkrete service skal stå i feltet ServiceIndikator.  De
+                fejl og adviser der rapporteres med strukturen skal
+                betragtes som unikt identificeret af
+                ServiceIdentifikator+FejlIdentifikator henholdsvis
+                ServiceIdentifikator+AdvisIdentifikator. Herved kan
+                forskellige services benytte overlappende serier af
+                identifikatorer og stadigvæk være unikt identificeret.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="HovedOplysningerSvarType">
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="ctxt:TransaktionIdentifikator"/>
+            <xs:element minOccurs="0" ref="ctxt:ServiceIdentifikator"/>
+            <xs:element minOccurs="0" ref="ctxt:TransaktionTid"/>
+            <xs:element ref="ctxt:SvarStruktur"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

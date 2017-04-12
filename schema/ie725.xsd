@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE725:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE725:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE725:C_MVS_RES -->
+  <!--===== MOVEMENT VERIFICATION RESULTS -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE725" type="ie:IE725Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE725Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="MovementVerificationResults" type="ie:MovementVerificationResultsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MovementVerificationResultsType">
+    <xs:sequence>
+      <xs:element name="FollowUp" type="ie:FollowUpType" />
+      <xs:element name="Contact" type="ie:ContactType" />
+      <xs:element name="ActionsResult" type="ie:ActionsResultType" maxOccurs="9" />
+      <xs:element name="Findings" type="ie:FindingsType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FollowUpType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="FOLLOW UP" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MvCorrelationId" type="emcs:MvCorrelationIdType" />
+      <xs:element name="OriginatorOfRequest" type="emcs:OriginatorOfRequestType" />
+      <xs:element name="DateOfIssuance" type="emcs:DateType" />
+      <xs:element name="ReferenceOfTheRequestingAuthority" type="emcs:ReferenceOfTheRequestingAuthorityType" minOccurs="0" />
+      <xs:element name="ReferenceOfTheAddressedAuthority" type="emcs:ReferenceOfTheAddressedAuthorityType" minOccurs="0" />
+      <xs:element name="SenderMemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="AddresseeMemberStateCode" type="emcs:MemberStateCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CONTACT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SubmittingExciseOfficer" type="emcs:SubmittingExciseOfficerType" />
+      <xs:element name="TelNumber" type="emcs:TelNumberType" />
+      <xs:element name="FaxNumber" type="emcs:FaxNumberType" />
+      <xs:element name="EmailAddress" type="emcs:EmailAddressType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActionsResultType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ACTIONS RESULT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MovementVerificationActionCode" type="emcs:MovementVerificationActionCodeType" />
+      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="BoxNumber" type="emcs:BoxNumberType" minOccurs="0" />
+      <xs:element name="ResultCode" type="tcl:ResultCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FindingsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="FINDINGS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="IrregularitiesFound" type="tcl:Flag" minOccurs="0" />
+      <xs:element name="IrregularitiesFoundImage" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="ChecksNotCarriedOut" type="tcl:Flag" minOccurs="0" />
+      <xs:element name="ChecksNotCarriedOutImage" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="FurtherInformationRequested" type="tcl:Flag" minOccurs="0" />
+      <xs:element name="FurtherInformationRequestedImage" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="UnableToCarryOutChecks" type="tcl:Flag" minOccurs="0" />
+      <xs:element name="UnableToCarryOutChecksImage" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="Notes" type="emcs:NotesType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDComplementaryInformationType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ComplementaryInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+

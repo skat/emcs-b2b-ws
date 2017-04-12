@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:ws:1.0.1" version="1.0"
+    xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation>OIO-udgave af tilsvarende forretningsservice.
+            Giver mulighed for at hente ledsagedokument annulleringer.</xs:documentation>
+    </xs:annotation>
+    <xs:include schemaLocation="OIOLedsageDokumentAnnulleringSamlingHent_I.xsd"/>
+    <xs:include schemaLocation="OIOLedsageDokumentAnnulleringSamlingHent_O.xsd"/>
+    <xs:element name="OIOLedsageDokumentAnnulleringSamlingHentInterface" type="struct:OIOLedsageDokumentAnnulleringSamlingHentInterfaceType"/>
+    <xs:complexType name="OIOLedsageDokumentAnnulleringSamlingHentInterfaceType">
+        <xs:choice>
+            <xs:element ref="struct:OIOLedsageDokumentAnnulleringSamlingHent_I"/>
+            <xs:element ref="struct:OIOLedsageDokumentAnnulleringSamlingHent_O"/>
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>
