@@ -29,6 +29,8 @@ The EMCS B2B Web Service Gateway provides 22 services defined by these Web Servi
 * [OIOLedsageDokumentSamlingHent](wsdl/OIOLedsageDokumentSamlingHent/OIOLedsageDokumentSamlingHent.wsdl)
 * [OIOPaamindelseSamlingHent](wsdl/OIOPaamindelseSamlingHent/OIOPaamindelseSamlingHent.wsdl)
 
+Current WSDL version: **1.0.1**
+
 ## Service Endpoints
 
 Service endpoints for both the test environment and production are provided by SKAT Help Desk.
@@ -38,6 +40,67 @@ Service endpoints for both the test environment and production are provided by S
 Located in the [schema](schema) directory.
 
 Current schema version: **1.76**
+
+## WS Security Requirements
+
+### Inbound (request)
+
+The following **wsse:Security** headers **must** be sent in request:
+
+* `enc:EncryptedKey` (xmlns:enc="http://www.w3.org/2001/04/xmlenc#")
+    * Security Token Reference = Key Identifier
+    * Transport Algorithm: http://www.w3.org/2001/04/xmlenc#rsa-1_5
+    * Symmetric Encryption Algorithm: http://www.w3.org/2001/04/xmlenc#tripledes-cbc
+    * Parts to Encrypt:
+        * `soap:Body`
+* `wsse:BinarySecurityToken` (xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd")
+* `dsig:Signature` (xmlns:dsig="http://www.w3.org/2000/09/xmldsig#")         
+    * Security Token Reference = Direct Reference
+    * Signature algorithm = http://www.w3.org/2000/09/xmldsig#rsa-sha1
+    * Parts to Sign:
+        * `soap:Body` 
+        * `wsse:BinarySecurityToken` (in `soap:Header/wsse:Security`)
+        * `wsu:Timestamp` (in `soap:Header/wsse:Security`)
+* `wsu:Timestamp` (xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
+
+**IMPORTANT**: 
+
+* The services do not support Inclusive Prefix List as a CanonicalizationMethod. This has to be deactivated
+in the client software.
+* The `wsu:Timestamp` header cannot exceed a 60 sec validity window. 
+
+### Outbound (response)
+
+The following **wsse:Security** headers **will** be returned in response:
+
+* `enc:EncryptedKey` (xmlns:enc="http://www.w3.org/2001/04/xmlenc#")
+    * Security Token Reference = Key Identifier
+    * Transport Algorithm: http://www.w3.org/2001/04/xmlenc#rsa-1_5
+    * Parts signed:
+        * `soap:Body` 
+        * `wsse:BinarySecurityToken` (in `soap:Header/wsse:Security`)
+        * `wsu:Timestamp` (in `soap:Header/wsse:Security`)
+* `wsse:BinarySecurityToken` (xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd")
+* `dsig:Signature` (xmlns:dsig="http://www.w3.org/2000/09/xmldsig#")         
+    * Security Token Reference = Direct Reference
+    * Signature algorithm = http://www.w3.org/2000/09/xmldsig#rsa-sha1
+* `wsu:Timestamp` (xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
+
+The `wsse:BinarySecurityToken` includes the certificate used by server to sign the response and produce the header
+`dsig:Signature`.
+
+The header `enc:EncryptedKey` uses the Key Identifier method to refer to a Certificate via a Base-64 encoding of the 
+Subject Key Identifier. This key must be used to decrypt the response in the `soap:Body`.                
+
+## Server Certificate
+
+Server certificates available for environments:
+
+* [Test System](/crt/emcs-b2b-server-test.crt) (**Note**: Expires on November 3, 2017)
+* [Production System](/crt/emcs-b2b-server-test.crt) (**Note**: Expires on October 30, 2017)
+
+In brief, this certificate is used for inbound (client side) encryption of payload and outbound signing (server side)
+of payload.
 
 ## Error Codes
 
@@ -89,3 +152,11 @@ Current schema version: **1.76**
 | 500        | Det anvendte transaktions-ID er allerede benyttet i et tidligere kald                                                                                                                          |
 | 1000       | Der er sket en teknisk fejl i denne B2B-service. Kontakt venligst SKAT                                                                                                                         |
 | 2000       | Denne service er midlertidigt ude af drift                                                                                                                                                     |
+
+## Test Data
+
+See [test data repository](https://github.com/skat/emcs-b2b-ws-test-data)
+
+## Sample Web Service Clients
+
+* [Java](https://github.com/skat/emcs-b2b-sample-ws-client-java)
