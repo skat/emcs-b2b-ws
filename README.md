@@ -159,7 +159,7 @@ See [test data repository](https://github.com/skat/emcs-b2b-ws-test-data)
 
 ## Sample Web Service Clients
 
-* [Java](https://github.com/skat/emcs-b2b-sample-ws-client-java)
+* [Java](https://github.com/skat/emcs-b2b-ws-sample-client-java)
 
 ## Useful tools
 
