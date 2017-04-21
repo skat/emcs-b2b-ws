@@ -252,6 +252,8 @@ See [test data repository](https://github.com/skat/emcs-b2b-ws-test-data)
 * [Java](https://github.com/skat/emcs-b2b-ws-sample-client-java)
 * [.NET](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet)
 
+**NOTE**: Please note that the .NET client is currently being upgraded to the latest .NET version and frameworks.
+
 ## Useful tools
 
 * [Certificate Decoder](https://www.sslshopper.com/certificate-decoder.html) - Use this tool to decode certificates
