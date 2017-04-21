@@ -31,66 +31,124 @@ The EMCS B2B Web Service Gateway provides 22 services defined by these Web Servi
 
 Current WSDL version: **1.0.1**
 
+---
+**IMPORTANT NOTE**: The above service definitions include schemas for documents to be sent or received in the SOAP Body and
+none of the schemas defines the EMCS Functional Messages directly. That is, EMCS Functional Messages cannot
+be sent in the SOAP Body part directly, but must be embedded in documents defined for the relevant services. 
+See also below regarding *Schemas (XSD) for EMCS Functional Messages*.
+---
+
+### Transaction Ids
+
+Each request must include a section named `HovedOplysninger` that must include the following values:
+
+1. Transaction id (element: `TransaktionIdentifikator`) that is unique string for all transactions. That is, the transaction id **cannot** be reused in other requests.
+2. Transaction time (element: `TransaktionTid`)
+
+**Example:**
+
+```xml
+<urn:OIOLedsageDokumentOpret_I 
+    xmlns:ns="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/"
+    xmlns:urn="urn:oio:skat:emcs:ws:1.0.1">
+    <ns:HovedOplysninger>
+        <TransaktionIdentifikator>81ADB49B-8B65-411F-9C50-76BB6DEFCBEB</TransaktionIdentifikator>
+        <TransaktionTid>2017-03-14T08:47:27Z</TransaktionTid>
+    </ns:HovedOplysninger>
+    <urn:VirksomhedIdentifikationStruktur>
+        <Indberetter>
+            <VirksomhedSENummerIdentifikator>12345678</VirksomhedSENummerIdentifikator>
+        </Indberetter>
+        <AfgiftOperatoerPunktAfgiftIdentifikator>DK12345678303</AfgiftOperatoerPunktAfgiftIdentifikator>
+    </urn:VirksomhedIdentifikationStruktur>
+    <urn:IE815Struktur>
+        <IE815>
+        ...
+        </IE815>
+    </urn:IE815Struktur>
+</urn:OIOLedsageDokumentOpret_I>
+```
+
+In the event of a resubmission of an IE815 using a new transaction id in `TransaktionIdentifikator` the 
+semantics of the EMCS system is a follows: EMCS system will check the `LocalReferenceNumber field` in the IE815 
+and if it’s already used, EMCS will respond with a message stating it’s already used. That means that it’s safe 
+to retry submission of IE815 several times (until it’s succesful) given that you don’t alter the LRN.
+
 ## Service Endpoints
 
 Service endpoints for both the test environment and production are provided by SKAT Help Desk.
 
-## EMCS Document Schemas (XSD)
+## Schemas (XSD) for EMCS Functional Messages
 
-Located in the [schema](schema) directory.
+Some of the above 22 services must embed EMCS Functional Messages as part of the SOAP request and these documents
+are defined by schemas (or XSD files) located in the [schema](schema) directory.
 
 Current schema version: **1.76**
 
 ## WS Security Requirements
 
-### Inbound (request)
+The following sections document which security elements that must be embedded in the **wsse:Security** header in
+the request and what will be received in the response.
+
+### Namespace definitions
+
+* `xmlns:enc="http://www.w3.org/2001/04/xmlenc#"`
+* `xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"`
+* `xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"`
+* `xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"`
+
+### Inbound to SKAT (request)
 
 The following **wsse:Security** headers **must** be sent in request:
 
-* `enc:EncryptedKey` (xmlns:enc="http://www.w3.org/2001/04/xmlenc#")
+* `enc:EncryptedKey` using this configuration:
     * Security Token Reference = Key Identifier
-    * Transport Algorithm: http://www.w3.org/2001/04/xmlenc#rsa-1_5
-    * Symmetric Encryption Algorithm: http://www.w3.org/2001/04/xmlenc#tripledes-cbc
+    * Transport Algorithm: `http://www.w3.org/2001/04/xmlenc#rsa-1_5`
+    * Symmetric Encryption Algorithm: `http://www.w3.org/2001/04/xmlenc#tripledes-cbc`
     * Parts to Encrypt:
         * `soap:Body`
-        * `wsse:BinarySecurityToken` (xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd")
-        * `dsig:Signature` (xmlns:dsig="http://www.w3.org/2000/09/xmldsig#")         
+* `dsig:Signature` using this configuration:
     * Security Token Reference = Direct Reference
-    * Signature algorithm = http://www.w3.org/2000/09/xmldsig#rsa-sha1
+    * Signature algorithm = `http://www.w3.org/2000/09/xmldsig#rsa-sha1`
     * Parts to Sign:
         * `soap:Body` 
-        * `wsse:BinarySecurityToken` (in `soap:Header/wsse:Security`)
-        * `wsu:Timestamp` (in `soap:Header/wsse:Security`)
-* `wsu:Timestamp` (xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
+        * `wsse:BinarySecurityToken` (part of `soap:Header/wsse:Security`). This token is the OCESII certificate that carry the identity of the caller.
+        * `wsu:Timestamp` (part of `soap:Header/wsse:Security`)
+* `wsu:Timestamp` using this configuration:
+    * Must have `wsu:Created` field set.
+    * Must have `wsu:Expires` field set.
+    * The `wsu:Timestamp` header cannot exceed a 60 sec validity window. That is `wsu:Expires` cannot be 60 seconds later than `wsu:Created` 
+
+See the following sample [request](/sample/request-test-system.xml) for a complete SOAP Envelope that fulfills
+the above requirements.
 
 **IMPORTANT**: 
 
 * The services do not support Inclusive Prefix List as a CanonicalizationMethod. This has to be deactivated
 in the client software.
-* The `wsu:Timestamp` header cannot exceed a 60 sec validity window. 
 
 ### Outbound (response)
 
 The following **wsse:Security** headers **will** be returned in response:
 
-* `enc:EncryptedKey` (xmlns:enc="http://www.w3.org/2001/04/xmlenc#")
+* `enc:EncryptedKey` using this configuration:
     * Security Token Reference = Key Identifier
-    * Transport Algorithm: http://www.w3.org/2001/04/xmlenc#rsa-1_5
+    * Transport Algorithm: `http://www.w3.org/2001/04/xmlenc#rsa-1_5`
+    * Symmetric Encryption Algorithm: `http://www.w3.org/2001/04/xmlenc#tripledes-cbc`
+    * Parts encrypted:
+        * `soap:Body` 
+* `wsse:BinarySecurityToken` 
+* `dsig:Signature`        
+    * Security Token Reference = Direct Reference
+    * Signature algorithm = `http://www.w3.org/2000/09/xmldsig#rsa-sha1`
     * Parts signed:
         * `soap:Body` 
-        * `wsse:BinarySecurityToken` (in `soap:Header/wsse:Security`)
-        * `wsu:Timestamp` (in `soap:Header/wsse:Security`)
-* `wsse:BinarySecurityToken` (xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd")
-* `dsig:Signature` (xmlns:dsig="http://www.w3.org/2000/09/xmldsig#")         
-    * Security Token Reference = Direct Reference
-    * Signature algorithm = http://www.w3.org/2000/09/xmldsig#rsa-sha1
-* `wsu:Timestamp` (xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
+        * `wsse:BinarySecurityToken` (part of `soap:Header/wsse:Security`). This token is the OCESII certificate used to sign the response.
+        * `wsu:Timestamp` (part of `soap:Header/wsse:Security`)
+* `wsu:Timestamp` using same configuration as inbound (*see* above).
 
-The `wsse:BinarySecurityToken` includes the certificate used by server to sign the response and produce the header
-`dsig:Signature`.
-
-The header `enc:EncryptedKey` uses the Key Identifier method to refer to a Certificate via a Base-64 encoding of the 
-Subject Key Identifier. This key must be used to decrypt the response in the `soap:Body`.                
+See the following sample [response](/sample/response-test-system.xml) for a complete SOAP Envelope that fulfills
+the above requirements.
 
 ## Server Certificate
 
@@ -165,4 +223,4 @@ See [test data repository](https://github.com/skat/emcs-b2b-ws-test-data)
 ## Useful tools
 
 * [Certificate Decoder](https://www.sslshopper.com/certificate-decoder.html) - Use this tool to decode certificates
-if `openssl` or `keytool` is not hand.
+if `openssl` or `keytool` is not an option.
