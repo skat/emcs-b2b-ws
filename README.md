@@ -32,10 +32,12 @@ The EMCS B2B Web Service Gateway provides 22 services defined by these Web Servi
 Current WSDL version: **1.0.1**
 
 ---
+
 **IMPORTANT NOTE**: The above service definitions include schemas for documents to be sent or received in the SOAP Body and
 none of the schemas defines the EMCS Functional Messages directly. That is, EMCS Functional Messages cannot
 be sent in the SOAP Body part directly, but must be embedded in documents defined for the relevant services. 
 See also below regarding *Schemas (XSD) for EMCS Functional Messages*.
+
 ---
 
 ### Transaction Ids
