@@ -1,6 +1,11 @@
 # Ændringslog for EMCS’ B2B implementeringsvejledning
 
-Brief summary in English: This document is change log for EMCS B2B Web Services.
+Brief summary in English: This document is changelog for EMCS B2B Web Services.
+
+### V3.13 til v3.14 April 2017 
+
+* Opgraderet Java-klienten til Java 8 med brug af open source.
+* Migreret kildekode (Java og .NET) samt teknisk dokumentation til GitHub
 
 ### V3.12 til v3.13 Februar 2017 
 
@@ -58,15 +63,14 @@ Alle nye XSD’er kan findes i ”emcs_B2B_xsd_FS3.1_v1.0.zip” pakken
 ### v3.06 til v3.07 01/12/2011
 
 * Servicen OIOLedsageDokumentOpsplitningOpret (send IE825) er nu klar til tests. Desuden er de to ekstra services OIOEksportGodkendelseSamlingHent og OIOEksportAfvisningSamlingHent til at hente og modtage henholdsvis IE829 og IE839 nu også tilgængelige i testmiljøet. Pakken med test WSDL ”emcs-b2b-test-wsdl” er gået fra v3.0 til v3.1. 
-* Mindre rettelser til ”Oversigt over beskedstruktur for FS2” (dokumentet er gået fra v1.5 til v1.6):
-
-Modtageren på IE815 til eksport er altid et dansk ekspeditionssted og ikke en specifik virksomhed eller et andet lands ekspeditionssted. Det skyldes at den faktiske modtager vil stå på udførselsangivelsen og derfor er ledsagedokumentet kun et dokument gældende fra afsenderens lokation frem til ekspeditionsstedet. I praksis betyder det:
+* Mindre rettelser til ”Oversigt over beskedstruktur for FS2” (dokumentet er gået fra v1.5 til v1.6): 
 
 
-* at DeliveryPlaceCustomsOffice skal være et dansk ekspeditionssted i en IE815 til eksport.
-* at man ikke skal udfylde ConsigneeTrader informationen i en IE815 til eksport. Denne vil system automatisk udfylde med adressen på det danske ekspeditionssted angivet i DeliveryPlaceCustomsOffice.
+*Modtageren på IE815 til eksport er altid et dansk ekspeditionssted og ikke en specifik virksomhed eller et andet lands ekspeditionssted. Det skyldes at den faktiske modtager vil stå på udførselsangivelsen og derfor er ledsagedokumentet kun et dokument gældende fra afsenderens lokation frem til ekspeditionsstedet. I praksis betyder det:*
+* *at DeliveryPlaceCustomsOffice skal være et dansk ekspeditionssted i en IE815 til eksport.*
+* *at man ikke skal udfylde ConsigneeTrader informationen i en IE815 til eksport. Denne vil system automatisk udfylde med adressen på det danske ekspeditionssted angivet i DeliveryPlaceCustomsOffice.*
+*Når der udføres en ændring af destination hvor DestinationTypeCode=6, må DeliveryPlaceCustomsOffice godt være et ekspeditionssted i et andet land da det er muligt for forsendelsen at være fysisk til stede i et andet land end Danmark.*
 
-Når der udføres en ændring af destination hvor DestinationTypeCode=6, må DeliveryPlaceCustomsOffice godt være et ekspeditionssted i et andet land da det er muligt for forsendelsen at være fysisk til stede i et andet land end Danmark.
 
 * Zip filen med alle dokumenterne er gået fra version v3.3 til v3.4 for at reflektere ændringerne i de andre dokumenter.
 
