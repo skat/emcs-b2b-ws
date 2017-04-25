@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE713:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE713:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE713:C_QRO_DAT -->
+  <!--===== INCREMENTAL UPDATE OR FULL REGISTER OF ECONOMIC OPERATORS -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE713" type="ie:IE713Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE713Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="IncrementalUpdateOfEconomicOperators" type="ie:IncrementalUpdateOfEconomicOperatorsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IncrementalUpdateOfEconomicOperatorsType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="TraderAuthorisation" type="ie:TraderAuthorisationType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="TaxWarehouse" type="ie:TaxWarehouseType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="TemporaryAuthorisation" type="ie:TemporaryAuthorisationType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="IncrementalMessageType" type="tcl:SeedMessageType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TraderAuthorisationType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="TRADER AUTHORISATION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TraderExciseNumber" type="emcs:ExciseNumberType" />
+      <xs:element name="VatNumber" type="emcs:VatNumberType" minOccurs="0" />
+      <xs:element name="AuthorisationBeginDate" type="emcs:DateType" />
+      <xs:element name="AuthorisationEndDate" type="emcs:DateType" minOccurs="0" />
+      <xs:element name="OperatorTypeCode" type="tcl:OperatorTypeCode" />
+      <xs:element name="ReferenceNumberOfExciseOffice" type="emcs:ExciseOfficeCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="NameAndAddress" type="ie:NameAndAddressType" maxOccurs="99" />
+      <xs:element name="OperatorRole" type="ie:OperatorRoleType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="ExciseProductsCategory" type="ie:ExciseProductsCategoryType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ExciseProduct" type="ie:ExciseProductType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="UsingTaxWarehouse" type="ie:UsingTaxWarehouseType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActionType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ACTION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Operation" type="tcl:ModificationType" />
+      <xs:element name="ActivationDate" type="emcs:DateType" />
+      <xs:element name="ActionIdentification" type="emcs:ActionIdentificationType" />
+      <xs:element name="ResponsibleDataManager" type="emcs:ResponsibleDataManagerType" minOccurs="0" />
+      <xs:element name="ModificationDateAndTime" type="emcs:DateTimeType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NameAndAddressType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="NAME AND ADDRESS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="emcs:NameType" />
+      <xs:element name="Address" type="ie:AddressType" />
+    </xs:sequence>
+    <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ADDRESS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CountryCode" type="emcs:CountryCodeType" />
+      <xs:element name="StreetName" type="emcs:StreetNameType" />
+      <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
+      <xs:element name="City" type="emcs:CityType" />
+      <xs:element name="Postcode" type="emcs:PostcodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OperatorRoleType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="OPERATOR ROLE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="OperatorRoleCode" type="tcl:OperatorRoleCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseProductsCategoryType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCTS CATEGORY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductsCategoryCode" type="emcs:ExciseProductsCategoryCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseProductType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsingTaxWarehouseType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(USING) TAX WAREHOUSE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReferenceOfTaxWarehouse" type="emcs:ExciseNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TaxWarehouseType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="TAX WAREHOUSE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReferenceOfTaxWarehouse" type="emcs:ExciseNumberType" />
+      <xs:element name="ValidityBeginDate" type="emcs:DateType" />
+      <xs:element name="ValidityEndDate" type="emcs:DateType" minOccurs="0" />
+      <xs:element name="ReferenceNumberOfExciseOffice" type="emcs:ExciseOfficeCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="NameAndAddress" type="ie:NameAndAddressType" maxOccurs="99" />
+      <xs:element name="ExciseProductsCategory" type="ie:ExciseProductsCategoryType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ExciseProduct" type="ie:ExciseProductType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TemporaryAuthorisationType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="TEMPORARY AUTHORISATION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TemporaryAuthorisationReference" type="emcs:ExciseNumberType" />
+      <xs:element name="ReferenceNumberOfIssuanceOffice" type="emcs:ExciseOfficeCodeType" />
+      <xs:element name="DateOfExpiry" type="emcs:DateType" />
+      <xs:element name="ReusableTemporaryAuthorisationFlag" type="tcl:Flag" />
+      <xs:element name="VatNumber" type="emcs:VatNumberType" minOccurs="0" />
+      <xs:element name="AuthorisationBeginDate" type="emcs:DateType" />
+      <xs:element name="SmallWineProducer" type="tcl:Flag" minOccurs="0" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="NameAndAddress" type="ie:NameAndAddressType" maxOccurs="99" />
+      <xs:element name="ConsignorTrader" type="ie:ConsignorTraderType" />
+      <xs:element name="TemporaryAuthorisationDetails" type="ie:TemporaryAuthorisationDetailsType" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsignorTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(CONSIGNOR) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TraderExciseNumber" type="emcs:ExciseNumberType" minOccurs="0" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" />
+      <xs:element name="StreetName" type="emcs:StreetNameType" />
+      <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
+      <xs:element name="Postcode" type="emcs:PostcodeType" />
+      <xs:element name="City" type="emcs:CityType" />
+    </xs:sequence>
+    <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+  </xs:complexType>
+  <xs:complexType name="TemporaryAuthorisationDetailsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="TEMPORARY AUTHORISATION DETAILS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
+      <xs:element name="Quantity" type="emcs:QuantityType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

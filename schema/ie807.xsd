@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE807:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE807:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE807:C_STP_NOT -->
+  <!--===== INTERRUPTION OF MOVEMENT -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE807" type="ie:IE807Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE807Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="InterruptionOfMovement" type="ie:InterruptionOfMovementType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InterruptionOfMovementType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="ReferenceControlReport" type="ie:ReferenceControlReportType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="ReferenceEventReport" type="ie:ReferenceEventReportType" minOccurs="0" maxOccurs="9" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="DateAndTimeOfIssuance" type="emcs:DateTimeType" />
+      <xs:element name="ReasonForInterruptionCode" type="emcs:ReasonForInterruptionCodeType" />
+      <xs:element name="ReferenceNumberOfExciseOffice" type="emcs:ExciseOfficeCodeType" />
+      <xs:element name="ExciseOfficerIdentification" type="emcs:ExciseOfficerIdentificationType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferenceControlReportType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(REFERENCE) CONTROL REPORT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ControlReportReference" type="emcs:ControlReportReferenceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferenceEventReportType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(REFERENCE) EVENT REPORT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EventReportNumber" type="emcs:EventReportNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDComplementaryInformationType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ComplementaryInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+

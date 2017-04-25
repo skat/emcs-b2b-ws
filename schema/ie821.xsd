@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE821:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE821:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE821:C_LST_VAL -->
+  <!--===== LIST OF E-AD AS RESULT OF A GENERAL QUERY -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE821" type="ie:IE821Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE821Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="ListOfEAD" type="ie:ListOfEADType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListOfEADType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="EadListItem" type="ie:EadListItemType" minOccurs="0" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="RequestingOffice" type="emcs:ExciseOfficeCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EadListItemType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="E-AD LIST ITEM" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DateOfDispatch" type="emcs:DateType" />
+      <xs:element name="ExciseMovementEad" type="ie:ExciseMovementEadType" />
+      <xs:element name="ConsignorTrader" type="ie:ConsignorTraderType" />
+      <xs:element name="PlaceOfDispatchTrader" type="ie:PlaceOfDispatchTraderType" minOccurs="0" />
+      <xs:element name="DispatchImportOffice" type="ie:DispatchImportOfficeType" minOccurs="0" />
+      <xs:element name="ConsigneeTrader" type="ie:ConsigneeTraderType" />
+      <xs:element name="DeliveryPlaceTrader" type="ie:DeliveryPlaceTraderType" minOccurs="0" />
+      <xs:element name="DeliveryPlaceCustomsOffice" type="ie:DeliveryPlaceCustomsOfficeType" minOccurs="0" />
+      <xs:element name="ExciseProductsCategory" type="ie:ExciseProductsCategoryType" maxOccurs="9" />
+      <xs:element name="FirstTransporterTrader" type="ie:FirstTransporterTraderType" minOccurs="0" />
+      <xs:element name="TransportArrangerTrader" type="ie:TransportArrangerTraderType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseMovementEadType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE MOVEMENT E-AD" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+      <xs:element name="DateAndTimeOfValidationOfEad" type="emcs:DateTimeType" />
+      <xs:element name="SequenceNumber" type="emcs:SequenceNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsignorTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(CONSIGNOR) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TraderExciseNumber" type="emcs:ExciseNumberType" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlaceOfDispatchTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(PLACE OF DISPATCH) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReferenceOfTaxWarehouse" type="emcs:ExciseNumberType" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DispatchImportOfficeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(DISPATCH) IMPORT OFFICE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsigneeTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(CONSIGNEE) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Traderid" type="emcs:TraderidType" minOccurs="0" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" />
+      <xs:element name="EoriNumber" type="emcs:EoriNumberType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeliveryPlaceTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(DELIVERY PLACE) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Traderid" type="emcs:TraderidType" minOccurs="0" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeliveryPlaceCustomsOfficeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(DELIVERY PLACE) CUSTOMS OFFICE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseProductsCategoryType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCTS CATEGORY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductsCategoryCode" type="emcs:ExciseProductsCategoryCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FirstTransporterTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(FIRST TRANSPORTER) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="VatNumber" type="emcs:VatNumberType" minOccurs="0" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportArrangerTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(TRANSPORT ARRANGER) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="VatNumber" type="emcs:VatNumberType" minOccurs="0" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

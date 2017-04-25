@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE722:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE722:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE722:C_MVS_SUB -->
+  <!--===== MOVEMENT VERIFICATION REQUEST -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE722" type="ie:IE722Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE722Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="MovementVerificationRequest" type="ie:MovementVerificationRequestType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MovementVerificationRequestType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="FollowUp" type="ie:FollowUpType" />
+      <xs:element name="Contact" type="ie:ContactType" />
+      <xs:element name="RequestingAuthority" type="ie:RequestingAuthorityType" />
+      <xs:element name="RequestReason" type="ie:RequestReasonType" maxOccurs="9" />
+      <xs:element name="ActionsRequested" type="ie:ActionsRequestedType" maxOccurs="9" />
+      <xs:element name="PersonConsignorTrader" type="ie:PersonConsignorTraderType" />
+      <xs:element name="PersonConsigneeTrader" type="ie:PersonConsigneeTraderType" />
+      <xs:element name="SaadDocuments" type="ie:SaadDocumentsType" minOccurs="0" maxOccurs="4" />
+      <xs:element name="GoodsItem" type="ie:GoodsItemType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="MeansOfTransport" type="ie:MeansOfTransportType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="MvRequestType" type="tcl:MvRequestType" />
+      <xs:element name="DeadlineForResults" type="emcs:DateTimeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FollowUpType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="FOLLOW UP" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MvCorrelationId" type="emcs:MvCorrelationIdType" />
+      <xs:element name="OriginatorOfRequest" type="emcs:OriginatorOfRequestType" />
+      <xs:element name="DateOfIssuance" type="emcs:DateType" />
+      <xs:element name="ReferenceOfTheRequestingAuthority" type="emcs:ReferenceOfTheRequestingAuthorityType" minOccurs="0" />
+      <xs:element name="ReferenceOfTheAddressedAuthority" type="emcs:ReferenceOfTheAddressedAuthorityType" minOccurs="0" />
+      <xs:element name="SenderMemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="AddresseeMemberStateCode" type="emcs:MemberStateCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CONTACT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SubmittingExciseOfficer" type="emcs:SubmittingExciseOfficerType" />
+      <xs:element name="TelNumber" type="emcs:TelNumberType" />
+      <xs:element name="FaxNumber" type="emcs:FaxNumberType" />
+      <xs:element name="EmailAddress" type="emcs:EmailAddressType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestingAuthorityType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="REQUESTING AUTHORITY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RequestingOfficeReferenceNumber" type="emcs:RequestingOfficeReferenceNumberType" />
+      <xs:element name="RequestingOfficeName" type="emcs:RequestingOfficeNameType" />
+      <xs:element name="StreetName" type="emcs:StreetNameType" />
+      <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
+      <xs:element name="Postcode" type="emcs:PostcodeType" />
+      <xs:element name="City" type="emcs:CityType" />
+      <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestReasonType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="REQUEST REASON" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MovementVerificationRequestReasonCode" type="emcs:MovementVerificationRequestReasonCodeType" />
+      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="BoxNumber" type="emcs:BoxNumberType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActionsRequestedType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ACTIONS REQUESTED" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MovementVerificationActionCode" type="emcs:MovementVerificationActionCodeType" />
+      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="BoxNumber" type="emcs:BoxNumberType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonConsignorTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(PERSON CONSIGNOR) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TraderExciseNumber" type="emcs:ExciseNumberType" minOccurs="0" />
+      <xs:element name="Traderid" type="emcs:TraderidType" minOccurs="0" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" />
+      <xs:element name="StreetName" type="emcs:StreetNameType" />
+      <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
+      <xs:element name="Postcode" type="emcs:PostcodeType" />
+      <xs:element name="City" type="emcs:CityType" />
+      <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonConsigneeTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(PERSON CONSIGNEE) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TraderExciseNumber" type="emcs:ExciseNumberType" minOccurs="0" />
+      <xs:element name="Traderid" type="emcs:TraderidType" minOccurs="0" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" />
+      <xs:element name="StreetName" type="emcs:StreetNameType" />
+      <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
+      <xs:element name="Postcode" type="emcs:PostcodeType" />
+      <xs:element name="City" type="emcs:CityType" />
+      <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SaadDocumentsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="SAAD DOCUMENTS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DocumentNumber" type="emcs:DocumentNumberType" />
+      <xs:element name="DocumentDate" type="emcs:DateType" />
+      <xs:element name="AttachedCopies" type="xs:base64Binary" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GoodsItemType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="GOODS ITEM" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DescriptionOfTheGoods" type="emcs:DescriptionOfTheGoodsType" minOccurs="0" />
+      <xs:element name="CnCode" type="emcs:CnCodeType" minOccurs="0" />
+      <xs:element name="CommercialDescriptionOfTheGoods" type="emcs:CommercialDescriptionOfTheGoodsType" minOccurs="0" />
+      <xs:element name="AdditionalCode" type="emcs:AdditionalCodeType" minOccurs="0" />
+      <xs:element name="Quantity" type="emcs:QuantityType" minOccurs="0" />
+      <xs:element name="UnitOfMeasureCode" type="emcs:UnitOfMeasureCodeType" minOccurs="0" />
+      <xs:element name="GrossWeight" type="emcs:GrossWeightType" minOccurs="0" />
+      <xs:element name="NetWeight" type="emcs:NetWeightType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MeansOfTransportType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="MEANS OF TRANSPORT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TraderName" type="emcs:TraderNameType" />
+      <xs:element name="StreetName" type="emcs:StreetNameType" />
+      <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
+      <xs:element name="TransporterCountry" type="emcs:TransporterCountryType" />
+      <xs:element name="Postcode" type="emcs:PostcodeType" />
+      <xs:element name="City" type="emcs:CityType" />
+      <xs:element name="TransportModeCode" type="emcs:TransportModeCodeType" />
+      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="Registration" type="emcs:RegistrationType" />
+      <xs:element name="CountryOfRegistration" type="emcs:CountryOfRegistrationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDComplementaryInformationType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ComplementaryInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:1.0.1" version="1.0"
+    xml:lang="DA"
+    xmlns:ledsagedokumentarcidentifikator="urn:oio:skat:emcs:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="LedsagedokumentARCIdentifikator" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>En entydig kode som identificerer et
+                elektronisk ledsagedokument (ARC = Administrative
+                Reference Code)  Indhold: Nummeret er opbygget af
+                årstal, fx &quot;05&quot;, landekode &quot;DK&quot;, en
+                unik kode på 16 karakterer, samt en kontrol kode på et
+                tal. </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:ws:1.0.1" version="1.0"
+    xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation>OIO-udgave af tilsvarende forretningsservice.
+            Kan benyttes til at hente den reference data som er blevet
+            anmodet i servicen EUReferenceDataAnmod. Inputtet er den
+            beskedidentifikator som blev genereret da IE705 beskeden
+            blev sendt via EUReferenceDataAnmod.</xs:documentation>
+    </xs:annotation>
+    <xs:include schemaLocation="OIOEUReferenceDataHent_I.xsd"/>
+    <xs:include schemaLocation="OIOEUReferenceDataHent_O.xsd"/>
+    <xs:element name="OIOEUReferenceDataHentInterface" type="struct:OIOEUReferenceDataHentInterfaceType"/>
+    <xs:complexType name="OIOEUReferenceDataHentInterfaceType">
+        <xs:choice>
+            <xs:element ref="struct:OIOEUReferenceDataHent_I"/>
+            <xs:element ref="struct:OIOEUReferenceDataHent_O"/>
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>

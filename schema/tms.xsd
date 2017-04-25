@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+	<xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd"/>
+	<!--=========================================-->
+	<!--      EMCS COMMON MESSAGE HEADER         -->
+	<!--=========================================-->
+	<xs:element name="Header" type="tms:HeaderType"/>
+	<xs:complexType name="HeaderType">
+		<xs:sequence>
+			<xs:element name="MessageSender" type="tms:MessageSenderType"/>
+			<xs:element name="MessageRecipient" type="tms:MessageRecipientType"/>
+			<xs:element name="DateOfPreparation" type="emcs:DateType"/>
+			<xs:element name="TimeOfPreparation" type="emcs:TimeType"/>
+			<xs:element name="MessageIdentifier" type="tms:MessageIdentifierType"/>
+			<xs:element name="CorrelationIdentifier" type="tms:CorrelationIdentifierType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- 
+  Examples: NDEA.DE | SEED.EC | CSMISE.EC
+  Over CCN the sender and the recipient are always known.
+  This element could be used for cross-checking
+  -->
+	<xs:simpleType name="MessageSenderType">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="(CSMISE\.EC)|(SEED\.EC)|(NDEA\.[A-Z]{2,2})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+  Examples: NDEA.FR | SEED.EC | CSMISE.EC
+  Over CCN the sender and the recipient are always known.
+  This element could be used for cross-checking
+  -->
+	<xs:simpleType name="MessageRecipientType">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="(CSMISE\.EC)|(SEED\.EC)|(NDEA\.[A-Z]{2,2})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+  Examples: uuid:d1681bbf-9de5-4d5f-afb7-b31a4e07529f 
+  Each message (request, response, datagram) is associated with a unique ID
+  The receiving application should consider messages with the same ID as duplicates.
+  -->
+	<xs:simpleType name="MessageIdentifierType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="44"/>
+			<xs:pattern value=".{1,44}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+  Examples: uuid:07275b18-6940-49a3-85e6-975b24d99f4b 
+  Not applicable/ignored for requests and datagram messages. 
+  For the request-response message exchange pattern the receiving application
+  copies the MessageIdentifier of the request to the CorrelationIdentifier
+  of the response(s).
+  -->
+	<xs:simpleType name="CorrelationIdentifierType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="44"/>
+			<xs:pattern value=".{1,44}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

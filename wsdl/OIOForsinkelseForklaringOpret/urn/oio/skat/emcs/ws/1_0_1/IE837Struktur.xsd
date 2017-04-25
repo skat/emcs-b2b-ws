@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:ws:1.0.1" version="1.0"
+    xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation>IE837 Message struktur</xs:documentation>
+    </xs:annotation>
+    <xs:element name="IE837Struktur" type="struct:IE837StrukturType"/>
+    <xs:complexType name="IE837StrukturType">
+        <xs:sequence>
+            <xs:any namespace="##any" processContents="skip"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

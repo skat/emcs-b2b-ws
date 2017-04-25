@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:1.0.1" version="1.0"
+    xml:lang="DA" xmlns:ie840beskedtekst="urn:oio:skat:emcs:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="IE840BeskedTekst" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>IE 840 Message repræsenteret som tekst
+                (EN: IE message as text) </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

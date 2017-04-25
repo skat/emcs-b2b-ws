@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE733:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE733:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE733:E_COD_DAT -->
+  <!--===== EXTERNAL LIST OF CODES -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE733" type="ie:IE733Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE733Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="ExternalListOfCodes" type="ie:ExternalListOfCodesType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExternalListOfCodesType">
+    <xs:sequence>
+      <xs:element name="ExciseProductsCategory" type="ie:ExciseProductsCategoryType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ExciseProduct" type="ie:ExciseProductType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="LanguageCode" type="ie:LanguageCodeType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="MemberState" type="ie:MemberStateType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Country" type="ie:CountryType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="UnitOfMeasure" type="ie:UnitOfMeasureType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="TransportMode" type="ie:TransportModeType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="TransportUnit" type="ie:TransportUnitType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="PackagingCode" type="ie:PackagingCodeType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="UnsatisfactoryReason" type="ie:UnsatisfactoryReasonType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="WineGrowingZone" type="ie:WineGrowingZoneType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="WineOperation" type="ie:WineOperationType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="EventType" type="ie:EventTypeType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="EvidenceType" type="ie:EvidenceTypeType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="ReasonForInterruption" type="ie:ReasonForInterruptionType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="CancellationReason" type="ie:CancellationReasonType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="AlertOrRejectionOfEadReason" type="ie:AlertOrRejectionOfEadReasonType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="DelayExplanation" type="ie:DelayExplanationType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="EventSubmittingPerson" type="ie:EventSubmittingPersonType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="CnCode" type="ie:CnCodeType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="CorrespondenceCnCodeExciseProduct" type="ie:CorrespondenceCnCodeExciseProductType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseProductsCategoryType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCTS CATEGORY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductsCategoryCode" type="emcs:ExciseProductsCategoryCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActionType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ACTION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Operation" type="tcl:ModificationType" />
+      <xs:element name="ActivationDate" type="emcs:DateType" />
+      <xs:element name="ActionIdentification" type="emcs:ActionIdentificationType" />
+      <xs:element name="ResponsibleDataManager" type="emcs:ResponsibleDataManagerType" minOccurs="0" />
+      <xs:element name="ModificationDateAndTime" type="emcs:DateTimeType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LanguageSpecificDataType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="LANGUAGE SPECIFIC DATA" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Description" type="emcs:DescriptionType" />
+    </xs:sequence>
+    <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ExciseProductType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductsCategoryCode" type="emcs:ExciseProductsCategoryCodeType" />
+      <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
+      <xs:element name="UnitOfMeasureCode" type="emcs:UnitOfMeasureCodeType" />
+      <xs:element name="AlcoholicStrengthApplicabilityFlag" type="tcl:Flag" />
+      <xs:element name="DegreePlatoApplicabilityFlag" type="tcl:Flag" />
+      <xs:element name="DensityApplicabilityFlag" type="tcl:Flag" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LanguageCodeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="LANGUAGE CODE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LanguageCode" type="emcs:LanguageCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MemberStateType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="MEMBER STATE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CountryType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="COUNTRY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CountryCode" type="emcs:CountryCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnitOfMeasureType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="UNIT OF MEASURE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="UnitOfMeasureCode" type="emcs:UnitOfMeasureCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportModeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="TRANSPORT MODE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TransportModeCode" type="emcs:TransportModeCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportUnitType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="TRANSPORT UNIT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TransportUnitCode" type="emcs:TransportUnitCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PackagingCodeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="PACKAGING CODE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="KindOfPackages" type="emcs:KindOfPackagesType" />
+      <xs:element name="CountableFlag" type="tcl:Flag" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnsatisfactoryReasonType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="UNSATISFACTORY REASON" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="UnsatisfactoryReasonCode" type="emcs:UnsatisfactoryReasonCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WineGrowingZoneType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="WINE-GROWING ZONE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="WineGrowingZoneCode" type="emcs:WineGrowingZoneCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WineOperationType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="WINE OPERATION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="WineOperationCode" type="emcs:WineOperationCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EventTypeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EVENT TYPE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EventTypeCode" type="emcs:EventTypeCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EvidenceTypeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EVIDENCE TYPE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EvidenceTypeCode" type="emcs:EvidenceTypeCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReasonForInterruptionType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="REASON FOR INTERRUPTION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReasonForInterruptionCode" type="emcs:ReasonForInterruptionCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CancellationReasonType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CANCELLATION REASON" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CancellationReasonCode" type="emcs:CancellationReasonCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertOrRejectionOfEadReasonType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ALERT OR REJECTION OF E-AD REASON" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AlertOrRejectionOfEadReasonCode" type="emcs:AlertOrRejectionOfEadReasonCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DelayExplanationType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="DELAY EXPLANATION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DelayExplanationCode" type="emcs:DelayExplanationCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EventSubmittingPersonType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EVENT SUBMITTING PERSON" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SubmittingPersonCode" type="emcs:SubmittingPersonCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CnCodeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CN CODE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CnCode" type="emcs:CnCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+      <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CorrespondenceCnCodeExciseProductType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CORRESPONDENCE CN CODE-EXCISE PRODUCT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CnCode" type="emcs:CnCodeType" />
+      <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
+      <xs:element name="Action" type="ie:ActionType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

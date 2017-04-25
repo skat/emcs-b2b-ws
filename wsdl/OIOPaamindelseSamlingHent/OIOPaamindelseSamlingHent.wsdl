@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="OIOPåmindelseSamlingHentService" targetNamespace="urn:oio:skat:emcs:ws:1.0.1" xmlns="" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <xs:annotation xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:documentation>OIO-udgave af tilsvarende forretningsservice.  En service som kan hente en eller flere påmindelser.</xs:documentation>
+  </xs:annotation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:oio:skat:emcs:ws:1.0.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="urn/oio/skat/emcs/ws/1_0_1/OIOPaamindelseSamlingHentInterface.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="OIOPåmindelseSamlingHentServiceRequest">
+    <wsdl:part element="struct:OIOPåmindelseSamlingHent_I" name="Request"/>
+  </wsdl:message>
+  <wsdl:message name="OIOPåmindelseSamlingHentServiceResponse">
+    <wsdl:part element="struct:OIOPåmindelseSamlingHent_O" name="Response"/>
+  </wsdl:message>
+  <wsdl:portType name="OIOPåmindelseSamlingHentServicePortType">
+    <wsdl:operation name="getOIOPåmindelseSamlingHent">
+      <wsdl:input message="struct:OIOPåmindelseSamlingHentServiceRequest"/>
+      <wsdl:output message="struct:OIOPåmindelseSamlingHentServiceResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OIOPåmindelseSamlingHentServiceBinding" type="struct:OIOPåmindelseSamlingHentServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getOIOPåmindelseSamlingHent">
+      <soap:operation soapAction="getOIOPåmindelseSamlingHent" style="document"/>
+      <wsdl:input>
+        <soap:body namespace="http://skat.dk/begrebsmodel/2009/01/15/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http://skat.dk/begrebsmodel/2009/01/15/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OIOPamindelseSamlingHentService">
+    <wsdl:port binding="struct:OIOPåmindelseSamlingHentServiceBinding" name="OIOPamindelseSamlingHentServicePort">
+      <soap:address location="http://localhost/EMCS_OIOPaamindelseSamlingHent/OIOPaamindelseSamlingHentServicePortTypeImplService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

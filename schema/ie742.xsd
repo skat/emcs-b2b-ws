@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE742:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE742:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE742:C_STA_VAL -->
+  <!--===== SEED STATISTICS -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE742" type="ie:IE742Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE742Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="SEEDStatistics" type="ie:SEEDStatisticsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SEEDStatisticsType">
+    <xs:sequence>
+      <xs:element name="StatisticsPeriod" type="ie:StatisticsPeriodType" />
+      <xs:element name="StatisticsPerMemberState" type="ie:StatisticsPerMemberStateType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="StatisticsAllMemberStates" type="ie:StatisticsAllMemberStatesType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatisticsPeriodType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="STATISTICS PERIOD" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Year" type="emcs:YearType" />
+      <xs:element name="Semester" type="tcl:Semester" minOccurs="0" />
+      <xs:element name="Quarter" type="tcl:Quarter" minOccurs="0" />
+      <xs:element name="Month" type="tcl:Month" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatisticsPerMemberStateType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="STATISTICS PER MEMBER STATE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="NumberOfActiveEconomicOperators" type="emcs:NumberOfActiveEconomicOperatorsType" minOccurs="0" />
+      <xs:element name="NumberOfInactiveEconomicOperators" type="emcs:NumberOfInactiveEconomicOperatorsType" minOccurs="0" />
+      <xs:element name="NumberOfPendingExpirations" type="emcs:NumberOfPendingExpirationsType" minOccurs="0" />
+      <xs:element name="NumberOfTaxWarehouses" type="emcs:NumberOfTaxWarehousesType" minOccurs="0" />
+      <xs:element name="NumberOfExciseAuthorisationChanges" type="emcs:NumberOfExciseAuthorisationChangesType" minOccurs="0" />
+      <xs:element name="OperatorType" type="ie:OperatorTypeType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="ExciseProductCategoryActivity" type="ie:ExciseProductCategoryActivityType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="ExciseProductActivity" type="ie:ExciseProductActivityType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OperatorTypeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="OPERATOR TYPE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="OperatorTypeCode" type="tcl:OperatorTypeCode" />
+      <xs:element name="NumberOfEconomicOperators" type="emcs:NumberOfEconomicOperatorsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseProductCategoryActivityType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCT CATEGORY ACTIVITY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductsCategoryCode" type="emcs:ExciseProductsCategoryCodeType" />
+      <xs:element name="NumberOfEconomicOperators" type="emcs:NumberOfEconomicOperatorsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseProductActivityType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCT ACTIVITY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
+      <xs:element name="NumberOfEconomicOperators" type="emcs:NumberOfEconomicOperatorsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatisticsAllMemberStatesType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="STATISTICS ALL MEMBER STATES" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TotalNumberOfActiveEconomicOperators" type="emcs:TotalNumberOfActiveEconomicOperatorsType" minOccurs="0" />
+      <xs:element name="TotalNumberOfInactiveEconomicOperators" type="emcs:TotalNumberOfInactiveEconomicOperatorsType" minOccurs="0" />
+      <xs:element name="TotalNumberOfPendingExpirations" type="emcs:TotalNumberOfPendingExpirationsType" minOccurs="0" />
+      <xs:element name="TotalNumberOfTaxWarehouses" type="emcs:TotalNumberOfTaxWarehousesType" minOccurs="0" />
+      <xs:element name="TotalNumberOfExciseAuthorisationChanges" type="emcs:TotalNumberOfExciseAuthorisationChangesType" minOccurs="0" />
+      <xs:element name="OperatorTypeAllMemberStates" type="ie:OperatorTypeAllMemberStatesType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="ExciseProductCategoryActivityAllMemberStates" type="ie:ExciseProductCategoryActivityAllMemberStatesType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="ExciseProductActivityAllMemberStates" type="ie:ExciseProductActivityAllMemberStatesType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OperatorTypeAllMemberStatesType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="OPERATOR TYPE ALL MEMBER STATES" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="OperatorTypeCode" type="tcl:OperatorTypeCode" />
+      <xs:element name="TotalNumberOfEconomicOperators" type="emcs:TotalNumberOfEconomicOperatorsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseProductCategoryActivityAllMemberStatesType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCT CATEGORY ACTIVITY ALL MEMBER STATES" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductsCategoryCode" type="emcs:ExciseProductsCategoryCodeType" />
+      <xs:element name="TotalNumberOfEconomicOperators" type="emcs:TotalNumberOfEconomicOperatorsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseProductActivityAllMemberStatesType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE PRODUCT ACTIVITY ALL MEMBER STATES" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
+      <xs:element name="TotalNumberOfEconomicOperators" type="emcs:TotalNumberOfEconomicOperatorsType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

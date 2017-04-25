@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="OIOLedsageDokumentNotifikationOpretService" targetNamespace="urn:oio:skat:emcs:ws:1.0.1" xmlns="" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <xs:annotation xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:documentation/>
+  </xs:annotation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:oio:skat:emcs:ws:1.0.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="urn/oio/skat/emcs/ws/1_0_1/OIOLedsageDokumentNotifikationOpretInterface.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="OIOLedsageDokumentNotifikationOpretServiceRequest">
+    <wsdl:part element="struct:OIOLedsageDokumentNotifikationOpret_I" name="Request"/>
+  </wsdl:message>
+  <wsdl:message name="OIOLedsageDokumentNotifikationOpretServiceResponse">
+    <wsdl:part element="struct:OIOLedsageDokumentNotifikationOpret_O" name="Response"/>
+  </wsdl:message>
+  <wsdl:portType name="OIOLedsageDokumentNotifikationOpretServicePortType">
+    <wsdl:operation name="getOIOLedsageDokumentNotifikationOpret">
+      <wsdl:input message="struct:OIOLedsageDokumentNotifikationOpretServiceRequest"/>
+      <wsdl:output message="struct:OIOLedsageDokumentNotifikationOpretServiceResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OIOLedsageDokumentNotifikationOpretServiceBinding" type="struct:OIOLedsageDokumentNotifikationOpretServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getOIOLedsageDokumentNotifikationOpret">
+      <soap:operation soapAction="getOIOLedsageDokumentNotifikationOpret" style="document"/>
+      <wsdl:input>
+        <soap:body namespace="http://skat.dk/begrebsmodel/2009/01/15/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http://skat.dk/begrebsmodel/2009/01/15/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OIOLedsageDokumentNotifikationOpretService">
+    <wsdl:port binding="struct:OIOLedsageDokumentNotifikationOpretServiceBinding" name="OIOLedsageDokumentNotifikationOpretServicePort">
+      <soap:address location="http://localhost/WebServices-ED_OIOLedsageDokumentNotifikationOpret-context-root/OIOLedsageDokumentNotifikationOpretServicePortTypeImplService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

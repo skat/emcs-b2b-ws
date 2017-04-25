@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE803:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE803:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE803:C_EAD_NOT -->
+  <!--===== NOTIFICATION OF DIVERTED E-AD -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE803" type="ie:IE803Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE803Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="NotificationOfDivertedEAD" type="ie:NotificationOfDivertedEADType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotificationOfDivertedEADType">
+    <xs:sequence>
+      <xs:element name="ExciseNotification" type="ie:ExciseNotificationType" />
+      <xs:element name="DownstreamArc" type="ie:DownstreamArcType" minOccurs="0" maxOccurs="9" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExciseNotificationType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXCISE NOTIFICATION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NotificationType" type="tcl:NotificationType" />
+      <xs:element name="NotificationDateAndTime" type="emcs:DateTimeType" />
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+      <xs:element name="SequenceNumber" type="emcs:SequenceNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DownstreamArcType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(DOWNSTREAM) ARC" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

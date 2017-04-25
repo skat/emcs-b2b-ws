@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema elementFormDefault="qualified"
+    targetNamespace="http://rep.oio.dk/skat.dk/emcs/class/ledsagedokument/xml/schemas/20080301/"
+    version="1.0" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+    <element name="LedsagedokumentValideretDato" type="date">
+        <annotation>
+            <documentation>Dato hvor ledsagedokumentet er valideret. </documentation>
+        </annotation>
+    </element>
+</schema>

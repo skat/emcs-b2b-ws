@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE723:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE723:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE723:C_MVS_ANS -->
+  <!--===== MOVEMENT VERIFICATION ANSWER -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE723" type="ie:IE723Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE723Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="MovementVerificationAnswer" type="ie:MovementVerificationAnswerType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MovementVerificationAnswerType">
+    <xs:sequence>
+      <xs:element name="FollowUp" type="ie:FollowUpType" />
+      <xs:element name="Contact" type="ie:ContactType" />
+      <xs:element name="MessageDeadlineReportDetails" type="ie:MessageDeadlineReportDetailsType" />
+      <xs:element name="RequestingAuthority" type="ie:RequestingAuthorityType" />
+      <xs:element name="AddressedAuthority" type="ie:AddressedAuthorityType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FollowUpType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="FOLLOW UP" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MvCorrelationId" type="emcs:MvCorrelationIdType" />
+      <xs:element name="OriginatorOfRequest" type="emcs:OriginatorOfRequestType" />
+      <xs:element name="DateOfIssuance" type="emcs:DateType" />
+      <xs:element name="ReferenceOfTheRequestingAuthority" type="emcs:ReferenceOfTheRequestingAuthorityType" minOccurs="0" />
+      <xs:element name="ReferenceOfTheAddressedAuthority" type="emcs:ReferenceOfTheAddressedAuthorityType" minOccurs="0" />
+      <xs:element name="SenderMemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="AddresseeMemberStateCode" type="emcs:MemberStateCodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CONTACT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SubmittingExciseOfficer" type="emcs:SubmittingExciseOfficerType" />
+      <xs:element name="TelNumber" type="emcs:TelNumberType" />
+      <xs:element name="FaxNumber" type="emcs:FaxNumberType" />
+      <xs:element name="EmailAddress" type="emcs:EmailAddressType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageDeadlineReportDetailsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="MESSAGE DEADLINE REPORT DETAILS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DateOfSending" type="emcs:DateType" />
+      <xs:element name="DateOfMvRequest" type="emcs:DateType" />
+      <xs:element name="DateForWhichReplyIsRequested" type="emcs:DateType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestingAuthorityType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="REQUESTING AUTHORITY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RequestingOfficeReferenceNumber" type="emcs:RequestingOfficeReferenceNumberType" minOccurs="0" />
+      <xs:element name="RequestingOfficeName" type="emcs:RequestingOfficeNameType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddressedAuthorityType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ADDRESSED AUTHORITY" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AddressedOfficeReferenceNumber" type="emcs:AddressedOfficeReferenceNumberType" minOccurs="0" />
+      <xs:element name="AddressedOfficeName" type="emcs:AddressedOfficeNameType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

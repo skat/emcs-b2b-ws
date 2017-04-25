@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE717:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE717:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE717:C_CCR_DAT -->
+  <!--===== CONTROL REPORT -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE717" type="ie:IE717Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE717Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="ControlReportEnvelope" type="ie:ControlReportEnvelopeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ControlReportEnvelopeType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="HeaderControlReport" type="ie:HeaderControlReportType" />
+      <xs:element name="ControlReport" type="ie:ControlReportType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="ControlReportMessageType" type="tcl:ControlReportMessageType" />
+      <xs:element name="DateAndTimeOfValidationOfControlReport" type="emcs:DateTimeType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderControlReportType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(HEADER) CONTROL REPORT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ControlReportReference" type="emcs:ControlReportReferenceType" />
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+      <xs:element name="SequenceNumber" type="emcs:SequenceNumberType" />
+      <xs:element name="ControlOffice" type="ie:ControlOfficeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ControlOfficeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CONTROL OFFICE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReferenceNumberOfControlOffice" type="emcs:ExciseOfficeCodeType" minOccurs="0" />
+      <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" minOccurs="0" />
+      <xs:element name="ControlOfficeName" type="emcs:ControlOfficeNameType" minOccurs="0" />
+      <xs:element name="StreetName" type="emcs:StreetNameType" minOccurs="0" />
+      <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
+      <xs:element name="Postcode" type="emcs:PostcodeType" minOccurs="0" />
+      <xs:element name="City" type="emcs:CityType" minOccurs="0" />
+      <xs:element name="PhoneNumber" type="emcs:PhoneNumberType" minOccurs="0" />
+      <xs:element name="FaxNumber" type="emcs:FaxNumberType" minOccurs="0" />
+      <xs:element name="EmailAddress" type="emcs:EmailAddressType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="language" type="emcs:LanguageCodeType" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="ControlReportType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CONTROL REPORT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DateOfControl" type="emcs:DateType" />
+      <xs:element name="PlaceOfControl" type="ie:LSDPlaceOfControlType" />
+      <xs:element name="ControlType" type="tcl:ControlType" />
+      <xs:element name="ReasonForControl" type="tcl:ReasonForControl" />
+      <xs:element name="ComplementaryOriginReference" type="ie:LSDComplementaryOriginReferenceType" minOccurs="0" />
+      <xs:element name="ControlOfficerIdentity" type="ie:LSDControlOfficerIdentityType" />
+      <xs:element name="GlobalControlConclusion" type="tcl:GlobalControlConclusion" />
+      <xs:element name="ControlAtArrivalRequired" type="tcl:Flag" />
+      <xs:element name="Flag" type="tcl:Flag" />
+      <xs:element name="Comments" type="ie:LSDCommentsType" minOccurs="0" />
+      <xs:element name="PerformedControlAction" type="ie:PerformedControlActionType" maxOccurs="99" />
+      <xs:element name="EvidenceOfEvent" type="ie:EvidenceOfEventType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="UnsatisfactoryReason" type="ie:UnsatisfactoryReasonType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="TransportDetails" type="ie:TransportDetailsType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="BodyControlReport" type="ie:BodyControlReportType" minOccurs="0" maxOccurs="99" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerformedControlActionType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="PERFORMED CONTROL ACTION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PerformedControlAction" type="tcl:PerformedControlAction" />
+      <xs:element name="OtherControlAction" type="ie:LSDOtherControlActionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EvidenceOfEventType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EVIDENCE OF EVENT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="IssuingAuthority" type="ie:LSDIssuingAuthorityType" minOccurs="0" />
+      <xs:element name="EvidenceTypeCode" type="emcs:EvidenceTypeCodeType" />
+      <xs:element name="EvidenceTypeComplement" type="ie:LSDEvidenceTypeComplementType" minOccurs="0" />
+      <xs:element name="ReferenceOfEvidence" type="ie:LSDReferenceOfEvidenceType" minOccurs="0" />
+      <xs:element name="ImageOfEvidence" type="xs:base64Binary" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnsatisfactoryReasonType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="UNSATISFACTORY REASON" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="UnsatisfactoryReasonCode" type="emcs:UnsatisfactoryReasonCodeType" />
+      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportDetailsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="TRANSPORT DETAILS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TransportUnitCode" type="emcs:TransportUnitCodeType" />
+      <xs:element name="IdentityOfTransportUnits" type="emcs:IdentityOfTransportUnitsType" minOccurs="0" />
+      <xs:element name="CommercialSealIdentification" type="emcs:CommercialSealIdentificationType" minOccurs="0" />
+      <xs:element name="SealInformation" type="ie:LSDSealInformationType" minOccurs="0" />
+      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BodyControlReportType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(BODY) CONTROL REPORT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BodyRecordUniqueReference" type="emcs:BodyRecordUniqueReferenceType" />
+      <xs:element name="IndicatorOfShortageOrExcess" type="tcl:IndicatorOfShortageOrExcess" minOccurs="0" />
+      <xs:element name="ObservedShortageOrExcess" type="emcs:ObservedShortageOrExcessType" minOccurs="0" />
+      <xs:element name="Comments" type="ie:LSDCommentsType" minOccurs="0" />
+      <xs:element name="UnsatisfactoryReason" type="ie:UnsatisfactoryReasonType" minOccurs="0" maxOccurs="9" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDCommentsType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:CommentsType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDComplementaryInformationType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ComplementaryInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDComplementaryOriginReferenceType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ComplementaryOriginReferenceType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDControlOfficerIdentityType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ControlOfficerIdentityType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDEvidenceTypeComplementType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:EvidenceTypeComplementType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDIssuingAuthorityType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:IssuingAuthorityType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDOtherControlActionType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:OtherControlActionType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDPlaceOfControlType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:PlaceOfControlType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDReferenceOfEvidenceType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ReferenceOfEvidenceType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDSealInformationType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:SealInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+

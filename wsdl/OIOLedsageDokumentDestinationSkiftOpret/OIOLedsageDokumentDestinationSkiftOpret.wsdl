@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="OIOLedsageDokumentDestinationSkiftOpretService" targetNamespace="urn:oio:skat:emcs:ws:1.0.1" xmlns="" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <xs:annotation xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:documentation>OIO-udgave af tilsvarende forretningsservice.  Servicen sørger for, at nye destinationsoplysninger kan sendes ud til en (i en given forbindelse) forhenværende modtager og andre berørte interessenter.</xs:documentation>
+  </xs:annotation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:oio:skat:emcs:ws:1.0.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="urn/oio/skat/emcs/ws/1_0_1/OIOLedsageDokumentDestinationSkiftOpretInterface.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="OIOLedsageDokumentDestinationSkiftOpretServiceRequest">
+    <wsdl:part element="struct:OIOLedsageDokumentDestinationSkiftOpret_I" name="Request"/>
+  </wsdl:message>
+  <wsdl:message name="OIOLedsageDokumentDestinationSkiftOpretServiceResponse">
+    <wsdl:part element="struct:OIOLedsageDokumentDestinationSkiftOpret_O" name="Response"/>
+  </wsdl:message>
+  <wsdl:portType name="OIOLedsageDokumentDestinationSkiftOpretServicePortType">
+    <wsdl:operation name="getOIOLedsageDokumentDestinationSkiftOpret">
+      <wsdl:input message="struct:OIOLedsageDokumentDestinationSkiftOpretServiceRequest"/>
+      <wsdl:output message="struct:OIOLedsageDokumentDestinationSkiftOpretServiceResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OIOLedsageDokumentDestinationSkiftOpretServiceBinding" type="struct:OIOLedsageDokumentDestinationSkiftOpretServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getOIOLedsageDokumentDestinationSkiftOpret">
+      <soap:operation soapAction="getOIOLedsageDokumentDestinationSkiftOpret" style="document"/>
+      <wsdl:input>
+        <soap:body namespace="http://skat.dk/begrebsmodel/2009/01/15/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http://skat.dk/begrebsmodel/2009/01/15/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OIOLedsageDokumentDestinationSkiftOpretService">
+    <wsdl:port binding="struct:OIOLedsageDokumentDestinationSkiftOpretServiceBinding" name="OIOLedsageDokumentDestinationSkiftOpretServicePort">
+      <soap:address location="http://localhost/EMCS_OIOLedsageDokumentDestinationSkiftOpret/OIOLedsageDokumentDestinationSkiftOpretServicePortTypeImplService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

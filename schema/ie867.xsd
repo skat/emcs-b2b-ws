@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE867:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE867:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE867:C_COO_RES -->
+  <!--===== ADMINISTRATIVE COOPERATION RESULTS -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE867" type="ie:IE867Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE867Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="AdministrativeCooperationResults" type="ie:AdministrativeCooperationResultsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdministrativeCooperationResultsType">
+    <xs:sequence>
+      <xs:element name="FollowUp" type="ie:FollowUpType" />
+      <xs:element name="Contact" type="ie:ContactType" minOccurs="0" />
+      <xs:element name="AcoActionResult" type="ie:AcoActionResultType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="Documents" type="ie:DocumentsType" minOccurs="0" maxOccurs="9" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FollowUpType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="FOLLOW UP" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FollowUpCorrelationId" type="emcs:FollowUpCorrelationIdType" />
+      <xs:element name="DateOfIssuance" type="emcs:DateType" />
+      <xs:element name="SenderMemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="SenderOfficeReferenceNumber" type="emcs:ExciseOfficeCodeType" minOccurs="0" />
+      <xs:element name="SenderOfficer" type="emcs:SenderOfficerType" minOccurs="0" />
+      <xs:element name="AddresseeMemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="AddresseeOfficeReferenceNumber" type="emcs:ExciseOfficeCodeType" minOccurs="0" />
+      <xs:element name="AddresseeOfficer" type="emcs:AddresseeOfficerType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="CONTACT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" />
+      <xs:element name="SubmittingExciseOfficer" type="emcs:SubmittingExciseOfficerType" minOccurs="0" />
+      <xs:element name="TelNumber" type="emcs:TelNumberType" minOccurs="0" />
+      <xs:element name="FaxNumber" type="emcs:FaxNumberType" minOccurs="0" />
+      <xs:element name="EmailAddress" type="emcs:EmailAddressType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AcoActionResultType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(ADMINISTRATIVE COOPERATION) ACTION RESULT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" minOccurs="0" />
+      <xs:element name="SequenceNumber" type="emcs:SequenceNumberType" minOccurs="0" />
+      <xs:element name="AcoActionCode" type="emcs:AcoActionCodeType" />
+      <xs:element name="AcoActionComplement" type="ie:LSDAcoActionComplementType" minOccurs="0" />
+      <xs:element name="AcoActionNotPossibleReasonCode" type="emcs:AcoActionNotPossibleReasonCodeType" minOccurs="0" />
+      <xs:element name="AcoActionNotPossibleReasonComplement" type="ie:LSDAcoActionNotPossibleReasonComplementType" minOccurs="0" />
+      <xs:element name="FindingAtDestination" type="tcl:FindingAtDestination" minOccurs="0" />
+      <xs:element name="OtherFindingType" type="ie:LSDOtherFindingTypeType" minOccurs="0" />
+      <xs:element name="ComplementaryExplanations" type="ie:LSDComplementaryExplanationsType" minOccurs="0" />
+      <xs:element name="ControlReportReference" type="emcs:ControlReportReferenceType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="DOCUMENTS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DocumentDescription" type="ie:LSDDocumentDescriptionType" minOccurs="0" />
+      <xs:element name="ReferenceOfDocument" type="ie:LSDReferenceOfDocumentType" minOccurs="0" />
+      <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDAcoActionComplementType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:AcoActionComplementType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDAcoActionNotPossibleReasonComplementType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:AcoActionNotPossibleReasonComplementType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDComplementaryExplanationsType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ComplementaryExplanationsType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDDocumentDescriptionType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:DocumentDescriptionType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDOtherFindingTypeType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:OtherFindingTypeType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDReferenceOfDocumentType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ReferenceOfDocumentType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+

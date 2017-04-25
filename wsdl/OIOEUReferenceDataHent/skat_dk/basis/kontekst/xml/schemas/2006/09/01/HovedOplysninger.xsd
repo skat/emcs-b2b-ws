@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/"
+    version="1.0"
+    xmlns:tsk="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="TransaktionIdentifikator.xsd"/>
+    <xs:include schemaLocation="TransaktionTid.xsd"/>
+    <!-- HovedOplysninger -->
+    <xs:element name="HovedOplysninger" type="tsk:HovedOplysningerType"/>
+    <xs:complexType name="HovedOplysningerType">
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="tsk:TransaktionIdentifikator"/>
+            <xs:element minOccurs="0" ref="tsk:TransaktionTid"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

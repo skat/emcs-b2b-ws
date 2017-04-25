@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="urn:oio:skat:emcs:ws:1.0.1" version="1.0"
+    xmlns:kontekst="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/"
+    xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:documentation/>
+    </xs:annotation>
+    <xs:import
+        namespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" schemaLocation="../../../../../../skat_dk/basis/kontekst/xml/schemas/2006/09/01/HovedOplysninger.xsd"/>
+    <xs:include schemaLocation="VirksomhedIdentifikationStruktur.xsd"/>
+    <xs:include schemaLocation="IE818InputStruktur.xsd"/>
+    <xs:element name="OIOKvitteringOpret_I" type="struct:OIOKvitteringOpret_IType"/>
+    <xs:complexType name="OIOKvitteringOpret_IType">
+        <xs:sequence>
+            <xs:element ref="kontekst:HovedOplysninger"/>
+            <xs:element ref="struct:VirksomhedIdentifikationStruktur"/>
+            <xs:element ref="struct:IE818InputStruktur"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
