@@ -2,13 +2,10 @@
 
 Brief summary in English: This document is changelog for EMCS B2B Web Services.
 
-### V3.13 til v3.14 April 2017 
+### V3.12 til v3.13 April 2017 
 
 * Opgraderet Java-klienten til Java 8 med brug af open source.
 * Migreret kildekode (Java og .NET) samt teknisk dokumentation til GitHub
-
-### V3.12 til v3.13 Februar 2017 
-
 * Dokumentet ”Oversigt over funktionelle beskeder, webservices og beskrivelse af scenarier” er opdateret. Se ændringerne inde i dokumentets versionsstyringstabel.
 * Dokumentet ”Tilgængelige testvirksomheder til tests når der anvendes DanId testcertifikat v1.1” er opdateret med link til OCES II virksomhedstestcertifikat.
 * Dokumentet ”Beskrivelse af struktur og design af de funktionelle beskeder v1.2” er opdateret med nyt link til Unicode 6.1.0.
