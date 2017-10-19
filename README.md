@@ -1,6 +1,9 @@
 # Artefacts and information in relation to SKAT's EMCS B2B Web Services Gateway 
 
-Repository with relevant artefacts and information in relation to SKAT's EMCS B2B Web Service Gateway 
+This repository provides relevant artefacts and information in relation to SKAT's EMCS B2B Web Service Gateway.
+
+The SKAT's Web Service Gateway for Excise movement and Control System (EMCS) provides 22 SOAP Web Services (in total) that legal
+entities may consume in ERP systems for fully automated submitting and receiving EMCS documents (XML documents). 
 
 ## Service WSDLs
 
@@ -87,7 +90,59 @@ are defined by schemas (or XSD files) located in the [schema](schema) directory.
 
 Current schema version: **1.76**
 
-## WS Security Requirements
+## Security
+
+All services are accessible via the Internet using the secure transport protocol (HTTPS) and configured with
+Web Services Security requiring authentication, signing, and 
+encryption using x.509 certificates issued by [NemID](https://www.nemid.nu) (Certificate Authority) of type OCESII 
+(In Danish: *Offentlige Certifikater til Elektronisk Service II*). The Web Services Security is based on [Web Services Security: SOAP Message Security 1.0 WS-Security 2004 - OASIS Standard 200401, March 2004 ](https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0.pdf)
+
+There are two parties in the communication:
+
+1. **Client** - The software client of the company (legal entity) consuming services on the Web Service Gateway.
+2. **Service** - The Web Service Gateway for EMCS provided by SKAT
+
+Both parties have OCESII certificates:
+
+* **Client(OCESII)** - OCESII Certificate identifying the company (legal entity)
+* **Service(OCESII)** - OCESII Certificate identifying the Web Service Gateway for EMCS
+
+The **Client(OCESII)** *must* be of type **VOCES** that identify a legal entity. **Service(OCESII)** is a VOCES type
+certficate. For more details on **VOCES** see [here](https://www.nemid.nu/dk-da/om-nemid/historien_om_nemid/oces-standarden/oces-certifikatpolitikker/VOCES_Certifikatpolitik_version_4_Eng.pdf)
+*NOTE*: OCESII certificates are also provided as types MOCES, POCES, and FOCES. None of these are supported
+by the Web Service Gateway for EMCS.
+
+In addition, the Web Service Gateway for EMCS presents a SSL certificate for the secure transport (HTTPS). 
+*NOTE*: This SSL certificate is **NOT** identical with the **Service(OCESII)** certificate.
+
+The **Client** should always check (strongly recommended) if **Service(OCESII)** is still valid or and not revoked by NemID.
+In addition, **Service(OCESII)** must be trusted by the **Client**. This may be done by adding **Service(OCESII)** to a keystore 
+(or similar type of secure wallet) in the **Client** installation or have the **Client** extract **Service(OCESII)** 
+from the service WSDL and runtime check the certificiate chain (to the Root CA).
+
+### Provision **Client(OCESII)** in SKAT's IdP and IAM
+
+The **Client(OCESII, Certificate)** must be provisioned in SKAT's IdP and IAM prior to any calls to the Web Service Gateway for EMCS
+
+### Service consumption step-by-step
+
+Given the **Client** trusts **Service(OCESII)** and the **Client** has produced a **Request** the process is as follows:
+
+1. The **Client** initiates a connection (using HTTPS) with the Web Services Gateway for EMCS.
+2. The **Client** adds a timestamp, signs the **Request** with **Client(OCESII, Private Key)**, encrypts the request 
+with **Server(OCESII, Public Key)**, and adds **Client(OCESII, Certificate)** as security token to the **Request**
+3. The **Service** authenticates the request based on the **Client(OCESII, Certificate)** security token in SKAT's IdP.
+Authentication includes checking validity, revocation status of **Client(OCESII, Certificate)**, and finally if
+**Client(OCESII, Certificate)** has been authorized in the SKAT's IAM for the called endpoint.
+4. The **Service** decrypts the request using **Service(OCESII, Private Key)** and checks the signature using
+**Client(OCESII, Public Key)** (that is, if it was signed by **Client(OCESII, Private Key)**).
+5. Following successful completion of steps 3. and 4. the request is forwarded to the EMCS system.
+6. The **Service** will always provide a **Response** for all calls. This **Response** is signed with **Service(OCESII, Private Key)** 
+and encrypted using **Client(OCESII, Public)**.
+7. The **Client** receives the **Response** and must decrypt it using **Client(OCESII, Private Key)**, verify the signature 
+using the **Service(OCESII, Public Key)**, and finally check the timestamp. If successful, the client has a valid response.
+
+## WS Security Policy Requirements
 
 The following sections document which security elements that must be embedded in the **wsse:Security** header in
 the request and what will be received in the response.
@@ -99,10 +154,11 @@ the request and what will be received in the response.
 * `xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"`
 * `xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"`
 
-### Inbound to SKAT (request)
+### Inbound to from Client to Service (request)
 
 The following **wsse:Security** headers **must** be sent in request:
 
+* `wsse:BinarySecurityToken`. This token is the OCESII certificate that carry the identity of the caller.
 * `enc:EncryptedKey` using this configuration:
     * Security Token Reference = Key Identifier
     * Transport Algorithm: `http://www.w3.org/2001/04/xmlenc#rsa-1_5`
@@ -119,7 +175,7 @@ The following **wsse:Security** headers **must** be sent in request:
 * `wsu:Timestamp` using this configuration:
     * Must have `wsu:Created` field set.
     * Must have `wsu:Expires` field set.
-    * The `wsu:Timestamp` header cannot exceed a 60 sec validity window. That is `wsu:Expires` cannot be 60 seconds later than `wsu:Created` 
+    * The `wsu:Timestamp` header cannot exceed a 60 sec validity window. That is, `wsu:Expires` cannot be 60 seconds later than `wsu:Created` 
 
 See the following sample [request](/sample/request-test-system.xml) for a complete SOAP Envelope that fulfills
 the above requirements.
@@ -129,7 +185,7 @@ the above requirements.
 * The services do not support Inclusive Prefix List as a CanonicalizationMethod. This has to be deactivated
 in the client software.
 
-### Outbound (response)
+### Outbound from Service to Client (response)
 
 The following **wsse:Security** headers **will** be returned in response:
 

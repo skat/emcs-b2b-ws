@@ -2,6 +2,10 @@
 
 Brief summary in English: This document is changelog for EMCS B2B Web Services.
 
+### V3.13 til v3.14 Oktober 2017 
+
+* Migreret teknisk dokument "Beskrivelse af SKATs Business-2-Business Gateway Webservicekald via B2B Gateway på SKATs Infrastruktur Platform" (B2B vejledning v1.1.pdf) til GitHub
+
 ### V3.12 til v3.13 April 2017 
 
 * Opgraderet Java-klienten til Java 8 med brug af open source.
