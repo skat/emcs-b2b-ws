@@ -174,7 +174,7 @@ Owner: SERIALNUMBER=CVR:123456789-UID:1282309369161 + CN=VOCESFORB2B, O=COMPANY_
 
 **STEP 4:** Create **system role** by selecting the button **Ny rolle**.
 
-![asset-newrole](/assets/newrole.png)
+![asset-newrole](/assets/newrole.jpg)
 
 Select **Domæne** = *EMCS* and **Indberetningsområde** = *Alle*.
 
@@ -204,7 +204,7 @@ Nagivate as follows:
 
 Choose **Ny systembruger**
 
-![asset-createsys_button](/assets/createsys_button.png)
+![asset-createsys_button](/assets/createsys_button.jpg)
 
 Enter the **UID** value identified in **Step 2** above and choose **Gem**
 
@@ -212,7 +212,7 @@ Enter the **UID** value identified in **Step 2** above and choose **Gem**
 
 The system user is now created and mapped to the **VOCES** certificate.
 
-![asset-user_created](/assets/user_created.png)
+![asset-user_created](/assets/user_created.jpg)
 
 **STEP 6**: Assign **system role** to system user
 
@@ -222,14 +222,14 @@ Choose **Rettigheder**
 
 Then select the role defined in **STEP 4** to system user and the choose **Vælg rettighed**.
 
-![asset-assign_role](/assets/assign_role.png)
+![asset-assign_role](/assets/assign_role.jpg)
 
 **IMPORTANT**: If you did not select **Indberetningsområde** = *Alle* in **STEP 4** then you will
 have to assign **Adgang til EMCS B2B Systembruger** too.
 
 Finally, choose **Gem**
 
-![asset-save_role](/assets/save_role.png)
+![asset-save_role](/assets/save_role.jpg)
 
 The certificate is now provisioned and ready for use.
 
