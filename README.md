@@ -90,7 +90,7 @@ are defined by schemas (or XSD files) located in the [schema](schema) directory.
 
 Current schema version: **1.76**
 
-## Service invocations intervals: Terms of use 
+## Service invocation intervals: Terms of use 
 
 * Services for **submitting** IE documents must be invoked 3 seconds apart.
 * Services for **receiving** IE documents must be invoked 5 minutes (300 seconds) apart. Companies may decided to increase the interval.
@@ -240,11 +240,11 @@ Finally, choose **Gem**
 
 ![asset-assign_role](/assets/assigned_roles.png)
 
-The certificate is now provisioned and ready for use.
+Done. **The certificate is now provisioned and ready for use.**
 
-### Service consumption step-by-step
+## Brief security perspective on service consumption - step-by-step
 
-Given the **Client** trusts **Service(OCESII)** and the **Client** has produced a **Request** the process is as follows:
+Given the **Client** trusts **Service(OCESII, Certificate)** and the **Client** has produced a **Request** the process is as follows:
 
 1. The **Client** initiates a connection (using HTTPS) with the Web Services Gateway for EMCS.
 2. The **Client** adds a timestamp, signs the **Request** with **Client(OCESII, Private Key)**, encrypts the request 
@@ -256,9 +256,9 @@ Authentication includes checking validity, revocation status of **Client(OCESII,
 **Client(OCESII, Public Key)** (that is, if it was signed by **Client(OCESII, Private Key)**).
 5. Following successful completion of steps 3. and 4. the request is forwarded to the EMCS system.
 6. The **Service** will always provide a **Response** for all calls. This **Response** is signed with **Service(OCESII, Private Key)** 
-and encrypted using **Client(OCESII, Public)**.
+and encrypted using **Client(OCESII, Certificate)**.
 7. The **Client** receives the **Response** and must decrypt it using **Client(OCESII, Private Key)**, verify the signature 
-using the **Service(OCESII, Public Key)**, and finally check the timestamp. If successful, the client has a valid response.
+using the **Service(OCESII, Certificate)**, and finally check the timestamp. If successful, the client has a valid response.
 
 ## WS Security Policy Requirements
 
@@ -326,7 +326,7 @@ The following **wsse:Security** headers **will** be returned in response:
 See the following sample [response](/sample/response-test-system.xml) for a complete SOAP Envelope that fulfills
 the above requirements.
 
-## Server Certificate
+## Server Certificates
 
 Server certificates available for environments:
 
