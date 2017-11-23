@@ -120,9 +120,120 @@ In addition, **Service(OCESII)** must be trusted by the **Client**. This may be 
 (or similar type of secure wallet) in the **Client** installation or have the **Client** extract **Service(OCESII)** 
 from the service WSDL and runtime check the certificiate chain (to the Root CA).
 
-### Provision **Client(OCESII)** in SKAT's IdP and IAM
+### Provision Client(OCESII) in SKAT's IdP and IAM
 
-The **Client(OCESII, Certificate)** must be provisioned in SKAT's IdP and IAM prior to any calls to the Web Service Gateway for EMCS
+**IMPORTANT: The EMCS B2B Web Service Gateway is only available to legal entities registered in the [The Central Business Register](https://datacvr.virk.dk/data/?language=en-gb&).**
+
+The **Client(OCESII, Certificate)** must be provisioned in SKAT's IdP and IAM prior to any service invocations against
+the Web Service Gateway for EMCS.
+
+**STEP 1:** First, the legal entity may use an existing VOCES certificate or may have to order a now or another VOCES 
+certificate from [nets.eu](https://www.nets.eu/dk-da/l%C3%B8sninger/nemid/virksomhedssignatur). 
+
+**IMPORTANT**: 
+
+* Ordering the VOCES certificate requires a certificate with administrative privileges designated (*MOCES with LRA*). 
+    * *MOCES with LRA* certificates are ordered from [nets.eu](https://www.nets.eu/dk-da/l%C3%B8sninger/nemid/medarbejdersignatur) (a legal entity may already have a *MOCES with LRA* certificate).
+* NETS.eu provide both **TEST** and **PRODUCTION** certificates. **TEST** certificates are not permitted in the production system 
+of EMCS B2B Web Service Gateway and **PRODUCTION** certificates are not permitted in the test system.
+* If the legal entity (A) is under obligation to use the EMCS system and (A) has delegated the task comply with this
+obligation to another legal entity (B), e.g. as data broker, it's the **Client(OCESII, Certificate)** of (B) that must be 
+provisioned in SKAT's IdP. Not (A), but (A) must authorize (B) in SKAT's IAM.
+
+**The following steps can only be completed using a *MOCES with LRA* certificate**
+
+**STEP 2:** Identify id of **Client(OCESII, Certificate)**
+
+Display the certificate of using the the `keytool` command (part of Java/JDK) and locate the `UID:xxxxxx` value. The 
+`xxxxxx` part is the id of **Client(OCESII, Certificate)**
+
+Example where id = `1282309369161`: 
+
+```
+$ keytool -list -v -keystore VOCES_XYZ.pkcs12 -storetype PKCS12
+Enter keystore password:  *******
+Keystore type: PKCS12
+Keystore provider: SunJSSE
+
+Your keystore contains 1 entry
+
+Alias name: VOCES_ALIAS
+Creation date: 2017-10-01
+Entry type: keyEntry
+Certificate chain length: 2
+Certificate[1]:
+Owner: SERIALNUMBER=CVR:123456789-UID:1282309369161 + CN=VOCESFORB2B, O=COMPANY_XYZ // CVR:12345678, C=DK
+...
+```
+
+**STEP 3:** Login using *MOCES with LRA* on (skat.dk)[http://www.skat.dk/]. Navigate as follows (menu items in Danish):
+
+* Menu item **Rettigheder til selvbetjening**
+* Menu item **Gruppér rettigheder (roller)**
+
+![asset](/assets/navigate.png)
+
+**STEP 4:** Create system role by selecting the button **Ny rolle**.
+
+![asset](/assets/newrole.png)
+
+Select **Domæne** = *EMCS* and **Indberetningsområde** = *Alle*.
+
+![asset](/assets/setdomain.png)
+
+It's also on this screen legal entity (B) selects legal entity (A) as client.
+
+Choosing business area **Alle** ensures that the certificate being provisioned is permitted to do transactions
+for in all business areas and it also ensures that the **EMCS_B2B_SECURITY_PRG** is part of the role by default. 
+**EMCS_B2B_SECURITY_PRG** is the area identifier that enables the certificate being provisioned to communicate with
+the Web Service Gateway for EMCS.
+
+When done, select **Gem**
+
+You should now see user defined role:
+
+![asset](/assets/seeudr.png)
+
+**STEP 5:** Create system user and map certificate
+
+Nagivate as follows:
+
+* Menu item **Tildel medarbejder rettigheder (roller)**
+* Link item **Tildel/fjern rettigheder der anvendes i system-til-system løsninger**
+
+![asset](/assets/createsys.png)
+
+Choose **Ny systembruger**
+
+![asset](/assets/createsys_button.png)
+
+Enter the **UID** value identified in **Step 2** above and choose **Gem**
+
+![asset](/assets/enter_uid.png)
+
+The system user is now created and mapped to the **VOCES** certificate.
+
+![asset](/assets/user_created.png)
+
+**STEP 6**: Assign role to system user
+
+Choose **Rettigheder**
+
+![asset](/assets/sys_roles.png)
+
+Then select the role defined in **STEP 4** to system user and the choose **Vælg rettighed**.
+
+![asset](/assets/assign_role.png)
+
+**IMPORTANT**: If you did not select **Indberetningsområde** = *Alle* in **STEP 4** then you
+have to assign **Adgang til EMCS B2B Systembruger**.
+
+Finally, choose **Gem**
+
+![asset](/assets/save_role.png)
+
+The certificate is now provisioned. The Web Service Gateway for EMCS is within a short time frame notified of the
+new VOCES certificate and the assigned roles.
 
 ### Service consumption step-by-step
 
