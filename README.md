@@ -90,37 +90,46 @@ are defined by schemas (or XSD files) located in the [schema](schema) directory.
 
 Current schema version: **1.76**
 
+## Service invocations intervals: Terms of use 
+
+* Services for **submitting** IE documents must be invoked 3 seconds apart.
+* Services for **receiving** IE documents must be invoked 5 minutes (300 seconds) apart. Companies may decided to increase the interval.
+
+Concurrent calls are not permitted.
+
 ## Security
 
-All services are accessible via the Internet using the secure transport protocol (HTTPS) and configured with
+All services are accessible via the Internet using the secure transport protocol **HTTPS** and configured with
 Web Services Security requiring authentication, signing, and 
 encryption using x.509 certificates issued by [NemID](https://www.nemid.nu) (Certificate Authority) of type OCESII 
 (In Danish: *Offentlige Certifikater til Elektronisk Service II*). The Web Services Security is based on [Web Services Security: SOAP Message Security 1.0 WS-Security 2004 - OASIS Standard 200401, March 2004 ](https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0.pdf)
 
 There are two parties in the communication:
 
-1. **Client** - The software client of the company (legal entity) consuming services on the Web Service Gateway.
+1. **Client** - The software client of the company (legal entity) consuming services on the Web Service Gateway for EMCS.
 2. **Service** - The Web Service Gateway for EMCS provided by SKAT
 
 Both parties have OCESII certificates:
 
-* **Client(OCESII)** - OCESII Certificate identifying the company (legal entity)
-* **Service(OCESII)** - OCESII Certificate identifying the Web Service Gateway for EMCS
+* **Client(OCESII, Certificate)** - OCESII Certificate identifying the company (legal entity)
+* **Service(OCESII, Certificate)** - OCESII Certificate identifying the Web Service Gateway for EMCS
 
-The **Client(OCESII)** *must* be of type **VOCES** that identify a legal entity. **Service(OCESII)** is a VOCES type
+The **Client(OCESII, Certificate)** *must* be of type **VOCES** that identify a legal entity. **Service(OCESII, Certificate)** is a VOCES type
 certficate. For more details on **VOCES** see [here](https://www.nemid.nu/dk-da/om-nemid/historien_om_nemid/oces-standarden/oces-certifikatpolitikker/VOCES_Certifikatpolitik_version_4_Eng.pdf)
 *NOTE*: OCESII certificates are also provided as types MOCES, POCES, and FOCES. None of these are supported
 by the Web Service Gateway for EMCS.
 
 In addition, the Web Service Gateway for EMCS presents a SSL certificate for the secure transport (HTTPS). 
-*NOTE*: This SSL certificate is **NOT** identical with the **Service(OCESII)** certificate.
+*NOTE*: This SSL certificate is **NOT** identical with the **Service(OCESII, Certificate)** certificate.
 
 The **Client** should always check (strongly recommended) if **Service(OCESII)** is still valid or and not revoked by NemID.
-In addition, **Service(OCESII)** must be trusted by the **Client**. This may be done by adding **Service(OCESII)** to a keystore 
-(or similar type of secure wallet) in the **Client** installation or have the **Client** extract **Service(OCESII)** 
-from the service WSDL and runtime check the certificiate chain (to the Root CA).
+In addition, **Service(OCESII, Certificate)** must be trusted by the **Client**. This may be done by adding **Service(OCESII)** to a keystore 
+(or similar type of secure wallet) in the **Client** installation or have the **Client** extract **Service(OCESII, Certificate)** 
+from the service WSDL and runtime check the certificate chain (to the Root CA).
 
-### Provision Client(OCESII) in SKAT's IAM
+**Service(OCESII, Certificate)** is found [below](#server-certificate)
+
+### Provision Client(OCESII, Certificate) in SKAT's IAM
 
 The **Client(OCESII, Certificate)** must be provisioned in SKAT's IAM prior to any service invocations against
 the Web Service Gateway for EMCS.
