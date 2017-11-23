@@ -218,18 +218,18 @@ The system user is now created and mapped to the **VOCES** certificate.
 
 Choose **Rettigheder**
 
-![asset-sys_roles](/assets/sys_roles.png)
+![asset-sys_roles](/assets/sys_roles.jpg)
 
 Then select the role defined in **STEP 4** to system user and the choose **Vælg rettighed**.
 
-![asset-assign_role](/assets/assign_role.jpg)
+![asset-save_role](/assets/assign_role.png)
 
 **IMPORTANT**: If you did not select **Indberetningsområde** = *Alle* in **STEP 4** then you will
 have to assign **Adgang til EMCS B2B Systembruger** too.
 
 Finally, choose **Gem**
 
-![asset-save_role](/assets/save_role.jpg)
+![asset-assign_role](/assets/assigned_roles.png)
 
 The certificate is now provisioned and ready for use.
 
