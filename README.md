@@ -127,7 +127,7 @@ In addition, **Service(OCESII, Certificate)** must be trusted by the **Client**.
 (or similar type of secure wallet) in the **Client** installation or have the **Client** extract **Service(OCESII, Certificate)** 
 from the service WSDL and runtime check the certificate chain (to the Root CA).
 
-**Service(OCESII, Certificate)** is found [below](#server-certificate)
+**Service(OCESII, Certificate)** is found [below](#server-certificates)
 
 ### Provision Client(OCESII, Certificate) in SKAT's IAM
 
