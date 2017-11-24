@@ -123,6 +123,7 @@ In addition, the Web Service Gateway for EMCS presents a SSL certificate for the
 *NOTE*: This SSL certificate is **NOT** identical with the **Service(OCESII, Certificate)** certificate.
 
 The **Client** should always check (strongly recommended) if **Service(OCESII)** is still valid or and not revoked by NemID.
+
 In addition, **Service(OCESII, Certificate)** must be trusted by the **Client**. This may be done by adding **Service(OCESII)** to a keystore 
 (or similar type of secure wallet) in the **Client** installation or have the **Client** extract **Service(OCESII, Certificate)** 
 from the service WSDL and runtime check the certificate chain (to the Root CA).
@@ -136,13 +137,13 @@ the Web Service Gateway for EMCS.
 
 **IMPORTANT: The EMCS B2B Web Service Gateway is only available to legal entities registered in the [The Central Business Register](https://datacvr.virk.dk/data/?language=en-gb&).**
 
-**STEP 1:** First, the legal entity may use an existing VOCES certificate or may have to order a now or another VOCES 
+**STEP 1:** First, the legal entity may use an existing VOCES certificate or may have to order a new or another VOCES 
 certificate from [nets.eu](https://www.nets.eu/dk-da/l%C3%B8sninger/nemid/virksomhedssignatur). 
 
 * VOCES certificates is a self-service process and requires another certificate with administrative privileges designated: *MOCES with LRA*.
     * *MOCES with LRA* certificates are ordered from [nets.eu](https://www.nets.eu/dk-da/l%C3%B8sninger/nemid/medarbejdersignatur) (a legal entity may already have a *MOCES with LRA* certificate).
 * NETS.eu provide both **TEST** and **PRODUCTION** certificates. 
-    * **TEST** certificates are not permitted in the production system of EMCS B2B Web Service Gateway
+    * **TEST** certificates are not permitted in the production system.
     * **PRODUCTION** certificates are not permitted in the test system.
 * If the legal entity (A) is under obligation to use the EMCS system and (A) has delegated the task comply with this
 obligation to another legal entity (B), e.g. as data broker, it's the **Client(OCESII, Certificate)** of (B) that must be 
