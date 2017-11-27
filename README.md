@@ -1,6 +1,9 @@
 # Artefacts and information in relation to SKAT's EMCS B2B Web Services Gateway 
 
-Repository with relevant artefacts and information in relation to SKAT's EMCS B2B Web Service Gateway 
+This repository provides relevant artefacts and information in relation to SKAT's EMCS B2B Web Service Gateway.
+
+The SKAT's Web Service Gateway for Excise movement and Control System (EMCS) provides 22 SOAP Web Services (in total) that legal
+entities may consume in ERP systems for fully automated submitting and receiving EMCS documents (XML documents). 
 
 ## Service WSDLs
 
@@ -87,7 +90,178 @@ are defined by schemas (or XSD files) located in the [schema](schema) directory.
 
 Current schema version: **1.76**
 
-## WS Security Requirements
+## Service invocation intervals: Terms of use 
+
+* Services for **submitting** IE documents must be invoked 3 seconds apart.
+* Services for **receiving** IE documents must be invoked 5 minutes (300 seconds) apart. Companies may decided to increase the interval.
+
+Concurrent calls are not permitted.
+
+## Security
+
+All services are accessible via the Internet using the secure transport protocol **HTTPS** and configured with
+Web Services Security requiring authentication, signing, and 
+encryption using x.509 certificates issued by [NemID](https://www.nemid.nu) (Certificate Authority) of type OCESII 
+(In Danish: *Offentlige Certifikater til Elektronisk Service II*). The Web Services Security is based on [Web Services Security: SOAP Message Security 1.0 WS-Security 2004 - OASIS Standard 200401, March 2004 ](https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0.pdf)
+
+There are two parties in the communication:
+
+1. **Client** - The software client of the company (legal entity) consuming services on the Web Service Gateway for EMCS.
+2. **Service** - The Web Service Gateway for EMCS provided by SKAT
+
+Both parties have OCESII certificates:
+
+* **Client(OCESII, Certificate)** - OCESII Certificate identifying the company (legal entity)
+* **Service(OCESII, Certificate)** - OCESII Certificate identifying the Web Service Gateway for EMCS
+
+The **Client(OCESII, Certificate)** *must* be of type **VOCES** that identify a legal entity. **Service(OCESII, Certificate)** is a VOCES type
+certficate. For more details on **VOCES** see [here](https://www.nemid.nu/dk-da/om-nemid/historien_om_nemid/oces-standarden/oces-certifikatpolitikker/VOCES_Certifikatpolitik_version_4_Eng.pdf)
+*NOTE*: OCESII certificates are also provided as types MOCES, POCES, and FOCES. None of these are supported
+by the Web Service Gateway for EMCS.
+
+In addition, the Web Service Gateway for EMCS presents a SSL certificate for the secure transport (HTTPS). 
+*NOTE*: This SSL certificate is **NOT** identical with the **Service(OCESII, Certificate)** certificate.
+
+The **Client** should always check (strongly recommended) if **Service(OCESII)** is still valid or and not revoked by NemID.
+
+In addition, **Service(OCESII, Certificate)** must be trusted by the **Client**. This may be done by adding **Service(OCESII)** to a keystore 
+(or similar type of secure wallet) in the **Client** installation or have the **Client** extract **Service(OCESII, Certificate)** 
+from the service WSDL and runtime check the certificate chain (to the Root CA).
+
+**Service(OCESII, Certificate)** is found [below](#server-certificates)
+
+### Provision Client(OCESII, Certificate) in SKAT's IAM
+
+The **Client(OCESII, Certificate)** must be provisioned in SKAT's IAM prior to any service invocations against
+the Web Service Gateway for EMCS.
+
+**IMPORTANT: The EMCS B2B Web Service Gateway is only available to legal entities registered in the [The Central Business Register](https://datacvr.virk.dk/data/?language=en-gb&).**
+
+**STEP 1:** First, the legal entity may use an existing VOCES certificate or may have to order a new or another VOCES 
+certificate from [nets.eu](https://www.nets.eu/dk-da/l%C3%B8sninger/nemid/virksomhedssignatur). 
+
+* VOCES certificates is a self-service process and requires another certificate with administrative privileges designated: *MOCES with LRA*.
+    * *MOCES with LRA* certificates are ordered from [nets.eu](https://www.nets.eu/dk-da/l%C3%B8sninger/nemid/medarbejdersignatur) (a legal entity may already have a *MOCES with LRA* certificate).
+* NETS.eu provide both **TEST** and **PRODUCTION** certificates. 
+    * **TEST** certificates are not permitted in the production system.
+    * **PRODUCTION** certificates are not permitted in the test system.
+* If the legal entity (A) is under obligation to use the EMCS system and (A) has delegated the task comply with this
+obligation to another legal entity (B), e.g. as data broker, it's the **Client(OCESII, Certificate)** of (B) that must be 
+provisioned in SKAT's IAM. Not (A), but (A) must authorize (B) in SKAT's IAM.
+
+**The following steps can only be completed using a *MOCES with LRA* certificate**
+
+**STEP 2:** Identify id of **Client(OCESII, Certificate)**
+
+Display the certificate of using the the `keytool` command (part of Java/JDK) and locate the `UID:xxxxxx` value. The 
+`xxxxxx` part is the id of **Client(OCESII, Certificate)**
+
+Example where id = `1282309369161`: 
+
+```
+$ keytool -list -v -keystore VOCES_XYZ.pkcs12 -storetype PKCS12
+Enter keystore password:  *******
+Keystore type: PKCS12
+Keystore provider: SunJSSE
+
+Your keystore contains 1 entry
+
+Alias name: VOCES_ALIAS
+Creation date: 2017-10-01
+Entry type: keyEntry
+Certificate chain length: 2
+Certificate[1]:
+Owner: SERIALNUMBER=CVR:12345678-UID:1282309369161 + CN=VOCESFORB2B, O=COMPANY_XYZ // CVR:12345678, C=DK
+...
+```
+
+**STEP 3:** Login using *MOCES with LRA* on [skat.dk](http://www.skat.dk/). Navigate as follows (menu items in Danish):
+
+* Menu item **Rettigheder til selvbetjening**
+* Menu item **Gruppér rettigheder (roller)**
+
+![asset-navigate](/assets/navigate.png)
+
+**STEP 4:** Create **system role** by selecting the button **Ny rolle**.
+
+![asset-newrole](/assets/newrole.jpg)
+
+Select **Domæne** = *EMCS* and **Indberetningsområde** = *Alle*.
+
+![asset-setdomain](/assets/setdomain.png)
+
+**Hint**: It's also on this screen legal entity (B) selects legal entity (A) as client.
+
+Selecting business area **Alle** ensures that the certificate being provisioned is permitted to do transactions
+for all business areas and it also ensures that the **EMCS_B2B_SECURITY_PRG** authorization is part of the role 
+by default.  **EMCS_B2B_SECURITY_PRG** is the authorization that enables the certificate being provisioned to 
+communicate with the Web Service Gateway for EMCS.
+
+When done, select **Gem**
+
+You should now see user defined role:
+
+![asset-seeudr](/assets/seeudr.png)
+
+**STEP 5:** Create system user and map certificate
+
+Nagivate as follows:
+
+* Menu item **Tildel medarbejder rettigheder (roller)**
+* Link item **Tildel/fjern rettigheder der anvendes i system-til-system løsninger**
+
+![asset-createsys](/assets/createsys.png)
+
+Choose **Ny systembruger**
+
+![asset-createsys_button](/assets/createsys_button.jpg)
+
+Enter the **UID** value identified in **Step 2** above and choose **Gem**
+
+![asset-enter_uid](/assets/enter_uid.png)
+
+The system user is now created and mapped to the **VOCES** certificate.
+
+![asset-user_created](/assets/user_created.jpg)
+
+**STEP 6**: Assign **system role** to system user
+
+Choose **Rettigheder**
+
+![asset-sys_roles](/assets/sys_roles.jpg)
+
+Then select the role defined in **STEP 4** to system user and the choose **Vælg rettighed**.
+
+![asset-save_role](/assets/assign_role.png)
+
+**IMPORTANT**: If you did not select **Indberetningsområde** = *Alle* in **STEP 4** then you will
+have to assign **Adgang til EMCS B2B Systembruger** too.
+
+Finally, choose **Gem**
+
+![asset-assign_role](/assets/assigned_roles.png)
+
+Done. **The certificate is now provisioned and ready for use.**
+
+## Brief security perspective on service consumption - step-by-step
+
+Given the **Client** trusts **Service(OCESII, Certificate)** and the **Client** has produced a **Request** the process is as follows:
+
+1. The **Client** initiates a connection (using HTTPS) with the Web Services Gateway for EMCS.
+2. The **Client** adds a timestamp, signs the **Request** with **Client(OCESII, Private Key)**, encrypts the request 
+with **Server(OCESII, Public Key)**, and adds **Client(OCESII, Certificate)** as security token to the **Request**
+3. The **Service** authenticates the request based on the **Client(OCESII, Certificate)** security token in SKAT's IAM.
+Authentication includes checking validity, revocation status of **Client(OCESII, Certificate)**, and finally if
+**Client(OCESII, Certificate)** has been authorized in the SKAT's IAM for the called endpoint.
+4. The **Service** decrypts the request using **Service(OCESII, Private Key)** and checks the signature using
+**Client(OCESII, Public Key)** (that is, if it was signed by **Client(OCESII, Private Key)**).
+5. Following successful completion of steps 3. and 4. the request is forwarded to the EMCS system.
+6. The **Service** will always provide a **Response** for all calls. This **Response** is signed with **Service(OCESII, Private Key)** 
+and encrypted using **Client(OCESII, Certificate)**.
+7. The **Client** receives the **Response** and must decrypt it using **Client(OCESII, Private Key)**, verify the signature 
+using the **Service(OCESII, Certificate)**, and finally check the timestamp. If successful, the client has a valid response.
+
+## WS Security Policy Requirements
 
 The following sections document which security elements that must be embedded in the **wsse:Security** header in
 the request and what will be received in the response.
@@ -99,10 +273,11 @@ the request and what will be received in the response.
 * `xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"`
 * `xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"`
 
-### Inbound to SKAT (request)
+### Inbound to from Client to Service (request)
 
 The following **wsse:Security** headers **must** be sent in request:
 
+* `wsse:BinarySecurityToken`. This token is the OCESII certificate that carry the identity of the caller.
 * `enc:EncryptedKey` using this configuration:
     * Security Token Reference = Key Identifier
     * Transport Algorithm: `http://www.w3.org/2001/04/xmlenc#rsa-1_5`
@@ -119,7 +294,7 @@ The following **wsse:Security** headers **must** be sent in request:
 * `wsu:Timestamp` using this configuration:
     * Must have `wsu:Created` field set.
     * Must have `wsu:Expires` field set.
-    * The `wsu:Timestamp` header cannot exceed a 60 sec validity window. That is `wsu:Expires` cannot be 60 seconds later than `wsu:Created` 
+    * The `wsu:Timestamp` header cannot exceed a 60 sec validity window. That is, `wsu:Expires` cannot be 60 seconds later than `wsu:Created` 
 
 See the following sample [request](/sample/request-test-system.xml) for a complete SOAP Envelope that fulfills
 the above requirements.
@@ -129,7 +304,7 @@ the above requirements.
 * The services do not support Inclusive Prefix List as a CanonicalizationMethod. This has to be deactivated
 in the client software.
 
-### Outbound (response)
+### Outbound from Service to Client (response)
 
 The following **wsse:Security** headers **will** be returned in response:
 
@@ -152,7 +327,7 @@ The following **wsse:Security** headers **will** be returned in response:
 See the following sample [response](/sample/response-test-system.xml) for a complete SOAP Envelope that fulfills
 the above requirements.
 
-## Server Certificate
+## Server Certificates
 
 Server certificates available for environments:
 
