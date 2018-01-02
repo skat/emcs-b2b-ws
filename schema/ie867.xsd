@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE867:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE867:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE867:V1.92" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE867:V1.92" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE867:C_COO_RES -->
   <!--===== ADMINISTRATIVE COOPERATION RESULTS -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE867" type="ie:IE867Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -29,7 +29,8 @@
       <xs:element name="FollowUp" type="ie:FollowUpType" />
       <xs:element name="Contact" type="ie:ContactType" minOccurs="0" />
       <xs:element name="AcoActionResult" type="ie:AcoActionResultType" minOccurs="0" maxOccurs="99" />
-      <xs:element name="Documents" type="ie:DocumentsType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="FeedbackRequest" type="ie:FeedbackRequestType" minOccurs="0" />
+      <xs:element name="SupportingDocuments" type="ie:SupportingDocumentsType" minOccurs="0" maxOccurs="9" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="FollowUpType">
@@ -47,6 +48,7 @@
       <xs:element name="AddresseeMemberStateCode" type="emcs:MemberStateCodeType" />
       <xs:element name="AddresseeOfficeReferenceNumber" type="emcs:ExciseOfficeCodeType" minOccurs="0" />
       <xs:element name="AddresseeOfficer" type="emcs:AddresseeOfficerType" minOccurs="0" />
+      <xs:element name="NationalCaseReferenceIdentifier" type="emcs:NationalCaseReferenceIdentifierType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ContactType">
@@ -82,16 +84,29 @@
       <xs:element name="ControlReportReference" type="emcs:ControlReportReferenceType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="DocumentsType">
+  <xs:complexType name="FeedbackRequestType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="DOCUMENTS" />
+        <doc:description value="FEEDBACK REQUEST" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="DocumentDescription" type="ie:LSDDocumentDescriptionType" minOccurs="0" />
-      <xs:element name="ReferenceOfDocument" type="ie:LSDReferenceOfDocumentType" minOccurs="0" />
+      <xs:element name="FeedbackRequestedOrProvided" type="tcl:FeedbackRequestedOrProvided" />
+      <xs:element name="FollowUpActions" type="ie:LSDFollowUpActionsType" minOccurs="0" />
+      <xs:element name="RelevanceOfInformationProvided" type="ie:LSDRelevanceOfInformationProvidedType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SupportingDocumentsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="SUPPORTING DOCUMENTS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SupportingDocumentDescription" type="ie:LSDSupportingDocumentDescriptionType" minOccurs="0" />
+      <xs:element name="ReferenceOfSupportingDocument" type="ie:LSDReferenceOfSupportingDocumentType" minOccurs="0" />
       <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="SupportingDocumentType" type="emcs:SupportingDocumentTypeType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="LSDAcoActionComplementType">
@@ -115,9 +130,9 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="LSDDocumentDescriptionType">
+  <xs:complexType name="LSDFollowUpActionsType">
     <xs:simpleContent>
-      <xs:extension base="emcs:DocumentDescriptionType">
+      <xs:extension base="emcs:FollowUpActionsType">
         <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -129,9 +144,23 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="LSDReferenceOfDocumentType">
+  <xs:complexType name="LSDReferenceOfSupportingDocumentType">
     <xs:simpleContent>
-      <xs:extension base="emcs:ReferenceOfDocumentType">
+      <xs:extension base="emcs:ReferenceOfSupportingDocumentType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDRelevanceOfInformationProvidedType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:RelevanceOfInformationProvidedType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDSupportingDocumentDescriptionType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:SupportingDocumentDescriptionType">
         <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
       </xs:extension>
     </xs:simpleContent>

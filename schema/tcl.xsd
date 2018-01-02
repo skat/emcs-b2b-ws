@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== Common Request Type =====-->
   <!--=========================================-->
@@ -53,6 +53,11 @@
       <xs:documentation>Request Message Name</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
+      <xs:enumeration value="ALL">
+        <xs:annotation>
+          <xs:documentation>For complete structure</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="C_COD_DAT">
         <xs:annotation>
           <xs:documentation>Common list of codes</xs:documentation>
@@ -61,11 +66,6 @@
       <xs:enumeration value="C_PAR_DAT">
         <xs:annotation>
           <xs:documentation>Common system parameters</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="ALL">
-        <xs:annotation>
-          <xs:documentation>For complete structure</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -81,36 +81,6 @@
       <xs:enumeration value="1">
         <xs:annotation>
           <xs:documentation>ARC</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="2">
-        <xs:annotation>
-          <xs:documentation>Brand name of product</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="3">
-        <xs:annotation>
-          <xs:documentation>Categories of goods of the movement</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="5">
-        <xs:annotation>
-          <xs:documentation>(reserved)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="6">
-        <xs:annotation>
-          <xs:documentation>(reserved)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="8">
-        <xs:annotation>
-          <xs:documentation>City of consignee</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="9">
-        <xs:annotation>
-          <xs:documentation>City of consignor</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="10">
@@ -163,6 +133,11 @@
           <xs:documentation>Excise number of guarantor</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Brand name of product</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="20">
         <xs:annotation>
           <xs:documentation>(reserved)</xs:documentation>
@@ -211,6 +186,11 @@
       <xs:enumeration value="29">
         <xs:annotation>
           <xs:documentation>Name of consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Categories of goods of the movement</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="30">
@@ -313,6 +293,11 @@
           <xs:documentation>VAT number of the consignee</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="50">
         <xs:annotation>
           <xs:documentation>(reserved)</xs:documentation>
@@ -326,6 +311,21 @@
       <xs:enumeration value="52">
         <xs:annotation>
           <xs:documentation>Change of destination (sequence number &gt;= 2)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>City of consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>City of consignor</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -373,9 +373,29 @@
       <xs:documentation>Common Request Rejection Reason</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:nonNegativeInteger">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>Other</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="112">
+        <xs:annotation>
+          <xs:documentation>Incorrect (code) value</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="115">
+        <xs:annotation>
+          <xs:documentation>Not supported in this position</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
           <xs:documentation>No e-AD(s) retrieved matching selection criteria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="26">
+        <xs:annotation>
+          <xs:documentation>Duplicate detected</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="3">
@@ -403,26 +423,6 @@
           <xs:documentation>Increment number out of range</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="0">
-        <xs:annotation>
-          <xs:documentation>Other</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="26">
-        <xs:annotation>
-          <xs:documentation>Duplicate detected</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="112">
-        <xs:annotation>
-          <xs:documentation>Incorrect (code) value</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="115">
-        <xs:annotation>
-          <xs:documentation>Not supported in this position</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <!--=========================================-->
@@ -436,41 +436,6 @@
       <xs:enumeration value="1">
         <xs:annotation>
           <xs:documentation>Units of measure</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="3">
-        <xs:annotation>
-          <xs:documentation>Evidence types</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="4">
-        <xs:annotation>
-          <xs:documentation>(reserved)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="5">
-        <xs:annotation>
-          <xs:documentation>(reserved)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="6">
-        <xs:annotation>
-          <xs:documentation>Language codes</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="7">
-        <xs:annotation>
-          <xs:documentation>Member states</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="8">
-        <xs:annotation>
-          <xs:documentation>Country codes</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="9">
-        <xs:annotation>
-          <xs:documentation>Packaging codes</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="10">
@@ -523,6 +488,11 @@
           <xs:documentation>CN codes</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Events types</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="20">
         <xs:annotation>
           <xs:documentation>Correspondences CN code - Excise product</xs:documentation>
@@ -553,9 +523,39 @@
           <xs:documentation>Event submitting persons</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="2">
+      <xs:enumeration value="3">
         <xs:annotation>
-          <xs:documentation>Events types</xs:documentation>
+          <xs:documentation>Evidence types</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Language codes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="7">
+        <xs:annotation>
+          <xs:documentation>Member states</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Country codes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>Packaging codes</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -578,16 +578,6 @@
           <xs:documentation>Receipt accepted although unsatisfactory</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="3">
-        <xs:annotation>
-          <xs:documentation>Receipt refused</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="4">
-        <xs:annotation>
-          <xs:documentation>Receipt partially refused</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="21">
         <xs:annotation>
           <xs:documentation>Exit accepted and satisfactory</xs:documentation>
@@ -601,6 +591,16 @@
       <xs:enumeration value="23">
         <xs:annotation>
           <xs:documentation>Exit refused</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Receipt refused</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Receipt partially refused</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -683,14 +683,14 @@
           <xs:documentation>Create</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="U">
-        <xs:annotation>
-          <xs:documentation>Update</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="I">
         <xs:annotation>
           <xs:documentation>Invalidate</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="U">
+        <xs:annotation>
+          <xs:documentation>Update</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -706,46 +706,6 @@
       <xs:enumeration value="1">
         <xs:annotation>
           <xs:documentation>Units of measure</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="2">
-        <xs:annotation>
-          <xs:documentation>Events types</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="3">
-        <xs:annotation>
-          <xs:documentation>Evidence types</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="4">
-        <xs:annotation>
-          <xs:documentation>(reserved)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="5">
-        <xs:annotation>
-          <xs:documentation>(reserved)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="6">
-        <xs:annotation>
-          <xs:documentation>Language codes</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="7">
-        <xs:annotation>
-          <xs:documentation>Member states</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="8">
-        <xs:annotation>
-          <xs:documentation>Country codes</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="9">
-        <xs:annotation>
-          <xs:documentation>Packaging codes</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="10">
@@ -798,6 +758,11 @@
           <xs:documentation>CN codes</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Events types</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="20">
         <xs:annotation>
           <xs:documentation>Correspondences CN code - Excise product</xs:documentation>
@@ -830,7 +795,7 @@
       </xs:enumeration>
       <xs:enumeration value="26">
         <xs:annotation>
-          <xs:documentation>History refusal reasons</xs:documentation>
+          <xs:documentation>Refusal reasons</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="27">
@@ -846,6 +811,11 @@
       <xs:enumeration value="29">
         <xs:annotation>
           <xs:documentation>Administrative cooperation request reasons</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Evidence types</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="30">
@@ -893,6 +863,36 @@
           <xs:documentation>Movement verification actions</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Language codes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="7">
+        <xs:annotation>
+          <xs:documentation>Member states</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Country codes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>Packaging codes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <!--=========================================-->
@@ -928,49 +928,9 @@
           <xs:documentation>Consignor</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="2">
-        <xs:annotation>
-          <xs:documentation>Transporter</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="3">
-        <xs:annotation>
-          <xs:documentation>Owner of the Excise products</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="4">
-        <xs:annotation>
-          <xs:documentation>Consignee</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="12">
         <xs:annotation>
           <xs:documentation>Joint guarantee of the consignor and of the transporter</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="13">
-        <xs:annotation>
-          <xs:documentation>Joint guarantee of the consignor and of the owner of the Excise products</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="14">
-        <xs:annotation>
-          <xs:documentation>Joint guarantee of the consignor and of the consignee</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="23">
-        <xs:annotation>
-          <xs:documentation>Joint guarantee of the transporter and of the owner of the Excise products</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="24">
-        <xs:annotation>
-          <xs:documentation>Joint guarantee of the transporter and of the consignee</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="34">
-        <xs:annotation>
-          <xs:documentation>Joint guarantee of the owner of the Excise products and of the consignee</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="123">
@@ -978,9 +938,19 @@
           <xs:documentation>Joint guarantee of the consignor, of the transporter and of the owner of the Excise products</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="1234">
+        <xs:annotation>
+          <xs:documentation>Joint guarantee of the consignor, of the transporter, of the owner of the Excise products and of the consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="124">
         <xs:annotation>
           <xs:documentation>Joint guarantee of the consignor, of the transporter and of the consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="13">
+        <xs:annotation>
+          <xs:documentation>Joint guarantee of the consignor and of the owner of the Excise products</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="134">
@@ -988,14 +958,44 @@
           <xs:documentation>Joint guarantee of the consignor, of the owner of the Excise products and of the consignee</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="14">
+        <xs:annotation>
+          <xs:documentation>Joint guarantee of the consignor and of the consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Transporter</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="23">
+        <xs:annotation>
+          <xs:documentation>Joint guarantee of the transporter and of the owner of the Excise products</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="234">
         <xs:annotation>
           <xs:documentation>Joint guarantee of the transporter, of the owner of the Excise products and of the consignee</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="1234">
+      <xs:enumeration value="24">
         <xs:annotation>
-          <xs:documentation>Joint guarantee of the consignor, of the transporter, of the owner of the Excise products and of the consignee</xs:documentation>
+          <xs:documentation>Joint guarantee of the transporter and of the consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Owner of the Excise products</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="34">
+        <xs:annotation>
+          <xs:documentation>Joint guarantee of the owner of the Excise products and of the consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Consignee</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="5">
@@ -1058,11 +1058,6 @@
           <xs:documentation>Destination - Exempted consignee</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="8">
-        <xs:annotation>
-          <xs:documentation>Unknown destination (consignee unknown)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="6">
         <xs:annotation>
           <xs:documentation>Destination - Export</xs:documentation>
@@ -1071,6 +1066,11 @@
       <xs:enumeration value="7">
         <xs:annotation>
           <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Unknown destination (consignee unknown)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1183,24 +1183,14 @@
       <xs:documentation>Functional Error Codes</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:nonNegativeInteger">
-      <xs:enumeration value="12">
+      <xs:enumeration value="0">
         <xs:annotation>
-          <xs:documentation>Incorrect (code) value</xs:documentation>
+          <xs:documentation>Other</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="15">
+      <xs:enumeration value="26">
         <xs:annotation>
-          <xs:documentation>Not supported in this position</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="90">
-        <xs:annotation>
-          <xs:documentation>Unknown ARC</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="93">
-        <xs:annotation>
-          <xs:documentation>Invalid ARC</xs:documentation>
+          <xs:documentation>Duplicate detected</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="91">
@@ -1213,14 +1203,9 @@
           <xs:documentation>Message out of sequence</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="0">
+      <xs:enumeration value="93">
         <xs:annotation>
-          <xs:documentation>Other</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="26">
-        <xs:annotation>
-          <xs:documentation>Duplicate detected</xs:documentation>
+          <xs:documentation>Invalid ARC</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="94">
@@ -1230,7 +1215,7 @@
       </xs:enumeration>
       <xs:enumeration value="95">
         <xs:annotation>
-          <xs:documentation>Unknown Follow Up Correlation ID</xs:documentation>
+          <xs:documentation>Unknown Follow Up Correlation ID / MV Correlation ID</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1318,6 +1303,11 @@
       <xs:documentation>Technical Message Type</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
+      <xs:enumeration value="IE717">
+        <xs:annotation>
+          <xs:documentation>CONTROL REPORT</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="IE801">
         <xs:annotation>
           <xs:documentation>E-AD</xs:documentation>
@@ -1326,16 +1316,6 @@
       <xs:enumeration value="IE802">
         <xs:annotation>
           <xs:documentation>REMINDER MESSAGE FOR EXCISE MOVEMENT</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="IE829">
-        <xs:annotation>
-          <xs:documentation>NOTIFICATION OF ACCEPTED EXPORT</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="IE717">
-        <xs:annotation>
-          <xs:documentation>CONTROL REPORT</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE803">
@@ -1366,6 +1346,11 @@
       <xs:enumeration value="IE819">
         <xs:annotation>
           <xs:documentation>ALERT OR REJECTION OF AN E-AD</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IE829">
+        <xs:annotation>
+          <xs:documentation>NOTIFICATION OF ACCEPTED EXPORT</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE837">
@@ -1428,16 +1413,6 @@
           <xs:documentation>Other</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="8">
-        <xs:annotation>
-          <xs:documentation>Trader Authorisation already exists (creation)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="9">
-        <xs:annotation>
-          <xs:documentation>Tax warehouse already exists (creation)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="10">
         <xs:annotation>
           <xs:documentation>Temporary authorisation already exists (creation)</xs:documentation>
@@ -1446,26 +1421,6 @@
       <xs:enumeration value="11">
         <xs:annotation>
           <xs:documentation>Trader Authorisation not found (Update / Deletion)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="12">
-        <xs:annotation>
-          <xs:documentation>Tax warehouse not found (Update / Deletion)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="13">
-        <xs:annotation>
-          <xs:documentation>Temporary authorisation not found (Update / Deletion)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="27">
-        <xs:annotation>
-          <xs:documentation>Inconsistency between Excise number and Excise office</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="41">
-        <xs:annotation>
-          <xs:documentation>Only a warehouse keeper may be allowed to use a tax warehouse</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="112">
@@ -1478,9 +1433,29 @@
           <xs:documentation>Not supported in this position</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="12">
+        <xs:annotation>
+          <xs:documentation>Tax warehouse not found (Update / Deletion)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="13">
+        <xs:annotation>
+          <xs:documentation>Temporary authorisation not found (Update / Deletion)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="26">
         <xs:annotation>
           <xs:documentation>Duplicate detected</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="27">
+        <xs:annotation>
+          <xs:documentation>Inconsistency between Excise number and Excise office</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="41">
+        <xs:annotation>
+          <xs:documentation>Only a warehouse keeper may be allowed to use a tax warehouse</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="42">
@@ -1508,6 +1483,16 @@
           <xs:documentation>The Member State of the Temporary Authorisation and the declared Consignor is the same (R233 violation)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Trader Authorisation already exists (creation)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>Tax warehouse already exists (creation)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <!--=========================================-->
@@ -1526,6 +1511,11 @@
       <xs:enumeration value="IE803">
         <xs:annotation>
           <xs:documentation>NOTIFICATION OF DIVERTED E-AD</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IE807">
+        <xs:annotation>
+          <xs:documentation>INTERRUPTION OF MOVEMENT</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE810">
@@ -1558,19 +1548,14 @@
           <xs:documentation>REJECTION OF E-AD FOR EXPORT</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="None">
-        <xs:annotation>
-          <xs:documentation>NONE</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="IE807">
-        <xs:annotation>
-          <xs:documentation>INTERRUPTION OF MOVEMENT</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="IE905">
         <xs:annotation>
           <xs:documentation>STATUS RESPONSE</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation>NONE</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1815,7 +1800,42 @@
       </xs:enumeration>
       <xs:enumeration value="1">
         <xs:annotation>
-          <xs:documentation>No check performed</xs:documentation>
+          <xs:documentation>reserved</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation>
+          <xs:documentation>Excess detected</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation>
+          <xs:documentation>Wrong EPC</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="12">
+        <xs:annotation>
+          <xs:documentation>Wrong destination type code</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="13">
+        <xs:annotation>
+          <xs:documentation>Differences confirmed</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="14">
+        <xs:annotation>
+          <xs:documentation>Manual closing recommended</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="15">
+        <xs:annotation>
+          <xs:documentation>Interruption recommended</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="16">
+        <xs:annotation>
+          <xs:documentation>Irregularities Found</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="2">
@@ -1846,6 +1866,16 @@
       <xs:enumeration value="7">
         <xs:annotation>
           <xs:documentation>Consignment not entered in stock records</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Trader could not be contacted</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>Missing trader</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1935,12 +1965,12 @@
       </xs:enumeration>
       <xs:enumeration value="4">
         <xs:annotation>
-          <xs:documentation>Enquiry recommended under Article 14</xs:documentation>
+          <xs:documentation>Intention to make claim under Article 10 of Council Directive 2008/118/EC</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="5">
         <xs:annotation>
-          <xs:documentation>Enquiry recommended under Article 20</xs:documentation>
+          <xs:documentation>Allowable loss detected, in relation to Article 7(4) of Council Directive 2008/118/EC</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1963,6 +1993,16 @@
           <xs:documentation>Verified counted packs</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation>
+          <xs:documentation>Control of records</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation>
+          <xs:documentation>Compare documents presented with e-AD</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
           <xs:documentation>Unloaded</xs:documentation>
@@ -1975,7 +2015,32 @@
       </xs:enumeration>
       <xs:enumeration value="4">
         <xs:annotation>
-          <xs:documentation>Annotated paper copy</xs:documentation>
+          <xs:documentation>Annotated paper copy of documents (e.g. SAAD)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>Counting</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Sampling</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="7">
+        <xs:annotation>
+          <xs:documentation>Administrative control</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Goods weighted/measured</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>Random check</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1991,11 +2056,6 @@
       <xs:enumeration value="1">
         <xs:annotation>
           <xs:documentation>Initial submission</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="2">
-        <xs:annotation>
-          <xs:documentation>Complementary submission</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="3">
@@ -2088,6 +2148,11 @@
       <xs:documentation>System Unavailability Type</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
+      <xs:enumeration value="N">
+        <xs:annotation>
+          <xs:documentation>Non-Implemented</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="S">
         <xs:annotation>
           <xs:documentation>Scheduled</xs:documentation>
@@ -2096,11 +2161,6 @@
       <xs:enumeration value="U">
         <xs:annotation>
           <xs:documentation>Unscheduled</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="N">
-        <xs:annotation>
-          <xs:documentation>Non-Implemented</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2233,6 +2293,21 @@
           <xs:documentation>January</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation>
+          <xs:documentation>October</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation>
+          <xs:documentation>November</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="12">
+        <xs:annotation>
+          <xs:documentation>December</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
           <xs:documentation>February</xs:documentation>
@@ -2273,21 +2348,6 @@
           <xs:documentation>September</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="10">
-        <xs:annotation>
-          <xs:documentation>October</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="11">
-        <xs:annotation>
-          <xs:documentation>November</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="12">
-        <xs:annotation>
-          <xs:documentation>December</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <!--=========================================-->
@@ -2318,24 +2378,24 @@
           <xs:documentation>Destination - Direct delivery</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="6">
-        <xs:annotation>
-          <xs:documentation>Destination - Export</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="8">
-        <xs:annotation>
-          <xs:documentation>Unknown destination (consignee unknown)</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="5">
         <xs:annotation>
           <xs:documentation>(reserved)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Destination - Export</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="7">
         <xs:annotation>
           <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Unknown destination (consignee unknown)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2396,6 +2456,91 @@
       <xs:enumeration value="3">
         <xs:annotation>
           <xs:documentation>Not checked</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--=========================================-->
+  <!--===== Feedback Requested or Provided =====-->
+  <!--=========================================-->
+  <xs:simpleType name="FeedbackRequestedOrProvided">
+    <xs:annotation>
+      <xs:documentation>Feedback Requested or Provided</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>No feedback requested</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Feedback requested</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Feedback provided</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--=========================================-->
+  <!--===== Trader Person Type =====-->
+  <!--=========================================-->
+  <xs:simpleType name="TraderPersonType">
+    <xs:annotation>
+      <xs:documentation>Trader Person Type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Consignor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Tax representative</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Vendor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>Liable person</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Customer private individual</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--=========================================-->
+  <!--===== Other Accompanying Document Type =====-->
+  <!--=========================================-->
+  <xs:simpleType name="OtherAccompanyingDocumentType">
+    <xs:annotation>
+      <xs:documentation>Other Accompanying Document Type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>Other</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>SAAD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE722:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE722:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE722:V1.92" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE722:V1.92" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE722:C_MVS_SUB -->
   <!--===== MOVEMENT VERIFICATION REQUEST -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE722" type="ie:IE722Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -34,9 +34,10 @@
       <xs:element name="ActionsRequested" type="ie:ActionsRequestedType" maxOccurs="9" />
       <xs:element name="PersonConsignorTrader" type="ie:PersonConsignorTraderType" />
       <xs:element name="PersonConsigneeTrader" type="ie:PersonConsigneeTraderType" />
-      <xs:element name="SaadDocuments" type="ie:SaadDocumentsType" minOccurs="0" maxOccurs="4" />
+      <xs:element name="OtherAccompanyingDocument" type="ie:OtherAccompanyingDocumentType" minOccurs="0" maxOccurs="4" />
       <xs:element name="GoodsItem" type="ie:GoodsItemType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="MeansOfTransport" type="ie:MeansOfTransportType" minOccurs="0" />
+      <xs:element name="SupportingDocuments" type="ie:SupportingDocumentsType" minOccurs="0" maxOccurs="9" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="AttributesType">
@@ -59,6 +60,7 @@
       <xs:element name="ReferenceOfTheAddressedAuthority" type="emcs:ReferenceOfTheAddressedAuthorityType" minOccurs="0" />
       <xs:element name="SenderMemberStateCode" type="emcs:MemberStateCodeType" />
       <xs:element name="AddresseeMemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="NationalCaseReferenceIdentifier" type="emcs:NationalCaseReferenceIdentifierType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ContactType">
@@ -98,7 +100,7 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element name="MovementVerificationRequestReasonCode" type="emcs:MovementVerificationRequestReasonCodeType" />
-      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="AcoComplementaryInformation" type="ie:LSDAcoComplementaryInformationType" minOccurs="0" />
       <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
       <xs:element name="BoxNumber" type="emcs:BoxNumberType" minOccurs="0" />
     </xs:sequence>
@@ -111,7 +113,7 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element name="MovementVerificationActionCode" type="emcs:MovementVerificationActionCodeType" />
-      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="AcoComplementaryInformation" type="ie:LSDAcoComplementaryInformationType" minOccurs="0" />
       <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
       <xs:element name="BoxNumber" type="emcs:BoxNumberType" minOccurs="0" />
     </xs:sequence>
@@ -150,16 +152,18 @@
       <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="SaadDocumentsType">
+  <xs:complexType name="OtherAccompanyingDocumentType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="SAAD DOCUMENTS" />
+        <doc:description value="OTHER ACCOMPANYING DOCUMENT" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="DocumentNumber" type="emcs:DocumentNumberType" />
-      <xs:element name="DocumentDate" type="emcs:DateType" />
-      <xs:element name="AttachedCopies" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="OtherAccompanyingDocumentType" type="tcl:OtherAccompanyingDocumentType" />
+      <xs:element name="ShortDescriptionOfOtherAccompanyingDocument" type="ie:LSDShortDescriptionOfOtherAccompanyingDocumentType" minOccurs="0" />
+      <xs:element name="OtherAccompanyingDocumentNumber" type="emcs:OtherAccompanyingDocumentNumberType" />
+      <xs:element name="OtherAccompanyingDocumentDate" type="emcs:DateType" />
+      <xs:element name="ImageOfOtherAccompanyingDocument" type="xs:base64Binary" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="GoodsItemType">
@@ -193,14 +197,48 @@
       <xs:element name="Postcode" type="emcs:PostcodeType" />
       <xs:element name="City" type="emcs:CityType" />
       <xs:element name="TransportModeCode" type="emcs:TransportModeCodeType" />
-      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="AcoComplementaryInformation" type="ie:LSDAcoComplementaryInformationType" minOccurs="0" />
       <xs:element name="Registration" type="emcs:RegistrationType" />
       <xs:element name="CountryOfRegistration" type="emcs:CountryOfRegistrationType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="LSDComplementaryInformationType">
+  <xs:complexType name="SupportingDocumentsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="SUPPORTING DOCUMENTS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SupportingDocumentDescription" type="ie:LSDSupportingDocumentDescriptionType" minOccurs="0" />
+      <xs:element name="ReferenceOfSupportingDocument" type="ie:LSDReferenceOfSupportingDocumentType" minOccurs="0" />
+      <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="SupportingDocumentType" type="emcs:SupportingDocumentTypeType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDAcoComplementaryInformationType">
     <xs:simpleContent>
-      <xs:extension base="emcs:ComplementaryInformationType">
+      <xs:extension base="emcs:AcoComplementaryInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDReferenceOfSupportingDocumentType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ReferenceOfSupportingDocumentType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDShortDescriptionOfOtherAccompanyingDocumentType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ShortDescriptionOfOtherAccompanyingDocumentType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDSupportingDocumentDescriptionType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:SupportingDocumentDescriptionType">
         <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
       </xs:extension>
     </xs:simpleContent>
