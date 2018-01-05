@@ -2,6 +2,10 @@
 
 Brief summary in English: This document is changelog for EMCS B2B Web Services.
 
+### V3.14 til v3.15 Januar 2018 
+
+* Opgraderet .NET-klienten til .NET 4.6.1 og WCF (den gamle baseret på WSE 3.0 vil stadig være tilgængelig)
+
 ### V3.13 til v3.14 November 2017 
 
 * Migreret teknisk dokument "Beskrivelse af SKATs Business-2-Business Gateway Webservicekald via B2B Gateway på SKATs Infrastruktur Platform" (B2B vejledning v1.1.pdf) til GitHub
