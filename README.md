@@ -425,7 +425,8 @@ See [test data repository](https://github.com/skat/emcs-b2b-ws-test-data)
 ## Sample Web Service Clients
 
 * [Java](https://github.com/skat/emcs-b2b-ws-sample-client-java)
-* [.NET](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet)
+* [.NET WCF] (https://github.com/skat/emcs-b2b-ws-sample-client-dotnet-wcf)
+* [.NET WSE 3.0 - LEGACY](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet)
 
 **NOTE**: Please note that the .NET client is currently being upgraded to the latest .NET version and frameworks.
 
