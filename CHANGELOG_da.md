@@ -2,6 +2,15 @@
 
 Brief summary in English: This document is changelog for EMCS B2B Web Services.
 
+### V3.15 til v3.16 Februar 2018
+
+* 15/02/2018 lanceres FS3.3 af EMCS. Det betyder, at de nuværende beskeder vil blive opdateret, og et nyt sæt af EU XSD-filer skal anvendes til at generere de beskeder, som EMCS forventer at modtage. De nye XSD-filer i version 1.92 kan findes i ”emcs-b2b-ws/schema” på GitHub
+* Testdata med eksempler i nye version kan findes i ”emcs-b2b-ws-test-data/schema” på Github
+* Følgende dokumenter er ligeledes opdateret, og kan findes i ”Implementeringsvejledning for B2B webservices” på skat.dk:
+	* Oversigt over beskedstruktur
+	* Tekniske kodelister. Se DDNEA v1.92 APP B
+	* Forretningskodelister. Se FESS v3.82 Appendix B
+
 ### V3.14 til v3.15 Januar 2018 
 
 * Opgraderet .NET-klienten til .NET 4.6.1 og WCF (den gamle baseret på WSE 3.0 vil stadig være tilgængelig)
