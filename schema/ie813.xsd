@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE813:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE813:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE813:V1.92" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE813:V1.92" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE813:C_UPD_DAT -->
   <!--===== CHANGE OF DESTINATION -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE813" type="ie:IE813Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -83,6 +83,7 @@
       <xs:element name="NewConsigneeTrader" type="ie:NewConsigneeTraderType" minOccurs="0" />
       <xs:element name="DeliveryPlaceTrader" type="ie:DeliveryPlaceTraderType" minOccurs="0" />
       <xs:element name="DeliveryPlaceCustomsOffice" type="ie:DeliveryPlaceCustomsOfficeType" minOccurs="0" />
+      <xs:element name="MovementGuarantee" type="ie:MovementGuaranteeType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="NewConsigneeTraderType">
@@ -127,6 +128,34 @@
     <xs:sequence>
       <xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MovementGuaranteeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="MOVEMENT GUARANTEE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GuarantorTypeCode" type="tcl:GuarantorTypeCode" />
+      <xs:element name="GuarantorTrader" type="ie:GuarantorTraderType" minOccurs="0" maxOccurs="2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GuarantorTraderType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(GUARANTOR) TRADER" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TraderExciseNumber" type="emcs:ExciseNumberType" minOccurs="0" />
+      <xs:element name="TraderName" type="emcs:TraderNameType" minOccurs="0" />
+      <xs:element name="StreetName" type="emcs:StreetNameType" minOccurs="0" />
+      <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
+      <xs:element name="City" type="emcs:CityType" minOccurs="0" />
+      <xs:element name="Postcode" type="emcs:PostcodeType" minOccurs="0" />
+      <xs:element name="VatNumber" type="emcs:VatNumberType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="language" type="emcs:LanguageCodeType" use="optional" />
   </xs:complexType>
   <xs:complexType name="NewTransporterTraderType">
     <xs:annotation>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE725:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE725:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE725:V1.92" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE725:V1.92" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE725:C_MVS_RES -->
   <!--===== MOVEMENT VERIFICATION RESULTS -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE725" type="ie:IE725Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -27,8 +27,9 @@
   <xs:complexType name="MovementVerificationResultsType">
     <xs:sequence>
       <xs:element name="FollowUp" type="ie:FollowUpType" />
-      <xs:element name="Contact" type="ie:ContactType" />
-      <xs:element name="ActionsResult" type="ie:ActionsResultType" maxOccurs="9" />
+      <xs:element name="Contact" type="ie:ContactType" minOccurs="0" />
+      <xs:element name="ActionsResult" type="ie:ActionsResultType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="FeedbackRequest" type="ie:FeedbackRequestType" minOccurs="0" />
       <xs:element name="Findings" type="ie:FindingsType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
@@ -46,6 +47,7 @@
       <xs:element name="ReferenceOfTheAddressedAuthority" type="emcs:ReferenceOfTheAddressedAuthorityType" minOccurs="0" />
       <xs:element name="SenderMemberStateCode" type="emcs:MemberStateCodeType" />
       <xs:element name="AddresseeMemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="NationalCaseReferenceIdentifier" type="emcs:NationalCaseReferenceIdentifierType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ContactType">
@@ -69,10 +71,22 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element name="MovementVerificationActionCode" type="emcs:MovementVerificationActionCodeType" />
-      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+      <xs:element name="AcoComplementaryInformation" type="ie:LSDAcoComplementaryInformationType" minOccurs="0" />
       <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
       <xs:element name="BoxNumber" type="emcs:BoxNumberType" minOccurs="0" />
       <xs:element name="ResultCode" type="tcl:ResultCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FeedbackRequestType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="FEEDBACK REQUEST" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FeedbackRequestedOrProvided" type="tcl:FeedbackRequestedOrProvided" />
+      <xs:element name="FollowUpActions" type="ie:LSDFollowUpActionsType" minOccurs="0" />
+      <xs:element name="RelevanceOfInformationProvided" type="ie:LSDRelevanceOfInformationProvidedType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="FindingsType">
@@ -93,9 +107,23 @@
       <xs:element name="Notes" type="emcs:NotesType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="LSDComplementaryInformationType">
+  <xs:complexType name="LSDAcoComplementaryInformationType">
     <xs:simpleContent>
-      <xs:extension base="emcs:ComplementaryInformationType">
+      <xs:extension base="emcs:AcoComplementaryInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDFollowUpActionsType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:FollowUpActionsType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDRelevanceOfInformationProvidedType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:RelevanceOfInformationProvidedType">
         <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
       </xs:extension>
     </xs:simpleContent>

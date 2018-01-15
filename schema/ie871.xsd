@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE871:V1.76" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE871:V1.76" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE871:V1.92" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE871:V1.92" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE871:C_SHR_EXP -->
   <!--===== EXPLANATION ON REASON FOR SHORTAGE -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.76" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.76" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.76" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.76" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE871" type="ie:IE871Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -32,7 +32,6 @@
       <xs:element name="ConsignorTrader" type="ie:ConsignorTraderType" minOccurs="0" />
       <xs:element name="Analysis" type="ie:AnalysisType" minOccurs="0" />
       <xs:element name="BodyAnalysis" type="ie:BodyAnalysisType" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="DispatchImportOffice" type="ie:DispatchImportOfficeType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="AttributesType">
@@ -93,7 +92,7 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element name="DateOfAnalysis" type="emcs:DateType" />
-      <xs:element name="GlobalExplanation" type="ie:LSDGlobalExplanationType" minOccurs="0" />
+      <xs:element name="GlobalExplanation" type="ie:LSDGlobalExplanationType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="BodyAnalysisType">
@@ -105,18 +104,8 @@
     <xs:sequence>
       <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
       <xs:element name="BodyRecordUniqueReference" type="emcs:BodyRecordUniqueReferenceType" />
-      <xs:element name="Explanation" type="ie:LSDExplanationType" minOccurs="0" />
+      <xs:element name="Explanation" type="ie:LSDExplanationType" />
       <xs:element name="ActualQuantity" type="emcs:ActualQuantityType" minOccurs="0" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="DispatchImportOfficeType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="(DISPATCH) IMPORT OFFICE" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="LSDExplanationType">
