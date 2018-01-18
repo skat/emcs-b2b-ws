@@ -234,8 +234,7 @@ Then select the role defined in **STEP 4** to system user and the choose **Vælg
 
 ![asset-save_role](/assets/assign_role.png)
 
-**IMPORTANT**: If you did not select **Indberetningsområde** = *Alle* in **STEP 4** then you will
-have to assign **Adgang til EMCS B2B Systembruger** too.
+**IMPORTANT**: Finally, you have to assign **Adgang til EMCS B2B Systembruger** to your certificate.
 
 Finally, choose **Gem**
 
