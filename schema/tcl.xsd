@@ -1188,9 +1188,24 @@
           <xs:documentation>Other</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="12">
+        <xs:annotation>
+          <xs:documentation>Incorrect (code) value</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="15">
+        <xs:annotation>
+          <xs:documentation>Not supported in this position</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="26">
         <xs:annotation>
           <xs:documentation>Duplicate detected</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="90">
+        <xs:annotation>
+          <xs:documentation>Unknown ARC</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="91">
