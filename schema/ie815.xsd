@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE815:V1.92" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE815:V1.92" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE815:V2.02" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V2.02" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE815:V2.02" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE815:N_EAD_SUB -->
   <!--===== SUBMITTED DRAFT OF E-AD -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V2.02" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE815" type="ie:IE815Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -197,6 +197,8 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
+      <xs:element name="DocumentType" type="emcs:DocumentTypeType" minOccurs="0" />
+      <xs:element name="DocumentReference" type="emcs:DocumentReferenceType" minOccurs="0" />
       <xs:element name="DocumentDescription" type="ie:LSDDocumentDescriptionType" minOccurs="0" />
       <xs:element name="ReferenceOfDocument" type="ie:LSDReferenceOfDocumentType" minOccurs="0" />
     </xs:sequence>
@@ -265,7 +267,7 @@
       <xs:element name="Quantity" type="emcs:QuantityType" />
       <xs:element name="GrossWeight" type="emcs:GrossWeightType" />
       <xs:element name="NetWeight" type="emcs:NetWeightType" />
-      <xs:element name="AlcoholicStrength" type="emcs:AlcoholicStrengthType" minOccurs="0" />
+      <xs:element name="AlcoholicStrengthByVolumeInPercentage" type="emcs:AlcoholicStrengthType" minOccurs="0" />
       <xs:element name="DegreePlato" type="emcs:DegreePlatoType" minOccurs="0" />
       <xs:element name="FiscalMark" type="ie:LSDFiscalMarkType" minOccurs="0" />
       <xs:element name="FiscalMarkUsedFlag" type="tcl:Flag" minOccurs="0" />
@@ -287,6 +289,7 @@
     <xs:sequence>
       <xs:element name="KindOfPackages" type="emcs:KindOfPackagesType" />
       <xs:element name="NumberOfPackages" type="emcs:NumberOfPackagesType" minOccurs="0" />
+      <xs:element name="ShippingMarks" type="emcs:ShippingMarksType" minOccurs="0" />
       <xs:element name="CommercialSealIdentification" type="emcs:CommercialSealIdentificationType" minOccurs="0" />
       <xs:element name="SealInformation" type="ie:LSDSealInformationType" minOccurs="0" />
     </xs:sequence>

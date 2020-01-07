@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE717:V1.92" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE717:V1.92" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE717:V2.02" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V2.02" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE717:V2.02" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE717:C_CCR_DAT -->
   <!--===== CONTROL REPORT -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.92" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.92" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.92" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V2.02" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE717" type="ie:IE717Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -176,7 +176,7 @@
       <xs:element name="Flag" type="tcl:Flag" />
       <xs:element name="Comments" type="ie:LSDCommentsType" minOccurs="0" />
       <xs:element name="PerformedControlAction" type="ie:PerformedControlActionType" maxOccurs="99" />
-      <xs:element name="EvidenceOfEvent" type="ie:EvidenceOfEventType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="SupportingEvidence" type="ie:SupportingEvidenceType" minOccurs="0" maxOccurs="9" />
       <xs:element name="UnsatisfactoryReason" type="ie:UnsatisfactoryReasonType" minOccurs="0" maxOccurs="9" />
       <xs:element name="TransportDetails" type="ie:TransportDetailsType" minOccurs="0" maxOccurs="99" />
       <xs:element name="BodyControlReport" type="ie:BodyControlReportType" minOccurs="0" maxOccurs="99" />
@@ -193,10 +193,10 @@
       <xs:element name="OtherControlAction" type="ie:LSDOtherControlActionType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="EvidenceOfEventType">
+  <xs:complexType name="SupportingEvidenceType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="EVIDENCE OF EVENT" />
+        <doc:description value="SUPPORTING EVIDENCE" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>

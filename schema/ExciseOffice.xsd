@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+<xs:schema xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
   xmlns:exo="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:WEBSERVICE:ExciseOffices:V1.92" 
-  targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:WEBSERVICE:ExciseOffices:V1.92" 
+  targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:WEBSERVICE:ExciseOffices:V2.02" 
   elementFormDefault="qualified" attributeFormDefault="qualified" version="1.00">
-	<xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.92" schemaLocation="types.xsd"/>
+	<xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" schemaLocation="types.xsd"/>
 	<!--=========================================-->
 	<!--===== EXCISE OFFICE =====================-->
 	<!--=========================================-->

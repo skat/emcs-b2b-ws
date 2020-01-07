@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE880:V2.02" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V2.02" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE880:V2.02" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+  <!--=========================================-->
+  <!--===== IE880:C_MNC_SUB -->
+  <!--===== MANUAL CLOSURE REQUEST -->
+  <!--=========================================-->
+  <!--===== Imports =====-->
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V2.02" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" schemaLocation="doc.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="IE880" type="ie:IE880Type" />
+  <!--===== EMCS Data Groups Declarations =====-->
+  <xs:complexType name="IE880Type">
+    <xs:sequence>
+      <xs:element name="Header" type="tms:HeaderType" />
+      <xs:element name="Body" type="ie:BodyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--===== IE Specific Data Groups Declarations =====-->
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element name="ManualClosureRequest" type="ie:ManualClosureRequestType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ManualClosureRequestType">
+    <xs:sequence>
+      <xs:element name="Attributes" type="ie:AttributesType" />
+      <xs:element name="SupportingDocuments" type="ie:SupportingDocumentsType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="BodyManualClosure" type="ie:BodyManualClosureType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributesType">
+    <xs:sequence>
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+      <xs:element name="SequenceNumber" type="emcs:SequenceNumberType" />
+      <xs:element name="ManualClosureRequestReasonCode" type="emcs:ManualClosureRequestReasonCodeType" />
+      <xs:element name="ManualClosureRequestReasonCodeComplement" type="ie:LSDManualClosureRequestReasonCodeComplementType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SupportingDocumentsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="SUPPORTING DOCUMENTS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SupportingDocumentDescription" type="ie:LSDSupportingDocumentDescriptionType" minOccurs="0" />
+      <xs:element name="ReferenceOfSupportingDocument" type="ie:LSDReferenceOfSupportingDocumentType" minOccurs="0" />
+      <xs:element name="ImageOfDocument" type="xs:base64Binary" minOccurs="0" />
+      <xs:element name="SupportingDocumentType" type="emcs:SupportingDocumentTypeType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BodyManualClosureType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="(BODY) MANUAL CLOSURE" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BodyRecordUniqueReference" type="emcs:BodyRecordUniqueReferenceType" />
+      <xs:element name="IndicatorOfShortageOrExcess" type="tcl:IndicatorOfShortageOrExcess" minOccurs="0" />
+      <xs:element name="ObservedShortageOrExcess" type="emcs:ObservedShortageOrExcessType" minOccurs="0" />
+      <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" minOccurs="0" />
+      <xs:element name="RefusedQuantity" type="emcs:RefusedQuantityType" minOccurs="0" />
+      <xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LSDComplementaryInformationType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ComplementaryInformationType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDManualClosureRequestReasonCodeComplementType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ManualClosureRequestReasonCodeComplementType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDReferenceOfSupportingDocumentType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:ReferenceOfSupportingDocumentType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDSupportingDocumentDescriptionType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:SupportingDocumentDescriptionType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+
