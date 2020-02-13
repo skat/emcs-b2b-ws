@@ -4,6 +4,10 @@
 
 * 13/02/2020 lanceres FS3.4 af EMCS. Det betyder, at de nuværende beskeder vil blive opdateret, og et nyt sæt af EU XSD-filer skal anvendes til at generere de beskeder, som EMCS forventer at modtage. De nye XSD-filer i version 2.02 kan findes i ”emcs-b2b-ws/schema” på GitHub
 * Testdata med eksempler i nye version kan findes i ”emcs-b2b-ws-test-data/schema” på Github
+* Følgende dokumenter er ligeledes opdateret, og kan findes i ”Implementeringsvejledning for B2B webservices” på skat.dk:
+	* Oversigt over beskedstruktur
+	* Tekniske kodelister. Se DDNEA v2.02 APP B
+	* Forretningskodelister. Se FESS v3.91 Appendix B
 
 Brief summary in English: This document is changelog for EMCS B2B Web Services.
 
