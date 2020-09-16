@@ -330,13 +330,8 @@ the above requirements.
 
 Server certificates available for environments:
 
-* [Test System](/crt/emcs-b2b-server-test.crt) (**Note**: Expires on September 19, 2020)
-* [Production System](/crt/emcs-b2b-server-prod-as-of-20171026.crt) (**Note**: Expires on September 19, 2020)
-
-The above certificates will be replaced as follows:
-
-* [Certificate for Test System as of 2020-09-09](/crt/emcs-b2b-server-test-2020-08-26.pem) 
-* [Certificate for Production System as of 2020-09-16](/crt/emcs-b2b-server-prod-2020-08-26.pem)
+* [Test System](/crt/emcs-b2b-server-test-2020-08-26.pem) (**Note**: Expires on September 09, 2023)
+* [Production System](/crt/emcs-b2b-server-prod-2020-08-26.pem) (**Note**: Expires on September 16, 2023)
 
 In brief, this certificate is used for inbound (client side) encryption of payload and outbound signing (server side)
 of payload as explained above.
