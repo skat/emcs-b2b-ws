@@ -105,7 +105,7 @@
       <xs:element name="ExciseProductsCategory" type="ie:ExciseProductsCategoryType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="ExciseProduct" type="ie:ExciseProductType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="LanguageCode" type="ie:LanguageCodeType" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="MemberState" type="ie:MemberStateType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="NationalAdministration" type="ie:NationalAdministrationType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="Country" type="ie:CountryType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="UnitOfMeasure" type="ie:UnitOfMeasureType" minOccurs="0" maxOccurs="99" />
       <xs:element name="TransportMode" type="ie:TransportModeType" minOccurs="0" maxOccurs="99" />
@@ -185,14 +185,14 @@
       <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="MemberStateType">
+  <xs:complexType name="NationalAdministrationType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="MEMBER STATE" />
+        <doc:description value="NATIONAL ADMINISTRATION" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="MemberStateCode" type="emcs:MemberStateCodeType" />
+      <xs:element name="NationalAdministrationCode" type="emcs:MemberStateCodeType" />
       <xs:element name="Action" type="ie:ActionType" />
       <xs:element name="LanguageSpecificData" type="ie:LanguageSpecificDataType" maxOccurs="99" />
     </xs:sequence>
