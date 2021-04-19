@@ -1,5 +1,11 @@
 # Ændringslog for EMCS’ B2B implementeringsvejledning
 
+V3.17 til V3.18 December 2020
+
+•	01/01/2021 udtræder Storbritannien af det europæiske fællesskab. På baggrund af særlig Aftale, anses varehandel mellem Nordirland og EU fortsat som intern EU-handel efter den 1. januar 2021. Det betyder at XSD-skemaerne IE734 og TCL skal udskiftes. 
+
+Brief summary in English: This document is changelog for EMCS B2B Web Services.
+
 ### V3.16 til v3.17 Januar 2020
 
 * 13/02/2020 lanceres FS3.4 af EMCS. Det betyder, at de nuværende beskeder vil blive opdateret, og et nyt sæt af EU XSD-filer skal anvendes til at generere de beskeder, som EMCS forventer at modtage. De nye XSD-filer i version 2.02 kan findes i ”emcs-b2b-ws/schema” på GitHub
