@@ -328,13 +328,20 @@ the above requirements.
 
 ## Server Certificates
 
-Server certificates available for environments:
+Server certificates in use for environments:
 
 * [Test System](/crt/emcs-b2b-server-test-2020-08-26.pem) (**Note**: Expires on September 09, 2023)
 * [Production System](/crt/emcs-b2b-server-prod-2020-08-26.pem) (**Note**: Expires on September 16, 2023)
 
 In brief, this certificate is used for inbound (client side) encryption of payload and outbound signing (server side)
 of payload as explained above.
+
+## TLS Certificates
+
+TLS certificates in use for environments:
+
+* [Test System](/crt/emcstest-skat-dk-2021-11-26.pem) (**Note**: Valid until Wed Dec 28 10:51:07 CET 2022)
+* [Production System](/crt/b2b-skat-dk-2021-11-26.pem) (**Note**: Valid until Wed Dec 28 11:01:08 CET 2022)
 
 ## Error Codes
 
