@@ -177,14 +177,13 @@ Owner: SERIALNUMBER=CVR:12345678-UID:1282309369161 + CN=VOCESFORB2B, O=COMPANY_X
 
 **STEP 3:** Login using *MOCES with LRA* on [skat.dk](http://www.skat.dk/). Navigate as follows (menu items in Danish):
 
-* Menu item **Rettigheder til selvbetjening**
-* Menu item **Gruppér rettigheder (roller)**
-
-![asset-navigate](/assets/navigate.png)
+* Menu item **Profil- og kontaktoplysninger**
+* Menu item **Rettigheder og adgange til TastSelv**
+* Menu item **Administrer rettigheder og roller til TastSelv**
 
 **STEP 4:** Create **system role** by selecting the button **Ny rolle**.
 
-![asset-newrole](/assets/newrole.jpg)
+![asset-newrole](/assets/newrole.png)
 
 Select **Domæne** = *EMCS* and **Indberetningsområde** = *Alle*.
 
@@ -205,9 +204,11 @@ You should now see user defined role:
 
 **STEP 5:** Create system user and map certificate
 
-Nagivate as follows:
+Nagivate as follows (from front page):
 
-* Menu item **Tildel medarbejder rettigheder (roller)**
+* Menu item **Profil- og kontaktoplysninger**
+* Menu item **Rettigheder og adgange til TastSelv**
+* Menu item **Administrer NemID/MitID og medarbejdersignatur**
 * Link item **Tildel/fjern rettigheder der anvendes i system-til-system løsninger**
 
 ![asset-createsys](/assets/createsys.png)
