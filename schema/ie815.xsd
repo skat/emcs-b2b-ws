@@ -276,7 +276,7 @@
       <xs:element name="Density" type="emcs:DensityType" minOccurs="0" />
       <xs:element name="CommercialDescription" type="ie:LSDCommercialDescriptionType" minOccurs="0" />
       <xs:element name="BrandNameOfProducts" type="ie:LSDBrandNameOfProductsType" minOccurs="0" />
-      <xs:element name="MaturationPeriodOrAgeOfProducts" type="emcs:MaturationPeriodOrAgeOfProductsType" minOccurs="0" />
+      <xs:element name="MaturationPeriodOrAgeOfProducts" type="ie:LSDMaturationPeriodOrAgeOfProductsType" minOccurs="0" />
       <xs:element name="Package" type="ie:PackageType" maxOccurs="99" />
       <xs:element name="WineProduct" type="ie:WineProductType" minOccurs="0" />
     </xs:sequence>
@@ -397,6 +397,13 @@
   <xs:complexType name="LSDFiscalMarkType">
     <xs:simpleContent>
       <xs:extension base="emcs:FiscalMarkType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LSDMaturationPeriodOrAgeOfProductsType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:MaturationPeriodOrAgeOfProductsType">
         <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
       </xs:extension>
     </xs:simpleContent>

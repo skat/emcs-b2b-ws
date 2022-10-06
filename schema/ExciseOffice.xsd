@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:exo="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:WEBSERVICE:ExciseOffices:V3.01" 
+  targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:WEBSERVICE:ExciseOffices:V3.01" 
+  elementFormDefault="qualified" attributeFormDefault="qualified" version="1.00">
+	<xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" schemaLocation="types.xsd"/>
+	<!--=========================================-->
+	<!--===== EXCISE OFFICE =====================-->
+	<!--=========================================-->
+	<!--===== Root Element =====-->
+	<xs:element name="ExciseOffices">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="exo:ExciseOffice" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ExciseOffice" type="exo:ExciseOfficeType"/>
+	<xs:complexType name="ExciseOfficeType">
+		<xs:sequence>
+			<xs:element name="ExciseOfficeNumber" type="exo:ExciseOfficeCodeType"/>
+			<xs:element name="ExciseOfficeCountryCode" type="exo:CountryCodeType"/>
+			<xs:element name="ContactInformation" type="exo:ContactInformationType"/>
+			<xs:element name="LanguageSpecificData" type="exo:LanguageSpecificDataType"/>
+			<xs:element name="Action" type="exo:ActionType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContactInformationType">
+		<xs:sequence>
+			<xs:element name="PhoneNumber" type="exo:PhoneNumberType" minOccurs="0"/>
+			<xs:element name="FaxNumber" type="exo:PhoneNumberType" minOccurs="0"/>
+			<xs:element name="EmailAddress" type="exo:EmailAddressType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LanguageSpecificDataType">
+		<xs:sequence>
+			<xs:element name="NameAndAddress" type="exo:NameAndAddressType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NameAndAddressType">
+		<xs:sequence>
+			<xs:element name="Name" type="exo:NameType"/>
+			<xs:element name="Address" type="exo:AddressType"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="exo:LanguageCodeType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AddressType">
+		<xs:sequence>
+			<xs:element name="StreetNumber" type="exo:StreetNumberType" minOccurs="0"/>
+			<xs:element name="StreetName" type="exo:StreetType" minOccurs="0"/>
+			<xs:element name="PostCode" type="exo:PostCodeType" minOccurs="0"/>
+			<xs:element name="City" type="exo:CityType" minOccurs="0"/>
+			<xs:element name="CountryCode" type="exo:CountryCodeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActionType">
+		<xs:sequence>
+			<xs:element name="Operation" type="exo:ModificationType"/>
+			<xs:element name="ActivationDate" type="emcs:DateType"/>
+			<xs:element name="ActionIdentifier" type="exo:ActionIdentifierType"/>
+			<xs:element name="ResponsibleDataManager" type="exo:ResponsibleDataManagerType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--===== IE Specific Data Items Declarations =====-->
+	<xs:simpleType name="ActionIdentificationType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="20"/>
+			<xs:pattern value=".{1,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CityType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="50"/>
+			<xs:pattern value=".{1,50}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NameType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="35"/>
+			<xs:pattern value=".{1,35}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PostCodeType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="10"/>
+			<xs:pattern value=".{1,10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StreetNumberType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="11"/>
+			<xs:pattern value=".{11}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StreetType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="65"/>
+			<xs:pattern value=".{1,65}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhoneNumberType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="18"/>
+			<xs:pattern value=".{1,18}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EmailAddressType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="70"/>
+			<xs:pattern value=".{1,70}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LanguageCodeType">
+		<xs:restriction base="xs:token">
+			<xs:length value="2"/>
+			<xs:pattern value="([a-zA-Z]){2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CountryCodeType">
+		<xs:restriction base="xs:token">
+			<xs:length value="2"/>
+			<xs:pattern value="([a-zA-Z]){2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExciseOfficeCodeType">
+		<xs:restriction base="xs:token">
+			<xs:length value="8"/>
+			<xs:pattern value="[A-Z]{2}[a-zA-Z0-9]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActionIdentifierType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="20"/>
+			<xs:pattern value=".{1,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ResponsibleDataManagerType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="35"/>
+			<xs:pattern value=".{1,35}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ModificationType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="U"/>
+			<xs:enumeration value="I"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
