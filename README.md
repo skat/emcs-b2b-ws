@@ -175,7 +175,7 @@ Owner: SERIALNUMBER=CVR:12345678-UID:1282309369161 + CN=VOCESFORB2B, O=COMPANY_X
 ...
 ```
 
-**STEP 3:** Login using *MOCES with LRA* on [skat.dk](http://www.skat.dk/). Navigate as follows (menu items in Danish):
+**STEP 3:** Login using *NemID/MitID with LRA* on [skat.dk](http://www.skat.dk/). Navigate as follows (menu items in Danish):
 
 * Menu item **Profil- og kontaktoplysninger**
 * Menu item **Rettigheder og adgange til TastSelv**
