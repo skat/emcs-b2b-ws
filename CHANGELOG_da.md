@@ -4,16 +4,18 @@ Brief summary in English: This document is changelog for EMCS B2B Web Services.
 
 ### V3.18 til V3.19 November 2022
 
-* 13/02/2023 lanceres FS4.0 af EMCS. Det betyder, at de nuværende beskeder vil blive opdateret, og et nyt sæt af EU XSD-filer skal anvendes til at generere de beskeder, som EMCS forventer at modtage. De nye XSD-filer til Fase 4.0 kan findes på GitHub: https://github.com/skat/emcs-b2b-ws/tree/feature/emcs_phase_4.0/schema
+* 13/02/2023 lanceres FS4.0 af EMCS. Det betyder, at de nuværende beskeder vil blive opdateret, og et nyt sæt af EU XSD-filer skal anvendes til at generere de beskeder, som EMCS forventer at modtage. 
+* De nye XSD-filer til Fase 4.0 kan findes på GitHub: https://github.com/skat/emcs-b2b-ws/tree/feature/emcs_phase_4.0/schema
 Testdata med eksempler i nye version kan findes på Github: https://github.com/skat/emcs-b2b-ws-test-data/tree/feature/emcs_phase_4.0
-Følgende dokumenter er ligeledes opdateret, og kan findes i ”Implementeringsvejledning for B2B webservices” på skat.dk:
+* Følgende dokumenter er ligeledes opdateret, og kan findes i ”Implementeringsvejledning for B2B webservices” på skat.dk:
 	* Oversigt over beskedstruktur
 
 English:
 
-* 13/02/2023 FS4.0 of EMCS is released. This means that the current messages will be updated and a new set of EU XSD-files is required to generate EMCS messages. The new XSD-files for Phase 4.0 is located on GitHub: https://github.com/skat/emcs-b2b-ws/tree/feature/emcs_phase_4.0/schema
+* 13/02/2023 FS4.0 of EMCS is released. This means that the current messages will be updated and a new set of EU XSD-files is required to generate EMCS messages. 
+* The new XSD-files for Phase 4.0 is located on GitHub: https://github.com/skat/emcs-b2b-ws/tree/feature/emcs_phase_4.0/schema
 Test data and examples in new versions is located on Github: https://github.com/skat/emcs-b2b-ws-test-data/tree/feature/emcs_phase_4.0
-The following document has also been updated and can be located via the implementation guide for B2B webservices (”Implementeringsvejledning for B2B webservices”) on skat.dk:
+* The following document has also been updated and can be located via the implementation guide for B2B webservices (”Implementeringsvejledning for B2B webservices”) on skat.dk:
 	* Overview of message structure (”Oversigt over beskedstruktur”)
 
 ### V3.17 til V3.18 December 2020
