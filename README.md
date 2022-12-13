@@ -329,8 +329,6 @@ the above requirements.
 
 ## Server Certificates
 
-Server certificates in use for environments:
-
 * [Test System](/crt/emcs-b2b-server-test-2020-08-26.pem) (**Note**: Expires on September 09, 2023)
 * [Production System](/crt/emcs-b2b-server-prod-2020-08-26.pem) (**Note**: Expires on September 16, 2023)
 
@@ -339,10 +337,27 @@ of payload as explained above.
 
 ## TLS Certificates
 
-TLS certificates in use for environments:
+* [Test System](/crt/emcstest-skat-dk-2022-12-01.pem) with the following details:
 
-* [Test System](/crt/emcstest-skat-dk-2021-11-26.pem) (**Note**: Valid until Wed Dec 28 10:51:07 CET 2022)
-* [Production System](/crt/b2b-skat-dk-2022-12-01.pem) (**Note**: Valid until Tue Jan 02 21:16:04 CET 2024)
+```
+Serial number: 520918b4e8e48842ca30f22b
+Valid from: Thu Dec 01 21:21:02 CET 2022 until: Tue Jan 02 21:21:01 CET 2024
+Certificate fingerprints:
+	 MD5:  1C:0C:D8:FC:8C:AF:54:D4:9B:90:BE:6E:00:96:10:7C
+	 SHA1: 12:E6:4C:02:A5:AB:FB:BD:6D:A8:EC:2F:D4:8D:BF:E7:02:DC:0A:40
+	 SHA256: 22:52:90:32:C0:E7:B0:AC:FF:70:AD:19:A4:99:04:7B:59:5B:12:BC:95:D8:E3:69:1E:CC:52:66:A5:15:30:D2
+```
+
+* [Production System](/crt/b2b-skat-dk-2022-12-01.pem) with the following details:
+
+```
+Serial number: 520918b4e8e48842ca30f22b
+Valid from: Thu Dec 01 21:21:02 CET 2022 until: Tue Jan 02 21:21:01 CET 2024
+Certificate fingerprints:
+	 MD5:  1C:0C:D8:FC:8C:AF:54:D4:9B:90:BE:6E:00:96:10:7C
+	 SHA1: 12:E6:4C:02:A5:AB:FB:BD:6D:A8:EC:2F:D4:8D:BF:E7:02:DC:0A:40
+	 SHA256: 22:52:90:32:C0:E7:B0:AC:FF:70:AD:19:A4:99:04:7B:59:5B:12:BC:95:D8:E3:69:1E:CC:52:66:A5:15:30:D2
+```
 
 ## Error Codes
 
