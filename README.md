@@ -342,7 +342,7 @@ of payload as explained above.
 TLS certificates in use for environments:
 
 * [Test System](/crt/emcstest-skat-dk-2021-11-26.pem) (**Note**: Valid until Wed Dec 28 10:51:07 CET 2022)
-* [Production System](/crt/b2b-skat-dk-2021-11-26.pem) (**Note**: Valid until Wed Dec 28 11:01:08 CET 2022)
+* [Production System](/crt/b2b-skat-dk-2022-12-01.pem) (**Note**: Valid until Tue Jan 02 21:16:04 CET 2024)
 
 ## Error Codes
 
