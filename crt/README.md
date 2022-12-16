@@ -4,7 +4,7 @@
 
 The following certificates are for **Transport Layer Security** only.
 
-* [TEST System](/emcstest-skat-dk-2022-12-01.pem) with the following details:
+* [TEST System](/crt/emcstest-skat-dk-2022-12-01.pem) with the following details:
 
 ```
 Owner: CN=*.skat.dk, O=Skatteforvaltningen, L=Herning, ST=Herning, C=DK
@@ -17,7 +17,7 @@ Certificate fingerprints:
 	 SHA256: 22:52:90:32:C0:E7:B0:AC:FF:70:AD:19:A4:99:04:7B:59:5B:12:BC:95:D8:E3:69:1E:CC:52:66:A5:15:30:D2
 ```
 
-* [PRODUCTION System](/b2b-skat-dk-2022-12-01.pem) with the following details:
+* [PRODUCTION System](/crt/b2b-skat-dk-2022-12-01.pem) with the following details:
 
 ```
 Owner: CN=b2b.skat.dk, O=Skatteforvaltningen, L=Herning, ST=Herning, C=DK
@@ -32,8 +32,8 @@ Certificate fingerprints:
 
 Issuer certificates for both **TEST** and **PRODUCTION**:
 
-* [GlobalSign RSA OV SSL CA 2018](/GlobalSign-RSA-OV-SSL-CA-2018.pem)
-* [GlobalSign](/GlobalSign.pem)
+* [GlobalSign RSA OV SSL CA 2018](/crt/GlobalSign-RSA-OV-SSL-CA-2018.pem)
+* [GlobalSign](/crt/GlobalSign.pem)
 
 ### Do I have to install or update these certificates in my system?
 
@@ -50,8 +50,8 @@ It depends on your system and/or your strategy:
 The following certificates are for **Web Service Security** to ensure **non-repudiation** (signing) during the 
 message exchange:
 
-* [TEST System](/emcs-b2b-server-test-2020-08-26.pem) (**Note**: Expires on September 09, 2023)
+* [TEST System](/crt/emcs-b2b-server-test-2020-08-26.pem) (**Note**: Expires on September 09, 2023)
 
-* [PRODUCTION System](/emcs-b2b-server-prod-2020-08-26.pem) (**Note**: Expires on September 16, 2023)
+* [PRODUCTION System](/crt/emcs-b2b-server-prod-2020-08-26.pem) (**Note**: Expires on September 16, 2023)
 
 These certificates **CANNOT** be used for **Transport Layer Security**
