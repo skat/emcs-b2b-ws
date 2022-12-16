@@ -47,8 +47,8 @@ It depends on your system and/or your strategy:
     
 ## WS-Security
 
-The following certificates are for **Web Service Security** to ensure **non-repudiation** (signing) during the 
-message exchange:
+The following certificates are for **Web Service Security** to ensure **non-repudiation** (signing) when exchanging 
+messages:
 
 * [TEST System](/crt/emcs-b2b-server-test-2020-08-26.pem) (**Note**: Expires on September 09, 2023)
 
