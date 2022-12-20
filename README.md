@@ -425,7 +425,6 @@ See [test data repository](https://github.com/skat/emcs-b2b-ws-test-data)
 
 * [Java](https://github.com/skat/emcs-b2b-ws-sample-client-java)
 * [.NET WCF](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet-wcf)
-* [.NET WSE 3.0 - LEGACY](https://github.com/skat/emcs-b2b-ws-sample-client-dotnet)
 
 ## Useful tools
 
