@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===   EMCS Simple Types Definitions   ===-->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" schemaLocation="doc.xsd" />
   <!--==========================================================-->
   <!--===                 ActualQuantityType                 ===-->
   <!--==========================================================-->
@@ -39,7 +39,7 @@
   <xs:simpleType name="AlcoholicStrengthType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="Alcoholic Strength by Volume in Percentage" />
+        <doc:description value="Alcoholic Strength" />
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:decimal">
@@ -260,21 +260,25 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===                  GrossWeightType                   ===-->
+  <!--===                   GrossMassType                    ===-->
   <!--==========================================================-->
-  <xs:simpleType name="GrossWeightType">
+  <xs:simpleType name="GrossMassType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="Gross Weight" />
+        <doc:description value="Gross Mass" />
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:decimal">
-      <xs:totalDigits value="15" />
-      <xs:fractionDigits value="2" />
+      <xs:totalDigits value="16" />
+      <xs:fractionDigits value="6" />
       <xs:minExclusive value="0" />
-      <xs:pattern value="[1-9]\d{0,14}" />
-      <xs:pattern value="([1-9]\d{0,13}|0)\.[0-9]" />
-      <xs:pattern value="([1-9]\d{0,12}|0)\.\d[0-9]" />
+      <xs:pattern value="[1-9]\d{0,15}" />
+      <xs:pattern value="([1-9]\d{0,14}|0)\.[0-9]" />
+      <xs:pattern value="([1-9]\d{0,13}|0)\.\d[0-9]" />
+      <xs:pattern value="([1-9]\d{0,12}|0)\.\d\d[0-9]" />
+      <xs:pattern value="([1-9]\d{0,11}|0)\.\d\d\d[0-9]" />
+      <xs:pattern value="([1-9]\d{0,10}|0)\.\d\d\d\d[0-9]" />
+      <xs:pattern value="([1-9]\d{0,9}|0)\.\d\d\d\d\d[0-9]" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -287,9 +291,9 @@
         - "P" is a letter in ("H" = Hours or "D" = Day)
         - "dd" is a two digits number
         If P is "H" then the number is less or equal to 24
-        If P is "D" then the number is less or equal to 92
+        If P is "D" then the number is less or equal to 45
         
-        The maximum 92 days period for the journey time is derived from the maximum limit of the TIM_EAD timer defined in Appendix H.</xs:documentation>
+        The maximum 45 days period for the journey time is derived from the maximum limit of the TIM_EAD timer defined in Appendix H.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:length value="3" />
@@ -324,21 +328,25 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===                   NetWeightType                    ===-->
+  <!--===                    NetMassType                     ===-->
   <!--==========================================================-->
-  <xs:simpleType name="NetWeightType">
+  <xs:simpleType name="NetMassType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="Net Weight" />
+        <doc:description value="Net Mass" />
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:decimal">
-      <xs:totalDigits value="15" />
-      <xs:fractionDigits value="2" />
+      <xs:totalDigits value="16" />
+      <xs:fractionDigits value="6" />
       <xs:minExclusive value="0" />
-      <xs:pattern value="[1-9]\d{0,14}" />
-      <xs:pattern value="([1-9]\d{0,13}|0)\.[0-9]" />
-      <xs:pattern value="([1-9]\d{0,12}|0)\.\d[0-9]" />
+      <xs:pattern value="[1-9]\d{0,15}" />
+      <xs:pattern value="([1-9]\d{0,14}|0)\.[0-9]" />
+      <xs:pattern value="([1-9]\d{0,13}|0)\.\d[0-9]" />
+      <xs:pattern value="([1-9]\d{0,12}|0)\.\d\d[0-9]" />
+      <xs:pattern value="([1-9]\d{0,11}|0)\.\d\d\d[0-9]" />
+      <xs:pattern value="([1-9]\d{0,10}|0)\.\d\d\d\d[0-9]" />
+      <xs:pattern value="([1-9]\d{0,9}|0)\.\d\d\d\d\d[0-9]" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -348,6 +356,20 @@
     <xs:annotation>
       <xs:documentation>
         <doc:description value="Number of Active Economic Operators" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="15" />
+      <xs:pattern value="[0]|[1-9]{1}[0-9]{0,14}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
+  <!--===        NumberOfDeletedEconomicOperatorsType        ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="NumberOfDeletedEconomicOperatorsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Number Of Deleted Economic Operators" />
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
@@ -595,6 +617,20 @@
     <xs:annotation>
       <xs:documentation>
         <doc:description value="Total Number of Active Economic Operators" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="15" />
+      <xs:pattern value="[0]|[1-9]{1}[0-9]{0,14}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
+  <!--===     TotalNumberOfDeletedEconomicOperatorsType      ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="TotalNumberOfDeletedEconomicOperatorsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Total Number of Deleted Economic Operators" />
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
@@ -898,12 +934,12 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===       Alert or Rejection of E-AD Reason Code       ===-->
+  <!--===     Alert or Rejection of Movement Reason Code     ===-->
   <!--==========================================================-->
-  <xs:simpleType name="AlertOrRejectionOfEadReasonCodeType">
+  <xs:simpleType name="AlertOrRejectionOfMovementReasonCodeType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="Alert or Rejection of E-AD Reason Code" />
+        <doc:description value="Alert or Rejection of Movement Reason Code" />
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
@@ -1472,6 +1508,20 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
+  <!--===          Global Excise Trader Identifier           ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="GlobalExciseTraderIdentifierType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Global Excise Trader Identifier" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:length value="22" />
+      <xs:pattern value=".{22}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
   <!--===                 Global Explanation                 ===-->
   <!--==========================================================-->
   <xs:simpleType name="GlobalExplanationType">
@@ -1483,20 +1533,6 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="350" />
       <xs:pattern value=".{1,350}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===               History Request Reason               ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="HistoryRequestReasonType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="History Request Reason" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="999" />
-      <xs:pattern value=".{1,999}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -1651,6 +1687,20 @@
     <xs:restriction base="xs:token">
       <xs:length value="1" />
       <xs:pattern value="[0-9]" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
+  <!--===        Maturation Period or Age of Products        ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="MaturationPeriodOrAgeOfProductsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Maturation Period or Age of Products" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="350" />
+      <xs:pattern value=".{1,350}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -2368,6 +2418,20 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
+  <!--=== Time To Complete Fiscal Formalities for Duty Paid Movements ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="TimeToCompleteFiscalFormalitiesForDutyPaidMovementsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Time To Complete Fiscal Formalities for Duty Paid Movements" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:length value="4" />
+      <xs:pattern value=".{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
   <!--===                    Trader Name                     ===-->
   <!--==========================================================-->
   <xs:simpleType name="TraderNameType">
@@ -2494,4 +2558,3 @@
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
-

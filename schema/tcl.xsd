@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.01" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== Common Request Type =====-->
   <!--=========================================-->
@@ -35,12 +35,22 @@
       </xs:enumeration>
       <xs:enumeration value="6">
         <xs:annotation>
-          <xs:documentation>Request for retrieval of a list of e-Ads</xs:documentation>
+          <xs:documentation>Request for retrieval of a list of e-ADs/e-SADs</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="7">
         <xs:annotation>
           <xs:documentation>Request for SEED statistics</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Request for retrieval of a list of e-ADs</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>Request for retrieval of a list of e-SADs</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -270,7 +280,7 @@
       </xs:enumeration>
       <xs:enumeration value="44">
         <xs:annotation>
-          <xs:documentation>Quantity of goods (in an e-AD body)</xs:documentation>
+          <xs:documentation>Quantity of goods (in an e-AD/e-SAD body)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="45">
@@ -350,7 +360,7 @@
     <xs:restriction base="xs:nonNegativeInteger">
       <xs:enumeration value="1">
         <xs:annotation>
-          <xs:documentation>Active and inactive economic operators</xs:documentation>
+          <xs:documentation>Active/Inactive and Deleted economic operators</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="2">
@@ -400,7 +410,7 @@
       </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
-          <xs:documentation>No e-AD(s) retrieved matching selection criteria</xs:documentation>
+          <xs:documentation>No e-AD(s)/e-SAD(s) retrieved matching selection criteria</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="26">
@@ -515,7 +525,7 @@
       </xs:enumeration>
       <xs:enumeration value="22">
         <xs:annotation>
-          <xs:documentation>Alert or rejection of e-AD reasons</xs:documentation>
+          <xs:documentation>Alert or rejection of e-AD/e-SAD reasons</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="23">
@@ -531,6 +541,11 @@
       <xs:enumeration value="25">
         <xs:annotation>
           <xs:documentation>Event submitting persons</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="26">
+        <xs:annotation>
+          <xs:documentation>National Administration - Degree Plato</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="3">
@@ -693,6 +708,11 @@
           <xs:documentation>Create</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="D">
+        <xs:annotation>
+          <xs:documentation>Delete</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="I">
         <xs:annotation>
           <xs:documentation>Invalidate</xs:documentation>
@@ -785,7 +805,7 @@
       </xs:enumeration>
       <xs:enumeration value="22">
         <xs:annotation>
-          <xs:documentation>Alert or rejection of e-AD reasons</xs:documentation>
+          <xs:documentation>Alert or rejection of e-AD/e-SAD reasons</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="23">
@@ -873,9 +893,24 @@
           <xs:documentation>(reserved)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="39">
+        <xs:annotation>
+          <xs:documentation>Manual Closure Request Reasons</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="4">
         <xs:annotation>
           <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="40">
+        <xs:annotation>
+          <xs:documentation>Manual Closure Rejection Reasons</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="41">
+        <xs:annotation>
+          <xs:documentation>National Administration - Degree Plato</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="5">
@@ -901,16 +936,6 @@
       <xs:enumeration value="9">
         <xs:annotation>
           <xs:documentation>Packaging codes</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-	  <xs:enumeration value="39">
-        <xs:annotation>
-          <xs:documentation>Manual Closure Request Reasons</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-	  <xs:enumeration value="40">
-        <xs:annotation>
-          <xs:documentation>Manual Closure Rejection Reasons</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1020,7 +1045,7 @@
       </xs:enumeration>
       <xs:enumeration value="5">
         <xs:annotation>
-          <xs:documentation>No guarantee is provided according to Article 18.4(b) of 2008/118/EC</xs:documentation>
+          <xs:documentation>No guarantee is provided according to Article 17.2 and 17.5(b) of Directive 2020/262</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1043,6 +1068,11 @@
           <xs:documentation>Origin - Import</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Origin – Duty Paid</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <!--=========================================-->
@@ -1056,6 +1086,16 @@
       <xs:enumeration value="1">
         <xs:annotation>
           <xs:documentation>Destination - Tax warehouse</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation>
+          <xs:documentation>Destination – Temporary Certified Consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation>
+          <xs:documentation>Destination-Return to the place of dispatch of the Consignor</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="2">
@@ -1091,6 +1131,11 @@
       <xs:enumeration value="8">
         <xs:annotation>
           <xs:documentation>Unknown destination (consignee unknown)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>Destination – Certified Consignee</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1190,7 +1235,7 @@
       </xs:enumeration>
       <xs:enumeration value="3">
         <xs:annotation>
-          <xs:documentation>Reminder message at expiry of time to give destination information (Article 22 of Directive 2008/118/EC)</xs:documentation>
+          <xs:documentation>Reminder message at expiry of time to give destination information (Article 22 of Directive 2020/262)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1295,7 +1340,7 @@
       </xs:enumeration>
       <xs:enumeration value="X07">
         <xs:annotation>
-          <xs:documentation>e-AD Manually Closed</xs:documentation>
+          <xs:documentation>e-AD/e-SAD Manually Closed</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="X08">
@@ -1345,7 +1390,7 @@
       </xs:enumeration>
       <xs:enumeration value="IE801">
         <xs:annotation>
-          <xs:documentation>E-AD</xs:documentation>
+          <xs:documentation>E-AD/E-SAD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE802">
@@ -1380,7 +1425,7 @@
       </xs:enumeration>
       <xs:enumeration value="IE819">
         <xs:annotation>
-          <xs:documentation>ALERT OR REJECTION OF AN E-AD</xs:documentation>
+          <xs:documentation>ALERT OR REJECTION OF AN E-AD/E-SAD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE829">
@@ -1418,7 +1463,7 @@
           <xs:documentation>MANUAL CLOSURE RESPONSE</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-	  <xs:enumeration value="IE905">
+      <xs:enumeration value="IE905">
         <xs:annotation>
           <xs:documentation>STATUS RESPONSE</xs:documentation>
         </xs:annotation>
@@ -1525,7 +1570,7 @@
       </xs:enumeration>
       <xs:enumeration value="46">
         <xs:annotation>
-          <xs:documentation>The Member State of the Temporary Authorisation and the declared Consignor is the same (R233 violation)</xs:documentation>
+          <xs:documentation>The National Administration of the Temporary Authorisation and the declared Consignor is the same (R233 violation)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="8">
@@ -1550,7 +1595,7 @@
     <xs:restriction base="xs:token">
       <xs:enumeration value="IE801">
         <xs:annotation>
-          <xs:documentation>E-AD</xs:documentation>
+          <xs:documentation>E-AD/E-SAD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE803">
@@ -1580,7 +1625,7 @@
       </xs:enumeration>
       <xs:enumeration value="IE819">
         <xs:annotation>
-          <xs:documentation>ALERT OR REJECTION OF AN E-AD</xs:documentation>
+          <xs:documentation>ALERT OR REJECTION OF AN E-AD/E-SAD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE829">
@@ -1593,17 +1638,12 @@
           <xs:documentation>REJECTION OF E-AD FOR EXPORT</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="IE880">
-        <xs:annotation>
-          <xs:documentation>MANUAL CLOSURE REQUEST</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="IE881">
         <xs:annotation>
           <xs:documentation>MANUAL CLOSURE RESPONSE</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-	   <xs:enumeration value="IE905">
+      <xs:enumeration value="IE905">
         <xs:annotation>
           <xs:documentation>STATUS RESPONSE</xs:documentation>
         </xs:annotation>
@@ -1638,6 +1678,16 @@
           <xs:documentation>Registered consignor</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Certified Consignor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>Certified Consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <!--=========================================-->
@@ -1655,7 +1705,7 @@
       </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
-          <xs:documentation>Allowed to leave empty the destination fields according to Article 22 of Directive 2008/118/EC</xs:documentation>
+          <xs:documentation>Allowed to leave empty the destination fields according to Article 22 of Directive 2020/262</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1706,6 +1756,11 @@
       <xs:enumeration value="2">
         <xs:annotation>
           <xs:documentation>Submission for export (local clearance)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Submission for Duty Paid B2B</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1803,6 +1858,16 @@
           <xs:documentation>Destination - Tax warehouse</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation>
+          <xs:documentation>Destination – Temporary Certified Consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation>
+          <xs:documentation>Destination-Return to the place of dispatch of the Consignor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
           <xs:documentation>Destination - Registered consignee</xs:documentation>
@@ -1836,6 +1901,11 @@
       <xs:enumeration value="8">
         <xs:annotation>
           <xs:documentation>(reserved)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>Destination – Certified Consignee</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2020,12 +2090,12 @@
       </xs:enumeration>
       <xs:enumeration value="4">
         <xs:annotation>
-          <xs:documentation>Intention to make claim under Article 10 of Council Directive 2008/118/EC</xs:documentation>
+          <xs:documentation>Intention to make claim under Article 9 of Council Directive 2020/262</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="5">
         <xs:annotation>
-          <xs:documentation>Allowable loss detected, in relation to Article 7(4) of Council Directive 2008/118/EC</xs:documentation>
+          <xs:documentation>Allowable loss detected, in relation to Article 6 of Council Directive 2020/262</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2055,7 +2125,7 @@
       </xs:enumeration>
       <xs:enumeration value="11">
         <xs:annotation>
-          <xs:documentation>Compare documents presented with e-AD</xs:documentation>
+          <xs:documentation>Compare documents presented with e-AD/e-SAD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="2">
@@ -2135,7 +2205,7 @@
       </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
-          <xs:documentation>History answer message</xs:documentation>
+          <xs:documentation>(reserved)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2235,32 +2305,7 @@
       </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
-          <xs:documentation>Request for history</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <!--=========================================-->
-  <!--===== History Request Scope Type =====-->
-  <!--=========================================-->
-  <xs:simpleType name="HistoryRequestScopeType">
-    <xs:annotation>
-      <xs:documentation>History Request Scope Type</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:nonNegativeInteger">
-      <xs:enumeration value="1">
-        <xs:annotation>
-          <xs:documentation>Applicable data at a given date set by the &lt;Scope Date&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="2">
-        <xs:annotation>
-          <xs:documentation>History of data since a given date set by the &lt;Scope Date&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="3">
-        <xs:annotation>
-          <xs:documentation>Complete history of data</xs:documentation>
+          <xs:documentation>(reserved)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2280,7 +2325,7 @@
       </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
-          <xs:documentation>History results reminder message</xs:documentation>
+          <xs:documentation>(reserved)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2600,5 +2645,29 @@
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
+  <!--=========================================-->
+  <!--===== Temporary Operator Type Code =====-->
+  <!--=========================================-->
+  <xs:simpleType name="TemporaryOperatorTypeCode">
+    <xs:annotation>
+      <xs:documentation>Temporary Operator Type Code</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Temporary Registered Consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Temporary Certified Consignor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Temporary Certified Consignee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>
-

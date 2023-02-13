@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
 	<!--=========================================-->
 	<!--      DOCUMENTATION ELEMENTS             -->
 	<!--=========================================-->

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE801:V2.02" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V2.02" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:IE801:V2.02" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE801:V3.01" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.01" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.01" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE801:V3.01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE801:C_EAD_VAL -->
-  <!--===== E-AD -->
+  <!--===== E-AD/E-SAD -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V2.02" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V2.02" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V2.02" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V2.02" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.01" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.01" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE801" type="ie:IE801Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -21,13 +21,13 @@
   <!--===== IE Specific Data Groups Declarations =====-->
   <xs:complexType name="BodyType">
     <xs:sequence>
-      <xs:element name="EADContainer" type="ie:EADContainerType" />
+      <xs:element name="EADESADContainer" type="ie:EADESADContainerType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="EADContainerType">
+  <xs:complexType name="EADESADContainerType">
     <xs:sequence>
       <xs:element name="ConsigneeTrader" type="ie:ConsigneeTraderType" minOccurs="0" />
-      <xs:element name="ExciseMovementEad" type="ie:ExciseMovementEadType" />
+      <xs:element name="ExciseMovement" type="ie:ExciseMovementType" />
       <xs:element name="ConsignorTrader" type="ie:ConsignorTraderType" />
       <xs:element name="PlaceOfDispatchTrader" type="ie:PlaceOfDispatchTraderType" minOccurs="0" />
       <xs:element name="DispatchImportOffice" type="ie:DispatchImportOfficeType" minOccurs="0" />
@@ -38,11 +38,11 @@
       <xs:element name="TransportArrangerTrader" type="ie:TransportArrangerTraderType" minOccurs="0" />
       <xs:element name="FirstTransporterTrader" type="ie:FirstTransporterTraderType" minOccurs="0" />
       <xs:element name="DocumentCertificate" type="ie:DocumentCertificateType" minOccurs="0" maxOccurs="9" />
-      <xs:element name="Ead" type="ie:EadType" />
-      <xs:element name="HeaderEad" type="ie:HeaderEadType" />
+      <xs:element name="EadEsad" type="ie:EadEsadType" />
+      <xs:element name="HeaderEadEsad" type="ie:HeaderEadEsadType" />
       <xs:element name="TransportMode" type="ie:TransportModeType" />
       <xs:element name="MovementGuarantee" type="ie:MovementGuaranteeType" />
-      <xs:element name="BodyEad" type="ie:BodyEadType" maxOccurs="unbounded" />
+      <xs:element name="BodyEadEsad" type="ie:BodyEadEsadType" maxOccurs="unbounded" />
       <xs:element name="TransportDetails" type="ie:TransportDetailsType" maxOccurs="99" />
     </xs:sequence>
   </xs:complexType>
@@ -63,15 +63,15 @@
     </xs:sequence>
     <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
   </xs:complexType>
-  <xs:complexType name="ExciseMovementEadType">
+  <xs:complexType name="ExciseMovementType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="EXCISE MOVEMENT E-AD" />
+        <doc:description value="EXCISE MOVEMENT" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
-      <xs:element name="DateAndTimeOfValidationOfEad" type="emcs:DateTimeType" />
+      <xs:element name="DateAndTimeOfValidationOfEadEsad" type="emcs:DateTimeType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ConsignorTraderType">
@@ -97,7 +97,7 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="ReferenceOfTaxWarehouse" type="emcs:ExciseNumberType" />
+      <xs:element name="ReferenceOfTaxWarehouse" type="emcs:ExciseNumberType" minOccurs="0" />
       <xs:element name="TraderName" type="emcs:TraderNameType" minOccurs="0" />
       <xs:element name="StreetName" type="emcs:StreetNameType" minOccurs="0" />
       <xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0" />
@@ -208,10 +208,10 @@
       <xs:element name="ReferenceOfDocument" type="ie:LSDReferenceOfDocumentType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="EadType">
+  <xs:complexType name="EadEsadType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="E-AD" />
+        <doc:description value="E-AD/E-SAD" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -235,10 +235,10 @@
       <xs:element name="ImportSadNumber" type="emcs:ImportSadNumberType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="HeaderEadType">
+  <xs:complexType name="HeaderEadEsadType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="(HEADER) E-AD" />
+        <doc:description value="(HEADER) E-AD/E-SAD" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -288,10 +288,10 @@
     </xs:sequence>
     <xs:attribute name="language" type="emcs:LanguageCodeType" use="optional" />
   </xs:complexType>
-  <xs:complexType name="BodyEadType">
+  <xs:complexType name="BodyEadEsadType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="(BODY) E-AD" />
+        <doc:description value="(BODY) E-AD/E-SAD" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -299,8 +299,8 @@
       <xs:element name="ExciseProductCode" type="emcs:ExciseProductCodeType" />
       <xs:element name="CnCode" type="emcs:CnCodeType" />
       <xs:element name="Quantity" type="emcs:QuantityType" />
-      <xs:element name="GrossWeight" type="emcs:GrossWeightType" />
-      <xs:element name="NetWeight" type="emcs:NetWeightType" />
+      <xs:element name="GrossMass" type="emcs:GrossMassType" />
+      <xs:element name="NetMass" type="emcs:NetMassType" />
       <xs:element name="AlcoholicStrengthByVolumeInPercentage" type="emcs:AlcoholicStrengthType" minOccurs="0" />
       <xs:element name="DegreePlato" type="emcs:DegreePlatoType" minOccurs="0" />
       <xs:element name="FiscalMark" type="ie:LSDFiscalMarkType" minOccurs="0" />
@@ -310,6 +310,7 @@
       <xs:element name="Density" type="emcs:DensityType" minOccurs="0" />
       <xs:element name="CommercialDescription" type="ie:LSDCommercialDescriptionType" minOccurs="0" />
       <xs:element name="BrandNameOfProducts" type="ie:LSDBrandNameOfProductsType" minOccurs="0" />
+      <xs:element name="MaturationPeriodOrAgeOfProducts" type="ie:LSDMaturationPeriodOrAgeOfProductsType" minOccurs="0" />
       <xs:element name="Package" type="ie:PackageType" maxOccurs="99" />
       <xs:element name="WineProduct" type="ie:WineProductType" minOccurs="0" />
     </xs:sequence>
@@ -408,6 +409,13 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:complexType name="LSDMaturationPeriodOrAgeOfProductsType">
+    <xs:simpleContent>
+      <xs:extension base="emcs:MaturationPeriodOrAgeOfProductsType">
+        <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="LSDOtherInformationType">
     <xs:simpleContent>
       <xs:extension base="emcs:OtherInformationType">
@@ -430,4 +438,3 @@
     </xs:simpleContent>
   </xs:complexType>
 </xs:schema>
-
