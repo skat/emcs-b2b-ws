@@ -50,7 +50,7 @@ It depends on your system and/or your strategy:
 The following certificates are for **Web Service Security** to ensure **non-repudiation** (signing) when exchanging 
 messages:
 
-* [TEST System](/crt/emcs-b2b-server-test-2020-08-26.pem) (**Note**: Expires on September 09, 2023)
+* [TEST System](/crt/emcs-b2b-server-test-2023-04-11.pem) (**Note**: Expires on April 10, 2026)
 
 * [PRODUCTION System](/crt/emcs-b2b-server-prod-2020-08-26.pem) (**Note**: Expires on September 16, 2023)
 
