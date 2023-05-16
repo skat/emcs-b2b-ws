@@ -56,7 +56,7 @@ messages:
 
 **IMPORTANT**: On May 25, 2023 the B2B services in PRODUCTION will switch to this certificate:
 
-* [PRODUCTION System](/crt/emcs-b2b-server-prod-2023-04-26.pem) (**Note**: Expires on April 27, 2026)
+* [PRODUCTION System](/crt/emcs-b2b-server-prod-2023-04-27.pem) (**Note**: Expires on April 27, 2026)
 
 
 These certificates **CANNOT** be used for **Transport Layer Security**
