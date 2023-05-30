@@ -54,7 +54,7 @@ messages:
 
 * [PRODUCTION System](/crt/emcs-b2b-server-prod-2020-08-26.pem) (**Note**: Expires on September 16, 2023).
 
-**IMPORTANT**: Scheduled update on May 30, 2023 at 0800 hours CET the B2B services in PRODUCTION will switch to this certificate:
+**IMPORTANT**: PRODUCTION will switch to this certificate at a date and time not yet scheduled, but before expiry of existing PRODUCTION certificate:
 
 * [PRODUCTION System](/crt/emcs-b2b-server-prod-2023-04-27.pem) (**Note**: Expires on April 27, 2026)
 
