@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===   EMCS Simple Types Definitions   ===-->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" schemaLocation="doc.xsd" />
   <!--==========================================================-->
   <!--===                 ActualQuantityType                 ===-->
   <!--==========================================================-->
@@ -948,6 +948,20 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
+  <!--===                        ARC                         ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="ArcType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="ARC" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:length value="21" />
+      <xs:pattern value=".{21}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
   <!--===               Associated Information               ===-->
   <!--==========================================================-->
   <xs:simpleType name="AssociatedInformationType">
@@ -1578,6 +1592,34 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
+  <!--===      Independent Small Producers Declaration       ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="IndependentSmallProducersDeclarationType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Independent Small Producers Declaration" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="350" />
+      <xs:pattern value=".{1,350}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
+  <!--===                 Invalidation date                  ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="InvalidationDateType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Invalidation date" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:length value="10" />
+      <xs:pattern value=".{10}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
   <!--===                   Invoice Number                   ===-->
   <!--==========================================================-->
   <xs:simpleType name="InvoiceNumberType">
@@ -1626,6 +1668,20 @@
     <xs:annotation>
       <xs:documentation>
         <doc:description value="Local Reference Number" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="22" />
+      <xs:pattern value=".{1,22}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
+  <!--===                        LRN                         ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="LrnType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="LRN" />
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
@@ -1757,6 +1813,20 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="2" />
       <xs:pattern value="[0-9]{1,2}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
+  <!--===                        MRN                         ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="MrnType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="MRN" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:length value="18" />
+      <xs:pattern value=".{18}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -1998,6 +2068,20 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
+  <!--===                  Reference number                  ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="ReferenceNumberType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Reference number" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="70" />
+      <xs:pattern value=".{1,70}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
   <!--===               Reference of Document                ===-->
   <!--==========================================================-->
   <xs:simpleType name="ReferenceOfDocumentType">
@@ -2107,6 +2191,20 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="35" />
       <xs:pattern value=".{1,35}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
+  <!--===                  Rejection reason                  ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="RejectionReasonType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Rejection reason" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="512" />
+      <xs:pattern value=".{1,512}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -2488,6 +2586,20 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
+  <!--===                        Type                        ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="TypeType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Type" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:length value="4" />
+      <xs:pattern value=".{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
   <!--===             Unsatisfactory Reason Code             ===-->
   <!--==========================================================-->
   <xs:simpleType name="UnsatisfactoryReasonCodeType">
@@ -2558,3 +2670,4 @@
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
+

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE839:V3.01" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.01" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.01" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE839:V3.01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE839:V3.13" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.13" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE839:V3.13" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE839:C_CUS_REJ -->
   <!--===== CUSTOMS REJECTION OF E-AD -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.01" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.01" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.13" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE839" type="ie:IE839Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -27,11 +27,11 @@
   <xs:complexType name="RefusalByCustomsType">
     <xs:sequence>
       <xs:element name="Attributes" type="ie:AttributesType" />
-      <xs:element name="ConsigneeTrader" type="ie:ConsigneeTraderType" minOccurs="0" />
+      <xs:element name="ConsigneeTrader" type="ie:ConsigneeTraderType" />
       <xs:element name="ExportPlaceCustomsOffice" type="ie:ExportPlaceCustomsOfficeType" minOccurs="0" />
-      <xs:element name="ExportCrossCheckingDiagnoses" type="ie:ExportCrossCheckingDiagnosesType" minOccurs="0" />
       <xs:element name="Rejection" type="ie:RejectionType" />
-      <xs:element name="CEadVal" type="ie:CEadValType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="ExportDeclarationInformation" type="ie:ExportDeclarationInformationType" minOccurs="0" />
+      <xs:element name="CEadVal" type="ie:CEadValType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="NEadSub" type="ie:NEadSubType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
@@ -67,30 +67,6 @@
       <xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ExportCrossCheckingDiagnosesType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="EXPORT CROSS CHECKING DIAGNOSES" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="LocalReferenceNumber" type="emcs:LocalReferenceNumberType" minOccurs="0" />
-      <xs:element name="DocumentReferenceNumber" type="emcs:DocumentReferenceNumberType" minOccurs="0" />
-      <xs:element name="Diagnosis" type="ie:DiagnosisType" maxOccurs="unbounded" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="DiagnosisType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="DIAGNOSIS" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
-      <xs:element name="BodyRecordUniqueReference" type="emcs:BodyRecordUniqueReferenceType" />
-      <xs:element name="DiagnosisCode" type="tcl:DiagnosisCode" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="RejectionType">
     <xs:annotation>
       <xs:documentation>
@@ -100,6 +76,77 @@
     <xs:sequence>
       <xs:element name="RejectionDateAndTime" type="emcs:DateTimeType" />
       <xs:element name="RejectionReasonCode" type="tcl:CustomsRejectionReasonCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExportDeclarationInformationType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="EXPORT DECLARATION INFORMATION" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LocalReferenceNumber" type="emcs:LocalReferenceNumberType" minOccurs="0" />
+      <xs:element name="DocumentReferenceNumber" type="emcs:DocumentReferenceNumberType" minOccurs="0" />
+      <xs:element name="NegativeCrosscheckValidationResults" type="ie:NegativeCrosscheckValidationResultsType" minOccurs="0" maxOccurs="99" />
+      <xs:element name="NNonDes" type="ie:NNonDesType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NegativeCrosscheckValidationResultsType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="NEGATIVE CROSS-CHECK VALIDATION RESULTS" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="UbrCrosscheckResult" type="ie:UbrCrosscheckResultType" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UbrCrosscheckResultType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="UBR CROSS-CHECK RESULT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
+      <xs:element name="BodyRecordUniqueReference" type="emcs:BodyRecordUniqueReferenceType" />
+      <xs:element name="DiagnosisCode" type="tcl:DiagnosisCode" />
+      <xs:element name="ValidationResult" type="tcl:Flag" />
+      <xs:element name="RejectionReason" type="emcs:RejectionReasonType" minOccurs="0" />
+      <xs:element name="CombinedNomenclatureCodeCrosscheckResult" type="ie:CombinedNomenclatureCodeCrosscheckResultType" minOccurs="0" />
+      <xs:element name="NetMassCrosscheckResult" type="ie:NetMassCrosscheckResultType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CombinedNomenclatureCodeCrosscheckResultType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="COMBINED NOMENCLATURE CODE CROSS-CHECK RESULT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ValidationResult" type="tcl:Flag" />
+      <xs:element name="RejectionReason" type="emcs:RejectionReasonType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NetMassCrosscheckResultType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="NET MASS CROSS-CHECK RESULT" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ValidationResult" type="tcl:Flag" />
+      <xs:element name="RejectionReason" type="emcs:RejectionReasonType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NNonDesType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="N_NON_DES" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DocumentReferenceNumber" type="emcs:DocumentReferenceNumberType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="CEadValType">
@@ -124,3 +171,4 @@
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
+

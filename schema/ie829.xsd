@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE829:V3.01" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.01" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.01" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE829:V3.01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE829:V3.13" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.13" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE829:V3.13" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE829:C_EXP_NOT -->
   <!--===== NOTIFICATION OF ACCEPTED EXPORT -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.01" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.01" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.01" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.01" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.13" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE829" type="ie:IE829Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -27,10 +27,10 @@
   <xs:complexType name="NotificationOfAcceptedExportType">
     <xs:sequence>
       <xs:element name="Attributes" type="ie:AttributesType" />
-      <xs:element name="ConsigneeTrader" type="ie:ConsigneeTraderType" minOccurs="0" />
-      <xs:element name="ExciseMovementEad" type="ie:ExciseMovementEadType" maxOccurs="99" />
+      <xs:element name="ConsigneeTrader" type="ie:ConsigneeTraderType" />
+      <xs:element name="ExciseMovementEad" type="ie:ExciseMovementEadType" maxOccurs="unbounded" />
       <xs:element name="ExportPlaceCustomsOffice" type="ie:ExportPlaceCustomsOfficeType" minOccurs="0" />
-      <xs:element name="ExportAcceptance" type="ie:ExportAcceptanceType" />
+      <xs:element name="ExportDeclarationAcceptanceRelease" type="ie:ExportDeclarationAcceptanceReleaseType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="AttributesType">
@@ -64,6 +64,7 @@
     <xs:sequence>
       <xs:element name="AdministrativeReferenceCode" type="emcs:AdministrativeReferenceCodeType" />
       <xs:element name="SequenceNumber" type="emcs:SequenceNumberType" />
+      <xs:element name="ExportDeclarationAcceptanceOrGoodsReleasedForExport" type="tcl:Flag" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ExportPlaceCustomsOfficeType">
@@ -76,17 +77,19 @@
       <xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ExportAcceptanceType">
+  <xs:complexType name="ExportDeclarationAcceptanceReleaseType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="EXPORT ACCEPTANCE" />
+        <doc:description value="EXPORT DECLARATION ACCEPTANCE/RELEASE" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="ReferenceNumberOfSenderCustomsOffice" type="emcs:ExciseOfficeCodeType" />
       <xs:element name="IdentificationOfSenderCustomsOfficer" type="emcs:IdentificationOfSenderCustomsOfficerType" minOccurs="0" />
-      <xs:element name="DateOfAcceptance" type="emcs:DateType" />
+      <xs:element name="DateOfAcceptance" type="emcs:DateType" minOccurs="0" />
+      <xs:element name="DateOfRelease" type="emcs:DateType" minOccurs="0" />
       <xs:element name="DocumentReferenceNumber" type="emcs:DocumentReferenceNumberType" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
+
