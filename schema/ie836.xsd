@@ -41,7 +41,7 @@
       <xs:element name="ExportOperation" type="ie:ExportOperationType" />
       <xs:element name="CustomsOfficeOfExport" type="ie:CustomsOfficeOfExportType" />
       <xs:element name="MsaOfExport" type="ie:MsaOfExportType" />
-      <xs:element name="GoodsShipment" type="ie:GoodsShipmentType" />
+      <xs:element name="GoodsShipment" type="ie:GoodsShipmentType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ExportOperationType">
@@ -52,7 +52,7 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element name="Mrn" type="emcs:MrnType" />
-      <xs:element name="InvalidationDate" type="emcs:InvalidationDateType" />
+      <xs:element name="InvalidationDate" type="emcs:DateType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="CustomsOfficeOfExportType">
