@@ -1800,12 +1800,12 @@
       </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
-          <xs:documentation>Body Record Unique Reference does not exist in the e-AD</xs:documentation>
+          <xs:documentation>Body Record Unique Reference does not exist in the e-AD OR No corresponding GOODS ITEM in the export declaration</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="3">
         <xs:annotation>
-          <xs:documentation>No corresponding GOODS ITEM in the export declaration</xs:documentation>
+          <xs:documentation>(reserved)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="4">
@@ -1815,12 +1815,17 @@
       </xs:enumeration>
       <xs:enumeration value="5">
         <xs:annotation>
-          <xs:documentation>The destination type code of the e-AD is not export</xs:documentation>
+          <xs:documentation>(reserved)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="6">
         <xs:annotation>
           <xs:documentation>CN codes do not match</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="7">
+        <xs:annotation>
+          <xs:documentation>Weight/mass do not match and CN codes do not match</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
