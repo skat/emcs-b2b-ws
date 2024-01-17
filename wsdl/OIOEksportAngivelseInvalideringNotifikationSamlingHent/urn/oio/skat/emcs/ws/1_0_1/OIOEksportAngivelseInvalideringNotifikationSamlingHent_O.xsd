@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:emcs:ws:1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:emcs="urn:oio:skat:emcs:1.0.1" xmlns:kontekst="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/">
+	<xs:annotation>
+		<xs:documentation/>
+	</xs:annotation>
+	<xs:import namespace="http://rep.oio.dk/skat.dk/basis/kontekst/xml/schemas/2006/09/01/" schemaLocation="../../../../../../skat_dk/basis/kontekst/xml/schemas/2006/09/01/HovedOplysningerSvar.xsd"/><xs:import namespace="urn:oio:skat:emcs:1.0.1" schemaLocation="../../1_0_1/IE836BeskedTekst.xsd"/><xs:element name="OIOEksportAngivelseInvalideringNotifikationSamlingHent_O" type="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHent_OType">
+	</xs:element>
+	<xs:complexType name="OIOEksportAngivelseInvalideringNotifikationSamlingHent_OType">
+		<xs:sequence>
+			<xs:element ref="kontekst:HovedOplysningerSvar"/>
+			<xs:element name="EksportAngivelseInvalideringNotifikationListe" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="emcs:IE836BeskedTekst" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

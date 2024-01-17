@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:emcs:ws:1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:virksomhed="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/" xmlns:emcs="urn:oio:skat:emcs:1.0.1">
+	<xs:annotation>
+		<xs:documentation/>
+	</xs:annotation>
+	<xs:import namespace="urn:oio:skat:emcs:1.0.1" schemaLocation="../../1_0_1/AfgiftOperatoerPunktAfgiftIdentifikator.xsd"/><xs:import namespace="http://rep.oio.dk/skat.dk/motor/class/virksomhed/xml/schemas/20080401/" schemaLocation="../../../../../../skat_dk/motor/class/virksomhed/xml/schemas/20080401/VirksomhedSENummerIdentifikator.xsd"/><xs:element name="VirksomhedIdentifikationStruktur" type="struct:VirksomhedIdentifikationStrukturType"/>
+	<xs:complexType name="VirksomhedIdentifikationStrukturType">
+		<xs:sequence>
+			<xs:element name="Indberetter">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="virksomhed:VirksomhedSENummerIdentifikator"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="emcs:AfgiftOperatoerPunktAfgiftIdentifikator"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/xkom.dk/xml/schemas/2007/04/15/"><element name="EndDate" type="date"/></schema>

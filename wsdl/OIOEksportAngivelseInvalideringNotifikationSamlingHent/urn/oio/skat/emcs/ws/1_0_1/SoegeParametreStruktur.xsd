@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:emcs:ws:1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:emcs="urn:oio:skat:emcs:1.0.1" xmlns:xkom="http://rep.oio.dk/xkom.dk/xml/schemas/2006/09/01/" xmlns:xkom1="http://rep.oio.dk/xkom.dk/xml/schemas/2007/04/15/">
+	<xs:annotation>
+		<xs:documentation/>
+	</xs:annotation>
+	<xs:import namespace="http://rep.oio.dk/xkom.dk/xml/schemas/2007/04/15/" schemaLocation="../../../../../../xkom_dk/xml/schemas/2007/04/15/EndDate.xsd"/><xs:import namespace="http://rep.oio.dk/xkom.dk/xml/schemas/2006/09/01/" schemaLocation="../../../../../../xkom_dk/xml/schemas/2006/09/01/StartDate.xsd"/><xs:import namespace="urn:oio:skat:emcs:1.0.1" schemaLocation="../../1_0_1/LedsagedokumentARCIdentifikator.xsd"/><xs:element name="SøgeParametreStruktur" type="struct:SøgeParametreStrukturType"/>
+	<xs:complexType name="SøgeParametreStrukturType">
+		<xs:sequence>
+			<xs:element name="SøgeParametre">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element ref="emcs:LedsagedokumentARCIdentifikator"/>
+						<xs:sequence>
+							<xs:element name="GyldighedPeriodeUdsøgning">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="xkom:StartDate"/>
+										<xs:element ref="xkom1:EndDate"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

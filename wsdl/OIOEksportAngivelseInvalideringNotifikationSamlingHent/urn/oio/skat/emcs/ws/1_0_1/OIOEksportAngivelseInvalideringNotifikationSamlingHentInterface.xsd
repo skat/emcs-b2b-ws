@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:emcs:ws:1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:annotation>
+		<xs:documentation>OIO-udgave af tilsvarende forretningsservice.  Servicen benyttes til af forespørge på ledsagedokumenter.</xs:documentation>
+	</xs:annotation>
+	<xs:include schemaLocation="OIOEksportAngivelseInvalideringNotifikationSamlingHent_I.xsd"/>
+	<xs:include schemaLocation="OIOEksportAngivelseInvalideringNotifikationSamlingHent_O.xsd"/>
+	<xs:element name="OIOEksportAngivelseInvalideringNotifikationSamlingHentInterface" type="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHentInterfaceType"/>
+	<xs:complexType name="OIOEksportAngivelseInvalideringNotifikationSamlingHentInterfaceType">
+		<xs:choice>
+			<xs:element ref="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHent_I"/>
+			<xs:element ref="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHent_O"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

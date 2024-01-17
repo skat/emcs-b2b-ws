@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:struct="urn:oio:skat:emcs:ws:1.0.1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:oio:skat:emcs:ws:1.0.1" name="OIOEksportAngivelseInvalideringNotifikationSamlingHentService">
+	<xs:annotation xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<xs:documentation>OIO-udgave af tilsvarende forretningsservice.  Servicen benyttes til af forespørge på ledsagedokumenter.</xs:documentation>
+	</xs:annotation>
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:oio:skat:emcs:ws:1.0.1">
+			<xsd:include schemaLocation="urn/oio/skat/emcs/ws/1_0_1/OIOEksportAngivelseInvalideringNotifikationSamlingHentInterface.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="OIOEksportAngivelseInvalideringNotifikationSamlingHentServiceRequest">
+		<wsdl:part name="Request" element="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHent_I"/>
+	</wsdl:message>
+	<wsdl:message name="OIOEksportAngivelseInvalideringNotifikationSamlingHentServiceResponse">
+		<wsdl:part name="Response" element="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHent_O"/>
+	</wsdl:message>
+	<wsdl:portType name="OIOEksportAngivelseInvalideringNotifikationSamlingHentServicePortType">
+		<wsdl:operation name="getOIOEksportAngivelseInvalideringNotifikationSamlingHent">
+			<wsdl:input message="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHentServiceRequest"/>
+			<wsdl:output message="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHentServiceResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="OIOEksportAngivelseInvalideringNotifikationSamlingHentServiceBinding" type="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHentServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getOIOEksportAngivelseInvalideringNotifikationSamlingHent">
+			<soap:operation soapAction="getOIOEksportAngivelseInvalideringNotifikationSamlingHent" style="document"/>
+			<wsdl:input>
+				<soap:body namespace="http://skat.dk/begrebsmodel/2009/01/15/" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://skat.dk/begrebsmodel/2009/01/15/" use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="OIOEksportAngivelseInvalideringNotifikationSamlingHentService">
+		<wsdl:port binding="struct:OIOEksportAngivelseInvalideringNotifikationSamlingHentServiceBinding" name="OIOEksportAngivelseInvalideringNotifikationSamlingHentServicePort">
+			<soap:address location="http://localhost/EMCS_OIOEksportAngivelseInvalideringNotifikationSamlingHent/OIOEksportAngivelseInvalideringNotifikationSamlingHentServicePort"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
