@@ -31,6 +31,7 @@ The EMCS B2B Web Service Gateway provides 22 services defined by these Web Servi
 * [OIOLedsageDokumentOpsplitningOpret](wsdl/OIOLedsageDokumentOpsplitningOpret/OIOLedsageDokumentOpsplitningOpret.wsdl)
 * [OIOLedsageDokumentSamlingHent](wsdl/OIOLedsageDokumentSamlingHent/OIOLedsageDokumentSamlingHent.wsdl)
 * [OIOPaamindelseSamlingHent](wsdl/OIOPaamindelseSamlingHent/OIOPaamindelseSamlingHent.wsdl)
+* [OIOEksportAngivelseInvalideringNotifikationSamlingHent](wsdl/OIOEksportAngivelseInvalideringNotifikationSamlingHent/OIOEksportAngivelseInvalideringNotifikationSamlingHent.wsdl)
 
 Current WSDL version: **1.0.1**
 
