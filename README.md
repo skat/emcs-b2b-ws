@@ -2,12 +2,12 @@
 
 This repository provides relevant artefacts and information in relation to SKAT's EMCS B2B Web Service Gateway.
 
-The SKAT's Web Service Gateway for Excise movement and Control System (EMCS) provides 22 SOAP Web Services (in total) that legal
+The SKAT's Web Service Gateway for Excise movement and Control System (EMCS) provides 23 SOAP Web Services (in total) that legal
 entities may consume in ERP systems for fully automated submitting and receiving EMCS documents (XML documents). 
 
 ## Service WSDLs
 
-The EMCS B2B Web Service Gateway provides 22 services defined by these Web Service definitions:
+The EMCS B2B Web Service Gateway provides 23 services defined by these Web Service definitions:
 
 * [OIOBeskedAfvisningSamlingHent](wsdl/OIOBeskedAfvisningSamlingHent/OIOBeskedAfvisningSamlingHent.wsdl)
 * [OIOEksportAfvisningSamlingHent](wsdl/OIOEksportAfvisningSamlingHent/OIOEksportAfvisningSamlingHent.wsdl)
@@ -86,7 +86,7 @@ Service endpoints for both the test environment and production are provided by S
 
 ## Schemas (XSD) for EMCS Functional Messages
 
-Some of the above 22 services must embed EMCS Functional Messages as part of the SOAP request and these documents
+Some of the above 23 services must embed EMCS Functional Messages as part of the SOAP request and these documents
 are defined by schemas (or XSD files) located in the [schema](schema) directory.
 
 Current schema version: **2.02**
