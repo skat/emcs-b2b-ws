@@ -2,6 +2,24 @@
 
 Brief summary in English: This document is changelog for EMCS B2B Web Services.
 
+
+### V3.19 til V3.20 Januar 2024
+
+* 13/02/2024 lanceres FS4.1 af EMCS. Det betyder, at de nuværende beskeder vil blive opdateret, og et nyt sæt af EU XSD-filer skal anvendes til at generere de beskeder, som EMCS forventer at modtage.
+* De nye XSD-filer til Fase 4.1 kan findes på GitHub: [emcs-b2b-ws/schema at master · skat/emcs-b2b-ws (github.com)](https://github.com/skat/emcs-b2b-ws/tree/master/schema)
+* Testdata med eksempler kan findes på Github: [skat/emcs-b2b-ws-test-data: Test Data for EMCS B2B Web Services (github.com)](https://github.com/skat/emcs-b2b-ws-test-data)
+* Følgende dokumenter er ligeledes opdateret, og kan findes i ”Implementeringsvejledning for B2B webservices” på skat.dk:
+	* Oversigt over beskedstruktur
+
+English:
+
+* 13/02/2024 FS4.0 of EMCS is released. This means that the current messages will be updated and a new set of EU XSD-files is required to generate EMCS messages.
+* The new XSD-files for Phase 4.1 is located on GitHub: [emcs-b2b-ws/schema at master · skat/emcs-b2b-ws (github.com)](https://github.com/skat/emcs-b2b-ws/tree/master/schema)
+* Test data with examples is located on Github: [skat/emcs-b2b-ws-test-data: Test Data for EMCS B2B Web Services (github.com)](https://github.com/skat/emcs-b2b-ws-test-data)
+* The following document has also been updated and can be located via the implementation guide for B2B webservices (”Implementeringsvejledning for B2B webservices”) on skat.dk:
+	* Overview of message structure (”Oversigt over beskedstruktur”)
+ 
+
 ### V3.18 til V3.19 November 2022
 
 * 13/02/2023 lanceres FS4.0 af EMCS. Det betyder, at de nuværende beskeder vil blive opdateret, og et nyt sæt af EU XSD-filer skal anvendes til at generere de beskeder, som EMCS forventer at modtage. 
