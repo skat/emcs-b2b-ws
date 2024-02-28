@@ -405,7 +405,6 @@ generated before the request has reached the EMCS system.
 
 | Error Code | Error description                                                                                                                                                                                                 |
 | -----------| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 300        | SE nummeret {0} har ingen tilhoersforhold til det anvendte certifikat                                                                                                                          |
 | 301        | Punktafgiftnummeret angivet i AfgiftOperatoerPunktAfgiftIdentifikator er ikke et gyldigt punktafgiftnummer                                                                                     |
 | 302        | Den angivet afgift operatoer har enten ikke tillades til at udfoere denne operation eller har ikke delegeret sine rettigheder til det firma hvis certifikat er anvendt i kaldet af webservicen |
 | 100        | Feltet 'VirksomhedSENummerIdentifikator' skal udfyldes                                                                                                                                         |
