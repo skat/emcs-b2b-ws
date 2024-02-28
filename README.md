@@ -102,7 +102,8 @@ Concurrent calls are not permitted.
 
 All services are accessible via the Internet using the secure transport protocol **HTTPS** and configured with
 Web Services Security requiring authentication, signing, and 
-encryption using X.509 certificates issued by [MitID Erhverv](https://mitid-erhverv.dk) (Certificate Authority) of type OCES3. 
+encryption using X.509 certificates issued by [MitID Erhverv](https://mitid-erhverv.dk) (Certificate Authority) of type OCES3. Note that only **MitID Erhverv Organisation** and **MitID Erhverv 
+ System** certificates will be supported for B2B in accordance with Agency for Digital Government (DIGST) guidelines.
 The Web Services Security is based on [Web Services Security: SOAP Message Security 1.0 WS-Security 2004 - OASIS Standard 200401, March 2004 ](https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0.pdf)
 
 There are two parties in the communication:
