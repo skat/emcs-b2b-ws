@@ -5,12 +5,12 @@ Brief summary in English: This document is changelog for EMCS B2B Web Services.
 ### V3.20 til V4.1 Maj 2025
 
 * 27/05/2025 lanceret nyt EMCS. Det betyder du skal have en ny integratorpakke d. 27.maj 2025. Du skal henvende dig til servicedesk@toldst.dk for at modtage den nye integratorpakke. I pakken skal du bruge de nye endepunkter og de nye certifikater. Det er vigtigt, at du skifter til den nye integratorpakke den 27. maj 2025, for at B2B-løsningen virker.
-* Du kan først bestille integratorpakken, når den er klar. Vi giver besked, når du kan bestille pakken på toldst.dk/driftsmeddelelser.
+* Du kan først bestille integratorpakken, når den er klar. Vi giver besked, når du kan bestille pakken på [toldst.dk/driftsmeddelelser](toldst.dk/driftsmeddelelser).
 
 English:
 
 * On 27/05/2025, a new EMCS will be launched. This means you will need a new integrator package on May 27, 2025. You must contact servicedesk@toldst.dk to receive the new integrator package. The package will include the new endpoints and new certificates, which you will need. It is important that you switch to the new integrator package on May 27, 2025, for the B2B solution to function.
-You can only order the integrator package once it is ready. We will notify you when you can order the package from toldst.dk/driftsmeddelelser.
+You can only order the integrator package once it is ready. We will notify you when you can order the package from [toldst.dk/driftsmeddelelser](toldst.dk/driftsmeddelelser).
 
 ### V3.19 til V3.20 Januar 2024
 
