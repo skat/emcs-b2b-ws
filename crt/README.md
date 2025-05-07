@@ -18,6 +18,8 @@ It depends on your system and/or your strategy:
 | C | Full chain                           | Do both (A) and (B)             |
 
 Option **B** will void updates to the client system everytime the TLS server certificate is renewed.
+
+If option **A** see contents of [tls](/tls) folder.
     
 ## WS-Security
 
