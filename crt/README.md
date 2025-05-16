@@ -11,7 +11,7 @@ messages:
 
 * [PROD System](/crt/emcs-b2b-server-prod-2025-02-24.pem) (**Note**: Expires on February 24, 2028)
 
-Until May 26th. at 17:00 CET these certificates are in use: 
+Until May 26th. 2025 at 17:00 CET these certificates are in use: 
 
 * [TEST System](/crt/emcs-b2b-server-test-2023-04-11.pem) (**Note**: Expires on April 10, 2026)
 
