@@ -19,7 +19,11 @@ It depends on your system and/or your strategy:
 
 Option **B** will void updates to the client system everytime the TLS server certificate is renewed.
 
-If option **A** see contents of [tls](/tls) folder.
+If option **A** see contents of [tls](/tls) folder. 
+
+**NOTE** As of May 27th. 2025 at 15:20 CET the new TLS cert. in use for PROD is the file:
+
+* `emcs.skat.dk`
     
 ## WS-Security
 
