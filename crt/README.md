@@ -5,7 +5,7 @@
 The following certificates are for **Web Service Security** to ensure **non-repudiation** (signing) when exchanging 
 messages:
 
-**NOTE** **AFTER** May 27th. 2025 at 15:20 CET the certificates in use:
+**NOTE** **AFTER** May 27th. 2025 at 13:40 CET the certificates in use:
 
 * [TEST System](/crt/emcs-b2b-server-test-2024-11-13.pem) (**Note**: Expires on November 13, 2027)
 
@@ -28,7 +28,7 @@ Issuer certificates for both **TEST** and **PRODUCTION**:
 * [GlobalSign RSA OV SSL CA 2018](/crt/GlobalSign-RSA-OV-SSL-CA-2018.pem)
 * [GlobalSign](/crt/GlobalSign.pem)
 
-**NOTE** **AFTER** May 27th. 2025 at 15:20 CET the new TLS cert. in use for **PROD** will be the certificate in file:
+**NOTE** **AFTER** May 27th. 2025 at 13:40 CET the new TLS cert. in use for **PROD** will be the certificate in file:
 
 * [emcs.skat.dk.pem](/crt/tls/emcs.skat.dk.pem)
 
