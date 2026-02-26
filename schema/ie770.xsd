@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE770:V3.13" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.13" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE770:V3.13" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE770:V3.23" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.23" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.23" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.23" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.23" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE770:V3.23" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE770:C_AVA_DAT -->
   <!--===== BUSINESS PROCESS UNAVAILABILITY SCHEDULE -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.13" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.23" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.23" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.23" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.23" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE770" type="ie:IE770Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -68,14 +68,15 @@
       <xs:element name="DowntimeStartDateAndTime" type="emcs:DateTimeType" />
       <xs:element name="Type" type="tcl:SystemUnavailabilityType" />
       <xs:element name="DowntimeEndDateAndTime" type="emcs:DateTimeType" minOccurs="0" />
-      <xs:element name="Explanation" type="ie:LSDExplanationType" minOccurs="0" />
+      <xs:element name="Justification" type="ie:LSDJustificationType" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="LSDExplanationType">
+  <xs:complexType name="LSDJustificationType">
     <xs:simpleContent>
-      <xs:extension base="emcs:ExplanationType">
+      <xs:extension base="emcs:JustificationType">
         <xs:attribute name="language" type="emcs:LanguageCodeType" use="required" />
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
 </xs:schema>
+

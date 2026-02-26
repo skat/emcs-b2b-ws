@@ -89,7 +89,7 @@ Service endpoints for both the test environment and production are provided by S
 Some of the above 23 services must embed EMCS Functional Messages as part of the SOAP request and these documents
 are defined by schemas (or XSD files) located in the [schema](schema) directory.
 
-Current schema version: **3.13**
+Current schema version: **3.23**
 
 ## Service invocation intervals: Terms of use 
 

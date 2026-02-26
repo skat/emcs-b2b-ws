@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE815:V3.13" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.13" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE815:V3.13" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE815:V3.23" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.23" xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.23" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.23" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.23" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE815:V3.23" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== IE815:N_EAD_SUB -->
   <!--===== SUBMITTED DRAFT OF E-AD/E-SAD -->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" schemaLocation="types.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.13" schemaLocation="tms.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" schemaLocation="tcl.xsd" />
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.23" schemaLocation="types.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.23" schemaLocation="tms.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.23" schemaLocation="tcl.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.23" schemaLocation="doc.xsd" />
   <!--===== Root Element =====-->
   <xs:element name="IE815" type="ie:IE815Type" />
   <!--===== EMCS Data Groups Declarations =====-->
@@ -41,7 +41,7 @@
       <xs:element name="HeaderEadEsad" type="ie:HeaderEadEsadType" />
       <xs:element name="TransportMode" type="ie:TransportModeType" />
       <xs:element name="MovementGuarantee" type="ie:MovementGuaranteeType" />
-      <xs:element name="BodyEadEsad" type="ie:BodyEadEsadType" maxOccurs="unbounded" />
+      <xs:element name="BodyEadEsad" type="ie:BodyEadEsadType" maxOccurs="999" />
       <xs:element name="EadEsadDraft" type="ie:EadEsadDraftType" />
       <xs:element name="TransportDetails" type="ie:TransportDetailsType" maxOccurs="99" />
     </xs:sequence>
@@ -333,17 +333,17 @@
       <xs:element name="OriginTypeCode" type="tcl:OriginTypeCode" />
       <xs:element name="DateOfDispatch" type="emcs:DateType" />
       <xs:element name="TimeOfDispatch" type="emcs:TimeType" minOccurs="0" />
-      <xs:element name="ImportSad" type="ie:ImportSadType" minOccurs="0" maxOccurs="9" />
+      <xs:element name="ImportCustomsDeclaration" type="ie:ImportCustomsDeclarationType" minOccurs="0" maxOccurs="9" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ImportSadType">
+  <xs:complexType name="ImportCustomsDeclarationType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="IMPORT SAD" />
+        <doc:description value="IMPORT CUSTOMS DECLARATION" />
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="ImportSadNumber" type="emcs:ImportSadNumberType" />
+      <xs:element name="ImportCustomsDeclarationNumber" type="emcs:ImportCustomsDeclarationNumberType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TransportDetailsType">
@@ -438,3 +438,4 @@
     </xs:simpleContent>
   </xs:complexType>
 </xs:schema>
+

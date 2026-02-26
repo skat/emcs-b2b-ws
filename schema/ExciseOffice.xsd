@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-		   xmlns:exo="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:WEBSERVICE:ExciseOffices:V3.13"
-		   targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:WEBSERVICE:ExciseOffices:V3.13"
-		   elementFormDefault="qualified" attributeFormDefault="qualified" version="1.00">
-	<xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" schemaLocation="types.xsd"/>
+<xs:schema xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.23" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:exo="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:WEBSERVICE:ExciseOffices:V3.23" 
+  targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:WEBSERVICE:ExciseOffices:V3.23" 
+  elementFormDefault="qualified" attributeFormDefault="qualified" version="1.00">
+	<xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.23" schemaLocation="types.xsd"/>
 	<!--=========================================-->
 	<!--===== EXCISE OFFICE =====================-->
 	<!--=========================================-->
@@ -11,7 +11,7 @@
 	<xs:element name="ExciseOffices">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="exo:ExciseOffice" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="exo:ExciseOffice" minOccurs="0" maxOccurs="999"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -34,7 +34,7 @@
 	</xs:complexType>
 	<xs:complexType name="LanguageSpecificDataType">
 		<xs:sequence>
-			<xs:element name="NameAndAddress" type="exo:NameAndAddressType" maxOccurs="unbounded"/>
+			<xs:element name="NameAndAddress" type="exo:NameAndAddressType" maxOccurs="999"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="NameAndAddressType">

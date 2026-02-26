@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.13" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.23" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TCL:V3.23" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===== Common Request Type =====-->
   <!--=========================================-->
@@ -663,6 +663,21 @@
           <xs:documentation>Unsatisfactory Control Result at OoExp</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>ARC removed from Export Declaration Amendment (IE513) message</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="7">
+        <xs:annotation>
+          <xs:documentation>e-AD Request Rejection</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Pre-Lodged Export Declaration Cancellation/Timer Awaiting for Export Presentation Notification Expiration</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <!--=========================================-->
@@ -1290,12 +1305,12 @@
       </xs:enumeration>
       <xs:enumeration value="94">
         <xs:annotation>
-          <xs:documentation>Invalid Follow Up Correlation ID/ MV Correlation ID</xs:documentation>
+          <xs:documentation>Invalid Follow Up Correlation ID</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="95">
         <xs:annotation>
-          <xs:documentation>Unknown Follow Up Correlation ID / MV Correlation ID</xs:documentation>
+          <xs:documentation>Unknown Follow Up Correlation ID</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1365,7 +1380,7 @@
       </xs:enumeration>
       <xs:enumeration value="X12">
         <xs:annotation>
-          <xs:documentation>Accepted for Export</xs:documentation>
+          <xs:documentation>(reserved)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="X13">
@@ -1410,7 +1425,7 @@
       </xs:enumeration>
       <xs:enumeration value="IE803">
         <xs:annotation>
-          <xs:documentation>NOTIFICATION OF DIVERTED E-AD</xs:documentation>
+          <xs:documentation>NOTIFICATION OF DIVERTED E-AD/E-SAD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE807">
@@ -1420,7 +1435,7 @@
       </xs:enumeration>
       <xs:enumeration value="IE810">
         <xs:annotation>
-          <xs:documentation>CANCELLATION OF EAD</xs:documentation>
+          <xs:documentation>CANCELLATION OF AN E-AD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE813">
@@ -1455,7 +1470,7 @@
       </xs:enumeration>
       <xs:enumeration value="IE839">
         <xs:annotation>
-          <xs:documentation>REJECTION OF E-AD FOR EXPORT</xs:documentation>
+          <xs:documentation>CUSTOMS REJECTION OF E-AD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE840">
@@ -1615,7 +1630,7 @@
       </xs:enumeration>
       <xs:enumeration value="IE803">
         <xs:annotation>
-          <xs:documentation>NOTIFICATION OF DIVERTED E-AD</xs:documentation>
+          <xs:documentation>NOTIFICATION OF DIVERTED E-AD/E-SAD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE807">
@@ -1655,7 +1670,7 @@
       </xs:enumeration>
       <xs:enumeration value="IE839">
         <xs:annotation>
-          <xs:documentation>REJECTION OF E-AD FOR EXPORT</xs:documentation>
+          <xs:documentation>CUSTOMS REJECTION OF E-AD</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="IE881">
@@ -2250,12 +2265,12 @@
       </xs:enumeration>
       <xs:enumeration value="2">
         <xs:annotation>
-          <xs:documentation>EMCS - Central Circuit – External Domain Functionality</xs:documentation>
+          <xs:documentation>EMCS - Central Circuit – External Domain Functionality – Duty Suspension</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="3">
         <xs:annotation>
-          <xs:documentation>EMCS - Central Circuit – Common Domain Functionality</xs:documentation>
+          <xs:documentation>EMCS - Central Circuit – Common Domain Functionality – Duty Suspension</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="4">
@@ -2266,6 +2281,16 @@
       <xs:enumeration value="5">
         <xs:annotation>
           <xs:documentation>National SEED Functionality</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>EMCS - Central Circuit – External Domain Functionality – Duty Paid</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="7">
+        <xs:annotation>
+          <xs:documentation>EMCS - Central Circuit – Common Domain Functionality – Duty Paid</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2541,51 +2566,6 @@
     </xs:restriction>
   </xs:simpleType>
   <!--=========================================-->
-  <!--===== MV Request Type =====-->
-  <!--=========================================-->
-  <xs:simpleType name="MvRequestType">
-    <xs:annotation>
-      <xs:documentation>MV Request Type</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:nonNegativeInteger">
-      <xs:enumeration value="1">
-        <xs:annotation>
-          <xs:documentation>Check flow</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="2">
-        <xs:annotation>
-          <xs:documentation>Goods in Individual Operation</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <!--=========================================-->
-  <!--===== Result Code =====-->
-  <!--=========================================-->
-  <xs:simpleType name="ResultCode">
-    <xs:annotation>
-      <xs:documentation>Result Code</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:nonNegativeInteger">
-      <xs:enumeration value="1">
-        <xs:annotation>
-          <xs:documentation>Confirmed</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="2">
-        <xs:annotation>
-          <xs:documentation>Not confirmed</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="3">
-        <xs:annotation>
-          <xs:documentation>Not checked</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <!--=========================================-->
   <!--===== Feedback Requested or Provided =====-->
   <!--=========================================-->
   <xs:simpleType name="FeedbackRequestedOrProvided">
@@ -2696,3 +2676,4 @@
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
+

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.13" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.23" xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.23" targetNamespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:EMCS:V3.23" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
   <!--=========================================-->
   <!--===   EMCS Simple Types Definitions   ===-->
   <!--=========================================-->
   <!--===== Imports =====-->
-  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.13" schemaLocation="doc.xsd" />
+  <xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:DOC:V3.23" schemaLocation="doc.xsd" />
   <!--==========================================================-->
   <!--===                 ActualQuantityType                 ===-->
   <!--==========================================================-->
@@ -892,34 +892,6 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===               Addressed Office Name                ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="AddressedOfficeNameType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Addressed Office Name" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="35" />
-      <xs:pattern value=".{1,35}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===         Addressed Office Reference Number          ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="AddressedOfficeReferenceNumberType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Addressed Office Reference Number" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:length value="8" />
-      <xs:pattern value=".{8}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
   <!--===                 Addressee Officer                  ===-->
   <!--==========================================================-->
   <xs:simpleType name="AddresseeOfficerType">
@@ -973,20 +945,6 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="350" />
       <xs:pattern value=".{1,350}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===                     Box Number                     ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="BoxNumberType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Box Number" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="11" />
-      <xs:pattern value=".{1,11}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -1578,12 +1536,12 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===                 Import SAD Number                  ===-->
+  <!--===         Import Customs Declaration Number          ===-->
   <!--==========================================================-->
-  <xs:simpleType name="ImportSadNumberType">
+  <xs:simpleType name="ImportCustomsDeclarationNumberType">
     <xs:annotation>
       <xs:documentation>
-        <doc:description value="Import SAD Number" />
+        <doc:description value="Import Customs Declaration Number" />
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
@@ -1603,20 +1561,6 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="350" />
       <xs:pattern value=".{1,350}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===                 Invalidation date                  ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="InvalidationDateType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Invalidation date" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:length value="10" />
-      <xs:pattern value=".{10}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -1645,6 +1589,20 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="35" />
       <xs:pattern value=".{1,35}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--==========================================================-->
+  <!--===                   Justification                    ===-->
+  <!--==========================================================-->
+  <xs:simpleType name="JustificationType">
+    <xs:annotation>
+      <xs:documentation>
+        <doc:description value="Justification" />
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:maxLength value="350" />
+      <xs:pattern value=".{1,350}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -1788,34 +1746,6 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===         Movement Verification Action Code          ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="MovementVerificationActionCodeType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Movement Verification Action Code" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="2" />
-      <xs:pattern value="[0-9]{1,2}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===     Movement Verification Request Reason Code      ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="MovementVerificationRequestReasonCodeType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Movement Verification Request Reason Code" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="2" />
-      <xs:pattern value="[0-9]{1,2}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
   <!--===                        MRN                         ===-->
   <!--==========================================================-->
   <xs:simpleType name="MrnType">
@@ -1872,20 +1802,6 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===                       Notes                        ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="NotesType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Notes" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="999" />
-      <xs:pattern value=".{1,999}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
   <!--===                     Operation                      ===-->
   <!--==========================================================-->
   <xs:simpleType name="OperationType">
@@ -1911,20 +1827,6 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="350" />
       <xs:pattern value=".{1,350}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===               Originator of request                ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="OriginatorOfRequestType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Originator of request" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="50" />
-      <xs:pattern value=".{1,50}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -2068,20 +1970,6 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===                  Reference number                  ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="ReferenceNumberType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Reference number" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="70" />
-      <xs:pattern value=".{1,70}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
   <!--===               Reference of Document                ===-->
   <!--==========================================================-->
   <xs:simpleType name="ReferenceOfDocumentType">
@@ -2121,34 +2009,6 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="999" />
       <xs:pattern value=".{1,999}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===        Reference of the addressed authority        ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="ReferenceOfTheAddressedAuthorityType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Reference of the addressed authority" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="20" />
-      <xs:pattern value=".{1,20}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===       Reference of the requesting authority        ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="ReferenceOfTheRequestingAuthorityType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Reference of the requesting authority" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="20" />
-      <xs:pattern value=".{1,20}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -2247,34 +2107,6 @@
     <xs:restriction base="xs:token">
       <xs:maxLength value="350" />
       <xs:pattern value=".{1,350}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===               Requesting Office Name               ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="RequestingOfficeNameType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Requesting Office Name" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:maxLength value="35" />
-      <xs:pattern value=".{1,35}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
-  <!--===         Requesting Office Reference Number         ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="RequestingOfficeReferenceNumberType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Requesting Office Reference Number" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:length value="8" />
-      <xs:pattern value=".{8}" />
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
@@ -2586,20 +2418,6 @@
     </xs:restriction>
   </xs:simpleType>
   <!--==========================================================-->
-  <!--===                        Type                        ===-->
-  <!--==========================================================-->
-  <xs:simpleType name="TypeType">
-    <xs:annotation>
-      <xs:documentation>
-        <doc:description value="Type" />
-      </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:length value="4" />
-      <xs:pattern value=".{4}" />
-    </xs:restriction>
-  </xs:simpleType>
-  <!--==========================================================-->
   <!--===             Unsatisfactory Reason Code             ===-->
   <!--==========================================================-->
   <xs:simpleType name="UnsatisfactoryReasonCodeType">
@@ -2670,3 +2488,4 @@
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
+
