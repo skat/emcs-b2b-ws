@@ -5,13 +5,13 @@ Brief summary in English: This document is changelog for EMCS B2B Web Services.
 ### V4.1 til V4.2 februar 2026
 
 * 12/02/2026 lanceres FS4.2 af EMCS. Det betyder, at de nuværende beskeder vil blive opdateret, og et nyt sæt af EU XSD-filer skal anvendes til at generere de beskeder, som EMCS forventer at modtage.
-* De nye XSD-filer til Fase 4.1 kan findes på GitHub: https://github.com/skat/emcs-b2b-ws/tree/update/phase-4.2
+* De nye XSD-filer til Fase 4.2 kan findes på GitHub: https://github.com/skat/emcs-b2b-ws/tree/update/phase-4.2
 * Testdata med eksempler kan findes på Github: https://github.com/skat/emcs-b2b-ws-test-data/tree/update/phase-4.2
 
 English:
 
 * 12/02/2026 FS4.2 of EMCS is released. This means that the current messages will be updated and a new set of EU XSD-files is required to generate EMCS messages.
-* The new XSD-files for Phase 4.1 is located on GitHub:  https://github.com/skat/emcs-b2b-ws/tree/update/phase-4.2
+* The new XSD-files for Phase 4.2 is located on GitHub:  https://github.com/skat/emcs-b2b-ws/tree/update/phase-4.2
 * Test data with examples is located on Github: https://github.com/skat/emcs-b2b-ws-test-data/tree/update/phase-4.2
 
 ### V3.20 til V4.1 Maj 2025
