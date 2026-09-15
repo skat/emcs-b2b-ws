@@ -75,7 +75,7 @@ Each request must include a section named `HovedOplysninger` that must include t
 </urn:OIOLedsageDokumentOpret_I>
 ```
 
-In the event of a resubmission of an IE815 using a new transaction id in `TransaktionIdentifikator` the 
+In the event of a resubmission of an IE815 using a new transaction id in `TransaktionIdentifikator` the 
 semantics of the EMCS system is a follows: EMCS system will check the `LocalReferenceNumber field` in the IE815 
 and if it’s already used, EMCS will respond with a message stating it’s already used. That means that it’s safe 
 to retry submission of IE815 several times (until it’s succesful) given that you don’t alter the LRN.
@@ -101,8 +101,7 @@ Concurrent calls are not permitted.
 ## Security
 
 All services are accessible via the Internet using the secure transport protocol **HTTPS** and configured with
-Web Services Security requiring authentication, signing, and 
-encryption using X.509 certificates issued by [MitID Erhverv](https://mitid-erhverv.dk) (Certificate Authority) of type OCES3. Note that only **MitID Erhverv Organisation** and **MitID Erhverv 
+Web Services Security requiring authentication and signing using X.509 certificates issued by [MitID Erhverv](https://mitid-erhverv.dk) (Certificate Authority) of type OCES3. Note that only **MitID Erhverv Organisation** and **MitID Erhverv 
  System** certificates will be supported for B2B in accordance with Agency for Digital Government (DIGST) guidelines.
 The Web Services Security is based on [Web Services Security: SOAP Message Security 1.0 WS-Security 2004 - OASIS Standard 200401, March 2004 ](https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0.pdf)
 
@@ -252,16 +251,14 @@ Done. **The certificate is now provisioned and ready for use.**
 Given the **Client** trusts **Service(OCES3, Certificate)** and the **Client** has produced a **Request** the process is as follows:
 
 1. The **Client** initiates a connection (using HTTPS) with the Web Services Gateway for EMCS.
-2. The **Client** adds a timestamp, signs the **Request** with **Client(OCES3, Private Key)**, encrypts the request 
-with **Server(OCES3, Public Key)**, and adds **Client(OCES3, Certificate)** as security token to the **Request**
+2. The **Client** adds a timestamp, signs the **Request** with **Client(OCES3, Private Key)**, and adds **Client(OCES3, Certificate)** as security token to the **Request**
 3. The **Service** authenticates the request based on the **Client(OCES3, Certificate)** security token in SKAT's IAM.
 Authentication includes checking validity, revocation status of **Client(OCES3, Certificate)**, and finally if
 **Client(OCES3, Certificate)** has been authorized in the SKAT's IAM for the called endpoint.
 4. The **Service** decrypts the request using **Service(OCES3, Private Key)** and checks the signature using
 **Client(OCES3, Public Key)** (that is, if it was signed by **Client(OCES3, Private Key)**).
 5. Following successful completion of steps 3. and 4. the request is forwarded to the EMCS system.
-6. The **Service** will always provide a **Response** for all calls. This **Response** is signed with **Service(OCES3, Private Key)** 
-and encrypted using **Client(OCES3, Certificate)**.
+6. The **Service** will always provide a **Response** for all calls. This **Response** is signed with **Service(OCES3, Private Key)**.
 7. The **Client** receives the **Response** and must decrypt it using **Client(OCES3, Private Key)**, verify the signature 
 using the **Service(OCES3, Certificate)**, and finally check the timestamp. If successful, the client has a valid response.
 
@@ -282,12 +279,6 @@ the request and what will be received in the response.
 The following **wsse:Security** headers **must** be sent in request:
 
 * `wsse:BinarySecurityToken`. This token is the OCES3 certificate that carry the identity of the caller.
-* `enc:EncryptedKey` using this configuration:
-    * Security Token Reference = Key Identifier
-    * Transport Algorithm: `http://www.w3.org/2001/04/xmlenc#rsa-1_5`
-    * Symmetric Encryption Algorithm: `http://www.w3.org/2001/04/xmlenc#tripledes-cbc`
-    * Parts to Encrypt:
-        * `soap:Body`
 * `dsig:Signature` using this configuration:
     * Security Token Reference = Direct Reference
     * Signature algorithm = `http://www.w3.org/2000/09/xmldsig#rsa-sha1`
@@ -312,12 +303,6 @@ in the client software.
 
 The following **wsse:Security** headers **will** be returned in response:
 
-* `enc:EncryptedKey` using this configuration:
-    * Security Token Reference = Key Identifier
-    * Transport Algorithm: `http://www.w3.org/2001/04/xmlenc#rsa-1_5`
-    * Symmetric Encryption Algorithm: `http://www.w3.org/2001/04/xmlenc#tripledes-cbc`
-    * Parts encrypted:
-        * `soap:Body` 
 * `wsse:BinarySecurityToken` 
 * `dsig:Signature`        
     * Security Token Reference = Direct Reference
