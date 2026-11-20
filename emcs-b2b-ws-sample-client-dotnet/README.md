@@ -31,7 +31,7 @@ server.pem
 3. From the Systems Integrator (SI) package copy the file 
 
 ```
-emcs-b2b-sample-client-dotnet/appsettings.json
+emcs-b2b-ws-sample-client-dotnet/appsettings.json
 ```
 
 to the root of this project (replace the existing `appsettings.json`) file.
