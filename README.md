@@ -413,6 +413,7 @@ See [test data repository](https://github.com/skat/emcs-b2b-ws-test-data)
 ## Sample Web Service Clients
 
 * [Java](https://github.com/skat/emcs-b2b-ws-sample-client-java)
+* [.NET Core](emcs-b2b-ws-sample-client-dotnet/README.md)
 
 ## Useful tools
 
