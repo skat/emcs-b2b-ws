@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ie:IE815 xmlns:ie="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE815:V3.23">
+    <ie:Header xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:TMS:V3.23">
+        <tms:MessageSender>NDEA.DK</tms:MessageSender>
+        <tms:MessageRecipient>NDEA.DK</tms:MessageRecipient>
+        <tms:DateOfPreparation>2011-10-26</tms:DateOfPreparation>
+        <tms:TimeOfPreparation>11:27:00.803</tms:TimeOfPreparation>
+        <tms:MessageIdentifier>9e1e74a5-aaae-41d6-8280-c3892246e783</tms:MessageIdentifier>
+    </ie:Header>
+    <ns26:Body xmlns:ns26="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE4:IE815:V3.23">
+        <ns26:SubmittedDraftOfEADESAD>
+            <ns26:Attributes>
+                <ns26:SubmissionMessageType>1</ns26:SubmissionMessageType>
+                <!-- IMPORTANT: We ONLY set this to 1 to allows us to resend
+                 the same document with DateOfDispatch date in the past -->
+                <ns26:DeferredSubmissionFlag>1</ns26:DeferredSubmissionFlag>
+            </ns26:Attributes>
+            <ns26:ConsigneeTrader language="da">
+                <ns26:Traderid>DK99025875300</ns26:Traderid>
+                <ns26:TraderName>SEED selskab 1 test 2</ns26:TraderName>
+                <ns26:StreetName>Kirkegade</ns26:StreetName>
+                <ns26:StreetNumber>1</ns26:StreetNumber>
+                <ns26:Postcode>6840</ns26:Postcode>
+                <ns26:City>Oksbøl</ns26:City>
+            </ns26:ConsigneeTrader>
+            <ns26:ConsignorTrader language="da">
+                <ns26:TraderExciseNumber>DK82065873300</ns26:TraderExciseNumber>
+                <ns26:TraderName>Test af KS-1, testsitnr. 3.1.3.22</ns26:TraderName>
+                <ns26:StreetName>Borupvej</ns26:StreetName>
+                <ns26:StreetNumber>1</ns26:StreetNumber>
+                <ns26:Postcode>3320</ns26:Postcode>
+                <ns26:City>Skævinge</ns26:City>
+            </ns26:ConsignorTrader>
+            <ns26:PlaceOfDispatchTrader language="da">
+                <ns26:ReferenceOfTaxWarehouse>DK82065873309</ns26:ReferenceOfTaxWarehouse>
+                <ns26:TraderName>Test af KS-1, testsitnr. 3.1.3.22</ns26:TraderName>
+                <ns26:StreetName>Borupvej</ns26:StreetName>
+                <ns26:StreetNumber>9</ns26:StreetNumber>
+                <ns26:Postcode>3320</ns26:Postcode>
+                <ns26:City>Skævinge</ns26:City>
+            </ns26:PlaceOfDispatchTrader>
+            <ns26:DeliveryPlaceTrader language="da">
+                <ns26:Traderid>DK99025875499</ns26:Traderid>
+                <ns26:TraderName>SEED selskab 1 test 2</ns26:TraderName>
+                <ns26:StreetName>Statshavnen</ns26:StreetName>
+                <ns26:StreetNumber>6</ns26:StreetNumber>
+                <ns26:Postcode>3000</ns26:Postcode>
+                <ns26:City>Helsingør</ns26:City>
+            </ns26:DeliveryPlaceTrader>
+            <ns26:CompetentAuthorityDispatchOffice>
+                <ns26:ReferenceNumber>DK008047</ns26:ReferenceNumber>
+            </ns26:CompetentAuthorityDispatchOffice>
+            <ns26:FirstTransporterTrader language="da">
+                <ns26:TraderName>TC10</ns26:TraderName>
+                <ns26:StreetName>Lufthavnsvej</ns26:StreetName>
+                <ns26:StreetNumber>8</ns26:StreetNumber>
+                <ns26:Postcode>2800</ns26:Postcode>
+                <ns26:City>Roskilde</ns26:City>
+            </ns26:FirstTransporterTrader>
+            <ns26:HeaderEadEsad>
+                <ns26:DestinationTypeCode>1</ns26:DestinationTypeCode>
+                <ns26:JourneyTime>H06</ns26:JourneyTime>
+                <ns26:TransportArrangement>1</ns26:TransportArrangement>
+            </ns26:HeaderEadEsad>
+            <ns26:TransportMode>
+                <ns26:TransportModeCode>4</ns26:TransportModeCode>
+            </ns26:TransportMode>
+            <ns26:MovementGuarantee>
+                <ns26:GuarantorTypeCode>1</ns26:GuarantorTypeCode>
+            </ns26:MovementGuarantee>
+            <ns26:BodyEadEsad>
+                <ns26:BodyRecordUniqueReference>1</ns26:BodyRecordUniqueReference>
+                <ns26:ExciseProductCode>W200</ns26:ExciseProductCode>
+                <ns26:CnCode>22042122</ns26:CnCode>
+                <ns26:Quantity>100</ns26:Quantity>
+                <ns26:GrossMass>100</ns26:GrossMass>
+                <ns26:NetMass>99</ns26:NetMass>
+                <ns26:AlcoholicStrengthByVolumeInPercentage>12</ns26:AlcoholicStrengthByVolumeInPercentage>
+                <ns26:FiscalMark language="da">Nix</ns26:FiscalMark>
+                <ns26:FiscalMarkUsedFlag>1</ns26:FiscalMarkUsedFlag>
+                <ns26:DesignationOfOrigin language="da">Tjo</ns26:DesignationOfOrigin>
+                <ns26:SizeOfProducer>4000000</ns26:SizeOfProducer>
+                <ns26:CommercialDescription language="da">Nix</ns26:CommercialDescription>
+                <ns26:BrandNameOfProducts language="da">BB</ns26:BrandNameOfProducts>
+                <ns26:Package>
+                    <ns26:KindOfPackages>BJ</ns26:KindOfPackages>
+                    <ns26:NumberOfPackages>10</ns26:NumberOfPackages>
+                </ns26:Package>
+                <ns26:WineProduct>
+                    <ns26:WineProductCategory>2</ns26:WineProductCategory>
+                    <ns26:WineGrowingZoneCode>1</ns26:WineGrowingZoneCode>
+                    <ns26:OtherInformation language="da">jajaja</ns26:OtherInformation>
+                </ns26:WineProduct>
+            </ns26:BodyEadEsad>
+            <ns26:EadEsadDraft>
+                <ns26:LocalReferenceNumber>1964467</ns26:LocalReferenceNumber>
+                <ns26:InvoiceNumber>INV026594</ns26:InvoiceNumber>
+                <ns26:InvoiceDate>2011-10-18</ns26:InvoiceDate>
+                <ns26:OriginTypeCode>1</ns26:OriginTypeCode>
+                <ns26:DateOfDispatch>2011-10-26</ns26:DateOfDispatch>
+                <ns26:TimeOfDispatch>02:00:00.814</ns26:TimeOfDispatch>
+            </ns26:EadEsadDraft>
+            <ns26:TransportDetails>
+                <ns26:TransportUnitCode>1</ns26:TransportUnitCode>
+                <ns26:IdentityOfTransportUnits>299</ns26:IdentityOfTransportUnits>
+            </ns26:TransportDetails>
+        </ns26:SubmittedDraftOfEADESAD>
+    </ns26:Body>
+</ie:IE815>
